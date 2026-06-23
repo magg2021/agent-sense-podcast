@@ -90,6 +90,47 @@
             color: #d0d0d0;
         }
 
+        /* Platform Banner */
+        .platform-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .platform-banner h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .platform-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .platform-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .platform-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
         /* About Section */
         .about-section {
             background: var(--card-bg);
@@ -324,6 +365,17 @@
     </header>
 
     <main class="container">
+        <!-- Platform Banner -->
+        <section class="platform-banner">
+            <h3>🎧 Now Live On</h3>
+            <div class="platform-links">
+                <a href="https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3" target="_blank">🎵 Spotify</a>
+                <a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214" target="_blank">🍎 Apple Podcasts</a>
+                <a href="https://music.amazon.com/podcasts/YOUR_AMAZON_ID" target="_blank">🎶 Amazon Music</a>
+                <a href="https://www.iheart.com/podcast/YOUR_IHEART_ID" target="_blank">❤️ iHeart Radio</a>
+            </div>
+        </section>
+
         <!-- About Section -->
         <section class="about-section">
             <h2>About Agent Sense</h2>
