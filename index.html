@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Agent Sense - A podcast exploring enterprise AI, agentic systems, and the future of intelligent automation">
+    <title>Agent Sense Podcast - Smart AI Meets Human Sense</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0f3460;
+            --highlight-color: #e94560;
+            --text-light: #f1f1f1;
+            --text-dark: #333;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            flex-shrink: 0;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .header-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #667eea, #e94560);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 1rem;
+        }
+
+        .description {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #d0d0d0;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--card-bg);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .about-section p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .hosts {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .host {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid var(--highlight-color);
+        }
+
+        .host h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Episodes Section */
+        .episodes-section {
+            margin: 2rem 0;
+        }
+
+        .section-title {
+            color: var(--text-light);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .episodes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .episode-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .episode-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .episode-cover {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .episode-content {
+            padding: 1.5rem;
+        }
+
+        .episode-number {
+            color: var(--highlight-color);
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .episode-title {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin: 0.5rem 0;
+            line-height: 1.4;
+        }
+
+        .episode-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .audio-player {
+            width: 100%;
+            margin-top: 1rem;
+            border-radius: 5px;
+        }
+
+        .listen-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .listen-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .listen-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .listen-btn.spotify {
+            background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
+        }
+
+        .listen-btn.apple {
+            background: linear-gradient(135deg, #FA243C 0%, #ff5a6e 100%);
+        }
+
+        .listen-btn.amazon {
+            background: linear-gradient(135deg, #00A8E1 0%, #00c3ff 100%);
+        }
+
+        .listen-btn.iheart {
+            background: linear-gradient(135deg, #C6002B 0%, #e6003d 100%);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--highlight-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .episodes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hosts {
+                flex-direction: column;
+            }
+        }
+
+        /* Coming Soon Badge */
+        .coming-soon {
+            display: inline-block;
+            background: var(--highlight-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="agent_sense_cover.png" alt="Agent Sense Logo" class="logo">
+                </div>
+                <div class="header-text">
+                    <h1>Agent Sense</h1>
+                    <p class="tagline">Smart AI Meets Human Sense</p>
+                    <p class="description">
+                        A podcast exploring enterprise AI, agentic systems, multi-agent workflows, 
+                        and the practical implementation of intelligent automation in real-world business environments.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- About Section -->
+        <section class="about-section">
+            <h2>About Agent Sense</h2>
+            <p>
+                Agent Sense is a podcast focused on the enterprise implementation of AI agents and multi-agent systems. 
+                We explore the shift from conversational AI to agentic AI that can take action, make decisions, and 
+                orchestrate complex workflows across business systems.
+            </p>
+            <p>
+                Our discussions cover Day 2 and Day 3 enterprise AI implementation, including governance, orchestration, 
+                context management, security, and the practical challenges of moving from pilot to production.
+            </p>
+            
+            <div class="hosts">
+                <div class="host">
+                    <h3>Monika Aggarwal</h3>
+                    <p><strong>Co-Host & Creator</strong></p>
+                    <p style="margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.6;">
+                        Works at IBM across product strategy, data, AI, and enterprise modernization.
+                        Her work sits where business reality meets technical execution, helping organizations
+                        move past AI hype into real adoption, where process, data, governance, and workforce
+                        skills all work together.
+                    </p>
+                </div>
+                <div class="host">
+                    <h3>Frank Chavez</h3>
+                    <p><strong>Co-Host</strong></p>
+                    <p style="margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.6;">
+                        Enterprise Architecture & AI Implementation specialist with deep expertise in
+                        multi-agent systems and enterprise AI governance.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Episodes Section -->
+        <section class="episodes-section">
+            <h2 class="section-title">Episodes</h2>
+            <div class="episodes-grid">
+                
+                <!-- Episode 1 -->
+                <div class="episode-card">
+                    <img src="agent_sense_cover.png" alt="Episode 1 Cover" class="episode-cover">
+                    <div class="episode-content">
+                        <div class="episode-number">Episode 1</div>
+                        <h3 class="episode-title">Smart AI Meets Human Sense</h3>
+                        <p class="episode-description">
+                            Introduction to Agent Sense and the evolution of AI from simple automation to intelligent agents 
+                            that can reason, plan, and execute complex tasks.
+                        </p>
+                        <div class="listen-links">
+                            <a href="https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3" target="_blank" class="listen-btn spotify">
+                                🎵 Listen on Spotify
+                            </a>
+                            <a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214" target="_blank" class="listen-btn apple">
+                                🍎 Listen on Apple
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episode 2 -->
+                <div class="episode-card">
+                    <img src="agent_sense_ep02_cover.png" alt="Episode 2 Cover" class="episode-cover">
+                    <div class="episode-content">
+                        <div class="episode-number">Episode 2</div>
+                        <h3 class="episode-title">Enterprise AI Agents in Action</h3>
+                        <p class="episode-description">
+                            Exploring real-world use cases of AI agents in enterprise environments and the challenges
+                            of implementing agentic systems at scale.
+                        </p>
+                        <div class="listen-links">
+                            <a href="https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3" target="_blank" class="listen-btn spotify">
+                                🎵 Listen on Spotify
+                            </a>
+                            <a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214" target="_blank" class="listen-btn apple">
+                                🍎 Listen on Apple
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episode 3 -->
+                <div class="episode-card">
+                    <img src="Episode 3/Podcast_cover _ep3_2.png" alt="Episode 3 Cover" class="episode-cover">
+                    <div class="episode-content">
+                        <div class="episode-number">Episode 3</div>
+                        <h3 class="episode-title">Multi-Agent Orchestration</h3>
+                        <p class="episode-description">
+                            Deep dive into multi-agent systems, orchestration patterns, and how multiple AI agents 
+                            collaborate to solve complex business problems.
+                        </p>
+                        <div class="listen-links">
+                            <a href="https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3" target="_blank" class="listen-btn spotify">
+                                🎵 Listen on Spotify
+                            </a>
+                            <a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214" target="_blank" class="listen-btn apple">
+                                🍎 Listen on Apple
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episode 4 -->
+                <div class="episode-card">
+                    <img src="Episode 4/Podcast_cover_ep4_2.png" alt="Episode 4 Cover" class="episode-cover">
+                    <div class="episode-content">
+                        <div class="episode-number">Episode 4</div>
+                        <h3 class="episode-title">Governance and Control in Agentic AI</h3>
+                        <p class="episode-description">
+                            Understanding governance frameworks, security considerations, and control mechanisms
+                            for enterprise AI agents.
+                        </p>
+                        <div class="listen-links">
+                            <a href="https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3" target="_blank" class="listen-btn spotify">
+                                🎵 Listen on Spotify
+                            </a>
+                            <a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214" target="_blank" class="listen-btn apple">
+                                🍎 Listen on Apple
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episode 5 -->
+                <div class="episode-card">
+                    <img src="Episode 5/image.png" alt="Episode 5 Cover" class="episode-cover">
+                    <div class="episode-content">
+                        <div class="episode-number">Episode 5</div>
+                        <h3 class="episode-title">Testing Multi-Agent Workflows</h3>
+                        <p class="episode-description">
+                            Best practices for testing, validating, and ensuring reliability in multi-agent systems
+                            before production deployment.
+                        </p>
+                        <div class="listen-links">
+                            <a href="https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3" target="_blank" class="listen-btn spotify">
+                                🎵 Listen on Spotify
+                            </a>
+                            <a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214" target="_blank" class="listen-btn apple">
+                                🍎 Listen on Apple
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episode 6 -->
+                <div class="episode-card">
+                    <img src="Episode 6/Podcast_cover (1).jpg" alt="Episode 6 Cover" class="episode-cover">
+                    <div class="episode-content">
+                        <div class="episode-number">Episode 6</div>
+                        <h3 class="episode-title">Day 2 Operations for AI Agents</h3>
+                        <p class="episode-description">
+                            Moving beyond pilot projects to production operations, monitoring, and maintaining
+                            AI agent systems in enterprise environments.
+                        </p>
+                        <div class="listen-links">
+                            <a href="https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3" target="_blank" class="listen-btn spotify">
+                                🎵 Listen on Spotify
+                            </a>
+                            <a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214" target="_blank" class="listen-btn apple">
+                                🍎 Listen on Apple
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episode 7 -->
+                <div class="episode-card">
+                    <img src="Episode 7/11.png" alt="Episode 7 Cover" class="episode-cover">
+                    <div class="episode-content">
+                        <div class="episode-number">Episode 7</div>
+                        <h3 class="episode-title">The Evolution of Agents: From Chat to Computer Use</h3>
+                        <p class="episode-description">
+                            Guest: Vitalii Duk from Dynamiq. Exploring how agents are moving from answering questions
+                            to doing work across tools, systems, and runtime environments. Chat means an agent can answer
+                            your question. Computer use means the agent can take action across applications, tools, and workflows.
+                        </p>
+                        <p class="episode-description" style="margin-top: 0.5rem; font-style: italic;">
+                            <strong>Key Topics:</strong> Bounded use cases, authority boundaries, orchestration, observability,
+                            audit, human review, and Day 2/Day 3 enterprise readiness.
+                        </p>
+                        <div class="listen-links">
+                            <a href="https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3" target="_blank" class="listen-btn spotify">
+                                🎵 Listen on Spotify
+                            </a>
+                            <a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214" target="_blank" class="listen-btn apple">
+                                🍎 Listen on Apple
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episode 8 -->
+                <div class="episode-card">
+                    <img src="agent_sense_cover.png" alt="Episode 8 Cover" class="episode-cover">
+                    <div class="episode-content">
+                        <div class="episode-number">Episode 8</div>
+                        <h3 class="episode-title">Ambient Agents: Monitor, Decide, Escalate <span class="coming-soon">Coming Soon</span></h3>
+                        <p class="episode-description">
+                            Exploring ambient agents that continuously monitor business processes, make autonomous decisions
+                            within defined boundaries, and escalate to humans when needed. Understanding the balance between
+                            automation and human oversight in enterprise environments.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Episode 9 -->
+                <div class="episode-card">
+                    <img src="agent_sense_cover.png" alt="Episode 9 Cover" class="episode-cover">
+                    <div class="episode-content">
+                        <div class="episode-number">Episode 9</div>
+                        <h3 class="episode-title">Governed Agents: From Catalog to Execution <span class="coming-soon">Coming Soon</span></h3>
+                        <p class="episode-description">
+                            Deep dive into agent governance frameworks, from cataloging agent capabilities to controlling
+                            execution in production. Covering agent registries, policy enforcement, compliance tracking,
+                            and enterprise-grade agent lifecycle management.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024-2026 Agent Sense Podcast. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/company/agent-sense/" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">Subscribe</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

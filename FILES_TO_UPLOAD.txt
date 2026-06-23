@@ -1,0 +1,144 @@
+AGENT SENSE PODCAST - FILES TO UPLOAD TO GITHUB
+================================================
+
+📁 ROOT LEVEL FILES (upload to main folder):
+--------------------------------------------
+✅ index.html
+✅ agent_sense_cover.png
+✅ agent_sense_ep02_cover.png
+
+
+📁 EPISODE 3 FOLDER (create folder named "Episode 3"):
+------------------------------------------------------
+Inside "Episode 3" folder, upload:
+✅ Podcast_cover _ep3_2.png
+
+
+📁 EPISODE 4 FOLDER (create folder named "Episode 4"):
+------------------------------------------------------
+Inside "Episode 4" folder, upload:
+✅ Podcast_cover_ep4_2.png
+
+
+📁 EPISODE 5 FOLDER (create folder named "Episode 5"):
+------------------------------------------------------
+Inside "Episode 5" folder, upload:
+✅ image.png
+
+
+📁 EPISODE 6 FOLDER (create folder named "Episode 6"):
+------------------------------------------------------
+Inside "Episode 6" folder, upload:
+✅ Podcast_cover (1).jpg
+
+
+📁 EPISODE 7 FOLDER (create folder named "Episode 7"):
+------------------------------------------------------
+Inside "Episode 7" folder, upload:
+✅ 11.png
+
+
+TOTAL FILES TO UPLOAD: 8 files (NO AUDIO FILES)
+================================================
+
+FOLDER STRUCTURE:
+================
+agent-sense-podcast/
+├── index.html
+├── agent_sense_cover.png
+├── agent_sense_ep02_cover.png
+├── Episode 3/
+│   └── Podcast_cover _ep3_2.png
+├── Episode 4/
+│   └── Podcast_cover_ep4_2.png
+├── Episode 5/
+│   └── image.png
+├── Episode 6/
+│   └── Podcast_cover (1).jpg
+└── Episode 7/
+    └── 11.png
+
+
+STEP-BY-STEP UPLOAD INSTRUCTIONS:
+==================================
+
+1. Go to github.com and sign in
+2. Click "New repository" (green button)
+3. Name it: agent-sense-podcast
+4. Make it PUBLIC (required for free GitHub Pages)
+5. Click "Create repository"
+
+6. Click "uploading an existing file"
+
+7. DRAG AND DROP these files from your computer:
+   - index.html
+   - agent_sense_cover.png
+   - agent_sense_ep02_cover.png
+
+8. Click "Commit changes"
+
+9. For each episode folder:
+   - Click "Add file" → "Create new file"
+   - Type: "Episode 3/placeholder.txt" (this creates the folder)
+   - Click "Commit changes"
+   - Go into the "Episode 3" folder
+   - Click "Add file" → "Upload files"
+   - Drag the cover image for Episode 3
+   - Click "Commit changes"
+   - Repeat for Episodes 4, 5, 6, and 7
+
+10. Go to Settings → Pages
+11. Source: Deploy from branch "main"
+12. Click Save
+13. Wait 1-2 minutes
+14. Your site is live at: https://yourusername.github.io/agent-sense-podcast/
+
+
+IMPORTANT NOTES:
+================
+❗ NO AUDIO FILES are uploaded - visitors will click through to Spotify/Apple for analytics tracking
+
+❗ Make sure folder names match EXACTLY (including spaces):
+   - "Episode 3" (with space)
+   - "Episode 4" (with space)
+   - "Episode 5" (with space)
+   - "Episode 6" (with space)
+   - "Episode 7" (with space)
+
+❗ File names are case-sensitive - keep them exactly as shown
+
+❗ Repository must be PUBLIC for free GitHub Pages
+
+❗ Only 8 files total (much faster upload!)
+
+
+EASIER ALTERNATIVE:
+===================
+Instead of uploading files one by one, you can:
+
+1. Install GitHub Desktop (desktop.github.com)
+2. Create repository in GitHub Desktop
+3. Copy ONLY these files/folders to the repository folder:
+   - index.html
+   - agent_sense_cover.png
+   - agent_sense_ep02_cover.png
+   - Episode 3/ folder (with cover image only)
+   - Episode 4/ folder (with cover image only)
+   - Episode 5/ folder (with cover image only)
+   - Episode 6/ folder (with cover image only)
+   - Episode 7/ folder (with cover image only)
+4. Click "Commit to main"
+5. Click "Publish repository"
+6. Enable GitHub Pages in settings
+
+This way you can upload everything at once!
+
+
+WHY NO AUDIO FILES?
+===================
+✅ Faster upload (only 8 files vs 17 files)
+✅ Smaller repository size
+✅ Better analytics - all plays tracked on Spotify/Apple
+✅ Visitors click "Listen on Spotify" or "Listen on Apple" buttons
+✅ You get full analytics from podcast platforms
+✅ Easier to maintain and update

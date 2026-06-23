@@ -1,0 +1,25 @@
+# Ignore audio files - not needed for website
+*.mp3
+*.m4a
+*.mp4
+
+# Ignore system files
+.DS_Store
+*.docx
+*.pdf
+
+# Ignore other project files not needed for website
+Cerritos College/
+IBV research/
+Testing multiagent workflows/
+Episode 8 and 9 with Dynamiq/
+
+# Keep only website files
+!index.html
+!*.png
+!*.jpg
+!*.jpeg
+!DEPLOYMENT_GUIDE.md
+!FILES_TO_UPLOAD.txt
+
+# Made with Bob
