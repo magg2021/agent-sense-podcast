@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Agent Sense — Episode 8 Script</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #1f2328;
+    background: #ffffff;
+    padding: 32px 16px 48px;
+  }
+  .page { max-width: 760px; margin: 0 auto; }
+
+  /* Header */
+  .header { margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #e5e7eb; }
+  .show-label { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #3b82d4; margin-bottom: 6px; }
+  h1 { font-size: 22px; font-weight: 700; color: #1f2328; margin-bottom: 4px; }
+  .ep-num { font-size: 13px; font-weight: 700; color: #7c5cd8; margin-bottom: 4px; }
+  .meta { font-size: 13px; color: #57606a; }
+  .meta span { margin-right: 18px; }
+
+  /* Segment label */
+  .segment {
+    margin: 28px 0 10px;
+    padding: 5px 12px;
+    background: #f7f8fa;
+    border-left: 3px solid #3b82d4;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #57606a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .segment .timing { font-weight: 400; color: #7c5cd8; font-size: 11px; letter-spacing: 0; text-transform: none; }
+
+  /* Lines */
+  .line { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
+  .speaker {
+    flex-shrink: 0;
+    width: 76px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding-top: 2px;
+  }
+  .speaker.monika { color: #3b82d4; }
+  .speaker.frank  { color: #7c5cd8; }
+  .text { flex: 1; }
+
+  /* Direction notes */
+  .direction {
+    font-size: 12px;
+    color: #57606a;
+    font-style: italic;
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-bottom: 14px;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+    font-size: 12px;
+    color: #57606a;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="show-label">Agent Sense · Episode Script</div>
+    <div class="ep-num">Episode 8</div>
+    <h1>Ambient Agents: Monitor, Decide, Escalate</h1>
+    <div class="meta">
+      <span>🎙 Hosts: Monika &amp; Frank</span>
+      <span>⏱ Runtime: ~4–5 min</span>
+      <span>🎚 Tone: Structured · Conversational</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="segment">SEGMENT 1 — INTRO <span class="timing">~0:00 – 0:45</span></div>
+
+  <div class="line">
+    <span class="speaker monika">Monika</span>
+    <span class="text">Welcome back to Agent Sense — the show where we make sense of AI agents and what they actually mean for the world. I'm Monika, here with my co-host Frank, and today we're talking about something that's quietly becoming one of the most important shifts in how AI gets deployed: ambient agents.</span>
+  </div>
+  <div class="line">
+    <span class="speaker frank">Frank</span>
+    <span class="text">Ambient agents — agents that run in the background, continuously, without you having to ask them anything. No prompts, no button clicks. They monitor, they decide, and when something needs a human, they escalate. And that changes everything about how we think about AI at work.</span>
+  </div>
+  <div class="line">
+    <span class="speaker monika">Monika</span>
+    <span class="text">Exactly. So today we're going to break down what ambient agents actually are, walk through some real-world examples, and talk about why this is happening right now. Let's get into it.</span>
+  </div>
+
+  <!-- WHAT ARE AMBIENT AGENTS -->
+  <div class="segment">SEGMENT 2 — WHAT ARE AMBIENT AGENTS? <span class="timing">~0:45 – 1:45</span></div>
+
+  <div class="line">
+    <span class="speaker frank">Frank</span>
+    <span class="text">So let's start with the definition. An ambient agent is an AI system that operates continuously in the background — monitoring signals, making decisions, and taking actions, without needing to be explicitly triggered each time. Think of it less like a chatbot and more like an autopilot that's always running.</span>
+  </div>
+  <div class="line">
+    <span class="speaker monika">Monika</span>
+    <span class="text">Right — and what distinguishes ambient agents from traditional automation is the reasoning layer. Old automation fires a rule: <em>if X, do Y</em>. An ambient agent can handle ambiguous situations, weigh context, and make judgment calls. It's the difference between a script and a colleague.</span>
+  </div>
+  <div class="line">
+    <span class="speaker frank">Frank</span>
+    <span class="text">And the key enabling factor here is that LLMs are now cheap and fast enough to run these reasoning loops continuously. A year ago, running inference every few seconds in the background was economically prohibitive. That's changing fast.</span>
+  </div>
+
+  <!-- REAL WORLD EXAMPLES -->
+  <div class="segment">SEGMENT 3 — REAL-WORLD EXAMPLES <span class="timing">~1:45 – 3:30</span></div>
+
+  <div class="direction">⬇ Transition: Monika moves the conversation into concrete territory.</div>
+
+  <div class="line">
+    <span class="speaker monika">Monika</span>
+    <span class="text">Let's make this tangible. Frank, walk us through a couple of examples you find compelling.</span>
+  </div>
+  <div class="line">
+    <span class="speaker frank">Frank</span>
+    <span class="text">Sure. The first one I keep coming back to is ambient agents in software development. GitHub Copilot started as an autocomplete tool — you ask, it answers. But the next generation of coding agents sit in your repo, watching commits, flagging potential bugs, opening draft PRs, and updating documentation — all without a developer prompting them. IBM's work with watsonx Code Assistant is heading in exactly this direction.</span>
+  </div>
+  <div class="line">
+    <span class="speaker monika">Monika</span>
+    <span class="text">And you can see the same pattern in enterprise workflows. I've been looking at ambient agents in IT operations — systems that monitor infrastructure health, detect anomalies, and start remediation steps before a human even gets paged. The agent isn't waiting to be asked; it's already three steps into fixing the problem.</span>
+  </div>
+  <div class="line">
+    <span class="speaker frank">Frank</span>
+    <span class="text">Customer service is another big one. Imagine an ambient agent that monitors your open support tickets, proactively reaches out to customers with updates, and escalates only the cases that genuinely need human attention. The human rep isn't triaging — they're doing the high-value work.</span>
+  </div>
+  <div class="line">
+    <span class="speaker monika">Monika</span>
+    <span class="text">What strikes me across all of these is the shift in the human role. You're not operating the AI — you're overseeing it. Monitor, decide, escalate. That loop runs continuously, and the human steps in only when it matters.</span>
+  </div>
+
+  <!-- WHY NOW -->
+  <div class="segment">SEGMENT 4 — WHY NOW? <span class="timing">~3:30 – 4:15</span></div>
+
+  <div class="line">
+    <span class="speaker frank">Frank</span>
+    <span class="text">So why is this happening now specifically? Three things converged. First, model quality — reasoning is good enough to handle edge cases that would have broken earlier systems. Second, cost — inference prices have dropped dramatically, making always-on feasible. Third, tooling — the infrastructure to give agents persistent memory, access to external systems, and the ability to take actions is finally mature enough for production.</span>
+  </div>
+  <div class="line">
+    <span class="speaker monika">Monika</span>
+    <span class="text">And I'd add trust frameworks. Enterprises are starting to get comfortable defining what an agent is allowed to do autonomously versus what requires a human in the loop. That governance layer was missing before, and without it ambient agents were too risky to deploy at scale.</span>
+  </div>
+
+  <!-- OUTRO -->
+  <div class="segment">SEGMENT 5 — OUTRO <span class="timing">~4:15 – 5:00</span></div>
+
+  <div class="line">
+    <span class="speaker frank">Frank</span>
+    <span class="text">So the takeaway here: ambient agents aren't science fiction. They're already in production in dev tools, IT ops, and customer service. The question isn't whether they're coming — it's how fast your organization is thinking about where to deploy them and how to govern them.</span>
+  </div>
+  <div class="line">
+    <span class="speaker monika">Monika</span>
+    <span class="text">Well said. If this episode got you thinking, subscribe so you don't miss our next one — we're going deep on interoperability and the governed catalog of AI assets. Until then, I'm Monika.</span>
+  </div>
+  <div class="line">
+    <span class="speaker frank">Frank</span>
+    <span class="text">And I'm Frank. Thanks for listening to Agent Sense.</span>
+  </div>
+
+  <div class="footer">Made with IBM Bob</div>
+</div>
+</body>
+</html>

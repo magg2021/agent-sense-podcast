@@ -198,6 +198,8 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .episode-card:hover {
@@ -214,6 +216,9 @@
 
         .episode-content {
             padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .episode-number {
@@ -247,7 +252,8 @@
         .listen-links {
             display: flex;
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: auto;
+            padding-top: 1rem;
             flex-wrap: wrap;
         }
 
