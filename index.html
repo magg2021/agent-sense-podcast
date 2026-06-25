@@ -132,6 +132,47 @@
         }
 
         /* About Section */
+        .why-section {
+            background: var(--card-bg);
+            margin: 2rem 0;
+            padding: 2rem 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .why-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.25rem;
+            font-size: 1.85rem;
+            letter-spacing: -0.01em;
+        }
+
+        .why-section p {
+            margin-bottom: 1rem;
+            line-height: 1.85;
+            color: var(--text-dark);
+            font-size: 0.97rem;
+        }
+
+        .why-section .arc-list {
+            margin: 1rem 0 1rem 0;
+            padding: 1rem 1.5rem;
+            background: #f0eef8;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            line-height: 1.9;
+        }
+
+        .why-section .why-goal {
+            color: var(--text-dark);
+            font-size: 0.97rem;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 1rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+        }
+
         .about-section {
             background: var(--card-bg);
             margin: 2rem 0;
@@ -360,10 +401,12 @@
                 </div>
                 <div class="header-text">
                     <h1>Agent Sense</h1>
-                    <p class="tagline">Practical conversations on enterprise AI agents</p>
+                    <p class="tagline">Smart AI Meets Human Sense</p>
                     <p class="description">
-                        A podcast exploring enterprise AI, agentic systems, multi-agent workflows, 
-                        and the practical implementation of intelligent automation in real-world business environments.
+                        A non-monetized podcast hosted by Monika Aggarwal and Frank Chavez.
+                    </p>
+                    <p class="description">
+                        Practical conversations on enterprise AI agents, governed workflows, integration, data readiness, and operating models for real business adoption.
                     </p>
                 </div>
             </div>
@@ -382,27 +425,42 @@
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- The Common Arc -->
+        <section class="why-section">
+            <h2>The Common Arc to Agent Sense</h2>
+            <p>
+                Agent Sense started as a way to learn in public and share what we are seeing as enterprises move from AI pilots to real operations.
+            </p>
+            <p>
+                The pattern is clear. AI agents do not fail only because of the model. They fail when the business process is unclear, the data is not ready, the integration path is unmanaged, the access model is weak, or the operating model is missing.
+            </p>
+            <p>Each episode builds on that arc.</p>
+            <div class="arc-list">
+                We start with <strong>enterprise readiness</strong>, then move into <strong>design boundaries</strong>, <strong>data readiness</strong>, <strong>autonomy in the data layer</strong>, <strong>integration</strong>, <strong>controlled access</strong>, <strong>agent execution</strong>, <strong>ambient agents</strong>, and <strong>governed reuse of AI assets</strong>.
+            </div>
+            <p class="why-goal">
+                The goal is to make enterprise AI practical, grounded, and safe enough to operate in real business environments.
+            </p>
+        </section>
+
+        <!-- Hosts Section -->
         <section class="about-section">
-            <h2>About Agent Sense</h2>
-            <p>
-               Agent Sense is a non-monetized podcast focused on enterprise AI agents and multi agent systems.
-            </p>
-            <p>
-                We talk about what it takes to move from AI pilots to production: architecture, governance, integration, context management, security, testing, and operating model.
-            </p>
-            <p>
-                The focus is practical. How do agents connect to business systems? How do teams govern them? How do organizations test, trace, and improve them before they affect real work?
-            </p>
+            <h2>Agent Sense Hosts</h2>
             <div class="hosts">
                 <div class="host">
                     <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
                         <img src="MonikaLinkedinImage.png" alt="Monika Aggarwal" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
                         <h3 style="margin: 0;"><a href="https://www.linkedin.com/in/monika-aggarwal-3b82816/" target="_blank" style="color: var(--accent-color); text-decoration: none;">Monika Aggarwal 🔗</a></h3>
                     </div>
-                    <p><strong>Co-Host & Creator</strong></p>
+                    <p><strong>Co-Host &amp; Creator</strong></p>
                     <p style="margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.6;">
-                        AI Technical Practitioner. I specialize in Operational AI and building agentic workflows grounded in clear rules, good data, and governance.
+                        Monika is an enterprise AI technical practitioner with experience building and scaling large enterprise applications across healthcare, energy, and IBM software.
+                    </p>
+                    <p style="margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.6;">
+                        Her work sits at the intersection of architecture, data, workflow automation, governance, and adoption. She focuses on how enterprises move AI agents from demos into governed operating models where systems, people, data, and controls work together.
+                    </p>
+                    <p style="margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.6;">
+                        Agent Sense reflects that field perspective: practical lessons from enterprise AI conversations, client work, and hands-on agentic workflow design.
                     </p>
                 </div>
                 <div class="host">
