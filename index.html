@@ -394,6 +394,105 @@
             }
         }
 
+        /* Guest Section */
+        .guests-section {
+            background: var(--card-bg);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .guests-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .guests-section .section-intro {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .guests-grid {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .guest-card {
+            flex: 1;
+            min-width: 260px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid var(--highlight-color);
+            padding: 1.25rem;
+        }
+
+        .guest-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .guest-avatar-placeholder {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .guest-card h3 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .guest-card h3 a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .guest-card h3 a:hover {
+            text-decoration: underline;
+        }
+
+        .guest-role {
+            font-size: 0.85rem;
+            color: #666;
+            margin: 0.2rem 0 0;
+        }
+
+        .guest-bio {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 0.75rem 0;
+            color: #444;
+        }
+
+        .guest-episode-tag {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 12px;
+            text-decoration: none;
+        }
+
+        .guest-episode-tag:hover {
+            opacity: 0.85;
+        }
+
         /* Coming Soon Badge */
         .coming-soon {
             display: inline-block;
@@ -699,6 +798,46 @@
 
             </div>
         </section>
+
+        <!-- Guests Section -->
+        <section class="guests-section">
+            <h2>Guests</h2>
+            <p class="section-intro">Practitioners and builders who have joined Agent Sense to share their field experience on enterprise AI.</p>
+            <div class="guests-grid">
+
+                <!-- Guest: Vitalii Duk -->
+                <div class="guest-card">
+                    <div class="guest-card-header">
+                        <div class="guest-avatar-placeholder">VD</div>
+                        <div>
+                            <h3><a href="https://www.linkedin.com/in/vitaliiduk/" target="_blank">Vitalii Duk 🔗</a></h3>
+                            <p class="guest-role">Founder &amp; CEO, Dynamiq</p>
+                        </div>
+                    </div>
+                    <p class="guest-bio">
+                        Vitalii founded Dynamiq to make agentic AI practical and secure for organizations, simplifying the journey from prototype to production. He brings a builder's perspective on what it takes to move agents from impressive demos into reliable, observable enterprise systems.
+                    </p>
+                    <a href="https://open.spotify.com/episode/2wkn9bcDINCqHuaIfvmBKb?si=wlGGSBvhTKW4Crd9ir0fjw" target="_blank" class="guest-episode-tag">Episode 7 — Chat to Computer Use</a>
+                </div>
+
+                <!-- Guest: Jyotsna K Narayanan -->
+                <div class="guest-card">
+                    <div class="guest-card-header">
+                        <div class="guest-avatar-placeholder">JN</div>
+                        <div>
+                            <h3><a href="https://www.linkedin.com/in/jyotsna-k-narayanan/" target="_blank">Jyotsna K Narayanan 🔗</a></h3>
+                            <p class="guest-role">Technical Product Management, IBM watsonx Orchestrate</p>
+                        </div>
+                    </div>
+                    <p class="guest-bio">
+                        Jyotsna leads product management for Domain and Agent Catalog at IBM watsonx Orchestrate. She brings deep expertise in AI interoperability and governed reuse — helping enterprises move beyond isolated AI pilots toward consistent, scalable agent operations.
+                    </p>
+                    <a href="https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3" target="_blank" class="guest-episode-tag">Episode 9 — Governed Catalog of AI Assets</a>
+                </div>
+
+            </div>
+        </section>
+
     </main>
 
     <footer>
