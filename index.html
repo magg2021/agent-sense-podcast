@@ -875,7 +875,7 @@
                     <p class="guest-bio">
                         Jyotsna leads product management for Domain and Agent Catalog at IBM watsonx Orchestrate. She brings deep expertise in AI interoperability and governed reuse — helping enterprises move beyond isolated AI pilots toward consistent, scalable agent operations.
                     </p>
-                    <a href="https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3" target="_blank" class="guest-episode-tag">Episode 9 — Governed Catalog of AI Assets</a>
+                    <span class="guest-episode-tag" style="opacity: 0.6; cursor: default;">Episode 9 — Governed Catalog of AI Assets · Coming Soon</span>
                 </div>
 
             </div>
@@ -894,7 +894,12 @@
                 <a href="https://www.linkedin.com/in/monika-aggarwal-3b82816/" target="_blank">Subscribe</a>
                 <a href="https://www.linkedin.com/in/monika-aggarwal-3b82816/" target="_blank">Contact</a>
             </div>
+            <p style="font-size: 0.75rem; color: #57606a; margin-top: 0.75rem;" id="last-updated">Last updated: —</p>
         </div>
     </footer>
+    <script>
+        document.getElementById('last-updated').textContent =
+            'Page last refreshed: ' + new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+    </script>
 </body>
 </html>
