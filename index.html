@@ -84,6 +84,45 @@
             margin-bottom: 1rem;
         }
 
+        .feedspot-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 0.75rem 0 1rem;
+            padding: 0.45rem 1rem 0.45rem 0.55rem;
+            background: rgba(233, 69, 96, 0.12);
+            border: 1px solid rgba(233, 69, 96, 0.35);
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .feedspot-badge:hover {
+            background: rgba(233, 69, 96, 0.22);
+        }
+
+        .feedspot-badge .badge-rank {
+            background: var(--highlight-color);
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 800;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+
+        .feedspot-badge .badge-text {
+            font-size: 0.82rem;
+            color: #c0c0c0;
+            letter-spacing: 0.01em;
+        }
+
+        .feedspot-badge .badge-text strong {
+            color: #f0f0f0;
+            font-weight: 600;
+        }
+
         .description {
             font-size: 1rem;
             line-height: 1.8;
@@ -516,6 +555,10 @@
                 <div class="header-text">
                     <h1>Agent Sense</h1>
                     <p class="tagline">Smart AI Meets Human Sense</p>
+                    <a href="https://podcast.feedspot.com/agentic_ai_podcasts/" target="_blank" class="feedspot-badge">
+                        <span class="badge-rank">#15</span>
+                        <span class="badge-text"><strong>Feedspot</strong> · 30 Best Agentic AI Podcasts</span>
+                    </a>
                     <p class="description">
                         A non-monetized podcast hosted by Monika Aggarwal and Frank Chavez.
                     </p>
