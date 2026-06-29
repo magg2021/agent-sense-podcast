@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Sense — Architecture</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    background: #f7f8fa;
+    color: #1f2328;
+    padding: 32px 24px 48px;
+  }
+  h1 { font-size: 1.1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 4px; }
+  .subtitle { font-size: 0.8rem; color: #57606a; margin-bottom: 28px; }
+
+  .diagram-wrap {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .diagram-header {
+    background: #1a1a2e;
+    color: #fff;
+    padding: 10px 16px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .diagram-body {
+    padding: 20px;
+  }
+  svg { width: 100%; display: block; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+  .leg { display: flex; align-items: center; gap: 5px; font-size: 0.75rem; color: #374151; }
+  .leg-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+
+  .note {
+    margin-top: 12px;
+    font-size: 0.75rem;
+    color: #57606a;
+    background: #fef3c7;
+    border-left: 3px solid #f59e0b;
+    padding: 6px 10px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  footer {
+    margin-top: 36px;
+    padding-top: 12px;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+    font-size: 0.72rem;
+    color: #9ca3af;
+  }
+</style>
+</head>
+<body>
+
+<h1>Agent Sense — Architecture Diagram</h1>
+<p class="subtitle">Static GitHub Pages site · Pure HTML/CSS/JS · No backend · No external API · AgentSenseGuide embedded inline</p>
+
+<div class="diagram-wrap">
+  <div class="diagram-header">Deployment &amp; Runtime Architecture</div>
+  <div class="diagram-body">
+    <svg viewBox="0 0 760 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#9ca3af"/>
+        </marker>
+      </defs>
+
+      <!-- Author machine -->
+      <rect x="4" y="16" width="126" height="104" rx="8" fill="#f0f4ff" stroke="#0f3460" stroke-width="1.5"/>
+      <text x="67" y="36" text-anchor="middle" font-size="10" font-weight="700" fill="#0f3460">Author Machine</text>
+      <text x="67" y="54" text-anchor="middle" font-size="9" fill="#374151">index.html</text>
+      <text x="67" y="68" text-anchor="middle" font-size="9" fill="#374151">architecture.html</text>
+      <text x="67" y="82" text-anchor="middle" font-size="9" fill="#374151">HTML + CSS + JS</text>
+      <text x="67" y="96" text-anchor="middle" font-size="9" fill="#374151">git commit + push</text>
+      <text x="67" y="110" text-anchor="middle" font-size="9" fill="#57606a">agentsense.dev</text>
+
+      <!-- arrow 1 -->
+      <line x1="130" y1="68" x2="174" y2="68" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="152" y="62" text-anchor="middle" font-size="8" fill="#57606a">push</text>
+
+      <!-- GitHub Repo -->
+      <rect x="176" y="16" width="126" height="104" rx="8" fill="#f0fff4" stroke="#2a7d6f" stroke-width="1.5"/>
+      <text x="239" y="36" text-anchor="middle" font-size="10" font-weight="700" fill="#2a7d6f">GitHub Repo</text>
+      <text x="239" y="54" text-anchor="middle" font-size="9" fill="#374151">branch: main</text>
+      <text x="239" y="68" text-anchor="middle" font-size="9" fill="#374151">index.html</text>
+      <text x="239" y="82" text-anchor="middle" font-size="9" fill="#374151">architecture.html</text>
+      <text x="239" y="96" text-anchor="middle" font-size="9" fill="#374151">images / assets</text>
+      <text x="239" y="110" text-anchor="middle" font-size="9" fill="#57606a">CNAME → agentsense.dev</text>
+
+      <!-- arrow 2 -->
+      <line x1="302" y1="68" x2="346" y2="68" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="324" y="62" text-anchor="middle" font-size="8" fill="#57606a">Pages CD</text>
+
+      <!-- GitHub Pages CDN -->
+      <rect x="348" y="16" width="126" height="104" rx="8" fill="#fff7ed" stroke="#e94560" stroke-width="1.5"/>
+      <text x="411" y="34" text-anchor="middle" font-size="10" font-weight="700" fill="#e94560">GitHub Pages CDN</text>
+      <text x="411" y="50" text-anchor="middle" font-size="9" fill="#374151">Static file serving</text>
+      <text x="411" y="64" text-anchor="middle" font-size="9" fill="#374151">HTTPS / TLS</text>
+      <text x="411" y="78" text-anchor="middle" font-size="9" fill="#374151">Custom domain</text>
+      <text x="411" y="92" text-anchor="middle" font-size="9" fill="#374151">Global CDN edge</text>
+      <text x="411" y="110" text-anchor="middle" font-size="9" fill="#57606a">agentsense.dev</text>
+
+      <!-- arrow 3 -->
+      <line x1="474" y1="68" x2="518" y2="68" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="496" y="62" text-anchor="middle" font-size="8" fill="#57606a">HTTP GET</text>
+
+      <!-- Browser -->
+      <rect x="520" y="16" width="126" height="104" rx="8" fill="#fdf4ff" stroke="#7c5cd8" stroke-width="1.5"/>
+      <text x="583" y="36" text-anchor="middle" font-size="10" font-weight="700" fill="#7c5cd8">User Browser</text>
+      <text x="583" y="54" text-anchor="middle" font-size="9" fill="#374151">Renders HTML + CSS</text>
+      <text x="583" y="68" text-anchor="middle" font-size="9" fill="#374151">Runs inline JS</text>
+      <text x="583" y="82" text-anchor="middle" font-size="9" fill="#374151">AS_KB in JS memory</text>
+      <text x="583" y="96" text-anchor="middle" font-size="9" fill="#374151">No external calls</text>
+      <text x="583" y="110" text-anchor="middle" font-size="9" fill="#57606a">agentsense.dev</text>
+
+      <!-- arrow 4 -->
+      <line x1="646" y1="68" x2="682" y2="68" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="664" y="62" text-anchor="middle" font-size="8" fill="#57606a">user types</text>
+
+      <!-- AgentSenseGuide -->
+      <rect x="684" y="16" width="72" height="104" rx="8" fill="#fff1f3" stroke="#e94560" stroke-width="2"/>
+      <text x="720" y="38" text-anchor="middle" font-size="9.5" font-weight="700" fill="#e94560">AgentSense</text>
+      <text x="720" y="51" text-anchor="middle" font-size="9.5" font-weight="700" fill="#e94560">Guide</text>
+      <text x="720" y="67" text-anchor="middle" font-size="8" fill="#374151">answer()</text>
+      <text x="720" y="79" text-anchor="middle" font-size="8" fill="#374151">AS_KB lookup</text>
+      <text x="720" y="91" text-anchor="middle" font-size="8" fill="#374151">intent router</text>
+      <text x="720" y="110" text-anchor="middle" font-size="8" fill="#57606a">no API call</text>
+
+      <!-- No backend note -->
+      <rect x="176" y="130" width="298" height="15" rx="4" fill="#fef3c7"/>
+      <text x="325" y="141" text-anchor="middle" font-size="8.5" fill="#92400e">&#9888; No server. No database. No external API. Runs entirely in the browser.</text>
+
+      <!-- AgentSenseGuide detail box -->
+      <rect x="520" y="155" width="236" height="38" rx="6" fill="#fff1f3" stroke="#e94560" stroke-width="1"/>
+      <text x="638" y="169" text-anchor="middle" font-size="8" font-weight="700" fill="#e94560">AgentSenseGuide — inline chat agent</text>
+      <text x="638" y="182" text-anchor="middle" font-size="7.5" fill="#374151">19-intent router · AS_KB (podcast, arc, hosts, guests, 9 episodes)</text>
+    </svg>
+
+    <div class="legend">
+      <div class="leg"><div class="leg-dot" style="background:#0f3460;"></div>Author / source files</div>
+      <div class="leg"><div class="leg-dot" style="background:#2a7d6f;"></div>GitHub (version control + CI/CD)</div>
+      <div class="leg"><div class="leg-dot" style="background:#e94560;"></div>GitHub Pages CDN / AgentSenseGuide</div>
+      <div class="leg"><div class="leg-dot" style="background:#7c5cd8;"></div>Browser runtime</div>
+    </div>
+
+    <p class="note">All intelligence is client-side. The AgentSenseGuide chat agent reads from an in-memory JS object (AS_KB) that mirrors every content section on the Agent Sense page — no fetch, no API key, no server round-trip.</p>
+  </div>
+</div>
+
+<footer>Made with IBM Bob</footer>
+</body>
+</html>

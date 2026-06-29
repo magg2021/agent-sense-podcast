@@ -543,6 +543,162 @@
             font-weight: bold;
             margin-left: 0.5rem;
         }
+
+        /* ── Agent Chat Widget ── */
+        #as-chat-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 1000;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--highlight-color);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(233,69,96,0.45);
+        }
+        #as-chat-btn svg { width: 26px; height: 26px; fill: #fff; }
+
+        #as-chat-panel {
+            position: fixed;
+            bottom: 96px;
+            right: 28px;
+            z-index: 1000;
+            width: 360px;
+            max-width: calc(100vw - 40px);
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: opacity 0.18s, transform 0.18s;
+        }
+        #as-chat-panel.hidden {
+            opacity: 0;
+            transform: translateY(12px) scale(0.97);
+            pointer-events: none;
+        }
+        #as-chat-header {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+        #as-chat-header .as-hname {
+            font-weight: 700;
+            font-size: 0.97rem;
+        }
+        #as-chat-header .as-hsub {
+            font-size: 0.75rem;
+            color: #b0b0c8;
+            margin-top: 1px;
+        }
+        #as-close-btn {
+            background: none;
+            border: none;
+            color: #b0b0c8;
+            cursor: pointer;
+            font-size: 1.3rem;
+            line-height: 1;
+            padding: 0 2px;
+        }
+        #as-close-btn:hover { color: #fff; }
+        #as-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 14px 14px 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 340px;
+            min-height: 160px;
+            background: #f7f8fa;
+        }
+        .as-msg {
+            max-width: 88%;
+            padding: 9px 12px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            line-height: 1.55;
+        }
+        .as-msg.bot {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            align-self: flex-start;
+            color: #1f2328;
+            border-radius: 2px 12px 12px 12px;
+        }
+        .as-msg.user {
+            background: var(--primary-color);
+            color: #f1f1f1;
+            align-self: flex-end;
+            border-radius: 12px 12px 2px 12px;
+        }
+        .as-msg a { color: var(--highlight-color); }
+        .as-msg .as-ep-tag {
+            display: inline-block;
+            margin-top: 6px;
+            background: var(--primary-color);
+            color: #fff;
+            font-size: 0.74rem;
+            font-weight: 600;
+            padding: 2px 9px;
+            border-radius: 10px;
+            text-decoration: none;
+        }
+        #as-input-row {
+            display: flex;
+            border-top: 1px solid #e5e7eb;
+            background: #fff;
+        }
+        #as-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 11px 14px;
+            font-size: 0.88rem;
+            font-family: inherit;
+            background: transparent;
+            color: #1f2328;
+        }
+        #as-send-btn {
+            border: none;
+            background: var(--highlight-color);
+            color: #fff;
+            padding: 0 16px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background 0.15s;
+        }
+        #as-send-btn:hover { background: #c93550; }
+        #as-chips {
+            padding: 8px 14px 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            background: #f7f8fa;
+            border-top: 1px solid #e5e7eb;
+        }
+        .as-chip {
+            background: #eef0f3;
+            border: 1px solid #d4d8df;
+            border-radius: 14px;
+            padding: 4px 11px;
+            font-size: 0.78rem;
+            cursor: pointer;
+            color: #1f2328;
+            white-space: nowrap;
+        }
+        .as-chip:hover { background: #e2e5ea; }
     </style>
 </head>
 <body>
@@ -893,13 +1049,478 @@
                 <a href="https://www.linkedin.com/company/agent-sense/" target="_blank">LinkedIn</a>
                 <a href="https://www.linkedin.com/in/monika-aggarwal-3b82816/" target="_blank">Subscribe</a>
                 <a href="https://www.linkedin.com/in/monika-aggarwal-3b82816/" target="_blank">Contact</a>
+                <a href="architecture.html" target="_blank">Architecture</a>
             </div>
             <p style="font-size: 0.75rem; color: #57606a; margin-top: 0.75rem;" id="last-updated">Last updated: —</p>
         </div>
     </footer>
+
+    <!-- ── Agent Chat Widget HTML ── -->
+    <button id="as-chat-btn" title="Ask AgentSenseGuide" aria-label="Open AgentSenseGuide">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.477 2 2 6.104 2 11.167c0 2.914 1.39 5.52 3.573 7.27L4.5 22l4.167-2.083A10.7 10.7 0 0 0 12 20.333C17.523 20.333 22 16.229 22 11.167S17.523 2 12 2z"/>
+        </svg>
+    </button>
+
+    <div id="as-chat-panel" class="hidden" role="dialog" aria-label="AgentSenseGuide Chat">
+        <div id="as-chat-header">
+            <div>
+                <div class="as-hname">AgentSenseGuide</div>
+                <div class="as-hsub">Ask about enterprise AI agents, data readiness, governance, integration, MCP, observability, and more</div>
+            </div>
+            <button id="as-close-btn" title="Close chat" aria-label="Close chat">&#x2715;</button>
+        </div>
+        <div id="as-messages"></div>
+        <div id="as-chips">
+            <span class="as-chip">What episodes are available?</span>
+            <span class="as-chip">Tell me about MCP</span>
+            <span class="as-chip">Data readiness</span>
+            <span class="as-chip">Who are the hosts?</span>
+            <span class="as-chip">Latest episode</span>
+        </div>
+        <div id="as-input-row">
+            <input id="as-input" type="text" placeholder="Ask about Agent Sense episodes…" autocomplete="off" />
+            <button id="as-send-btn" title="Send" aria-label="Send">&#x27A4;</button>
+        </div>
+    </div>
+
     <script>
         document.getElementById('last-updated').textContent =
             'Page last refreshed: ' + new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+
+        // ── Agent Sense Knowledge Base (grounded to page content) ──
+        var AS_KB = {
+            podcast: {
+                name: 'Agent Sense',
+                tagline: 'Smart AI Meets Human Sense',
+                description: 'A non-monetized podcast hosted by Monika Aggarwal and Frank Chavez. Practical conversations on enterprise AI agents, governed workflows, integration, data readiness, and operating models for real business adoption.',
+                feedspot: 'Ranked #15 on Feedspot\'s Best Agentic AI Podcasts list.',
+                feedspotUrl: 'https://podcast.feedspot.com/agentic_ai_podcasts/',
+                disclaimer: 'The views and opinions expressed on this podcast are based solely on our personal experience and do not represent, and are not sponsored or endorsed by, IBM or any other employer.',
+                social: {
+                    linkedin: 'https://www.linkedin.com/company/agent-sense/',
+                    contact: 'https://www.linkedin.com/in/monika-aggarwal-3b82816/'
+                },
+                platforms: {
+                    spotify: 'https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3',
+                    apple: 'https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214',
+                    amazon: 'https://music.amazon.com/podcasts/589c7238-f3fd-4672-8c8b-d969db6d9db2/agent-sense-agentic-workflows-operational-ai',
+                    iheart: 'https://www.iheart.com/podcast/269-agent-sense-agentic-workfl-313101468'
+                }
+            },
+            arc: {
+                summary: 'Agent Sense started as a way to learn in public and share what we are seeing as enterprise AI moves beyond chat. The major shift is from AI that answers questions to AI that can use tools, execute workflows, access enterprise systems, and support real business decisions. The model is one part of the solution. Enterprises also need clear process design, trusted data, controlled access, integration patterns, observability, governance, and an operating model that keeps humans in the right parts of the loop.',
+                goal: 'The goal is not to celebrate agents. The goal is to understand what it takes to make enterprise AI useful, controlled, and ready for real work.',
+                themes: [
+                    { name: 'Enterprise readiness', description: 'What breaks when agents leave demos' },
+                    { name: 'Design boundaries',    description: 'Where rules, agents, and human judgment belong' },
+                    { name: 'Data readiness',       description: 'Why bad data makes agents unsafe' },
+                    { name: 'Data layer autonomy',  description: 'Where autonomous action helps and where it creates risk' },
+                    { name: 'Integration',          description: 'How agents coordinate across enterprise systems' },
+                    { name: 'Controlled access',    description: 'Why agents need gateways before reaching core systems' },
+                    { name: 'Agent execution',      description: 'What changes when agents move from chat to computer use' },
+                    { name: 'Ambient agents',       description: 'How background agents monitor, decide, and escalate' },
+                    { name: 'Governed reuse',       description: 'Why enterprises need catalogs for agents, tools, and MCP servers' }
+                ]
+            },
+            hosts: [
+                {
+                    name: 'Monika Aggarwal',
+                    role: 'Co-Host & Creator',
+                    bio: [
+                        'Monika is an enterprise AI technical practitioner with experience building and scaling large enterprise applications across healthcare, energy, and IBM software.',
+                        'Her work sits at the intersection of architecture, data, workflow automation, governance, and adoption. She focuses on how enterprises move AI agents from demos into governed operating models where systems, people, data, and controls work together.',
+                        'Agent Sense reflects that field perspective: practical lessons from enterprise AI conversations, client work, and hands-on agentic workflow design.'
+                    ],
+                    linkedin: 'https://www.linkedin.com/in/monika-aggarwal-3b82816/'
+                },
+                {
+                    name: 'Frank Chavez',
+                    role: 'Co-Host & Practitioner',
+                    bio: [
+                        'Frank is an AI technical architect with deep experience in automation, software testing, and enterprise AI implementation.',
+                        'He has led generative AI and automation initiatives, designed testing frameworks, and built hands-on solutions across SaaS, RPA, and AI-driven applications.',
+                        'He brings a builder and delivery lens to Agent Sense, with a focus on practical systems that can be tested, scaled, and adopted by the business.'
+                    ],
+                    linkedin: 'https://www.linkedin.com/in/fechavez/'
+                }
+            ],
+            guests: [
+                {
+                    name: 'Vitalii Duk',
+                    role: 'Founder & CEO, Dynamiq',
+                    bio: 'Vitalii founded Dynamiq to make agentic AI practical and secure for organizations, simplifying the journey from prototype to production. He brings a builder\'s perspective on what it takes to move agents from impressive demos into reliable, observable enterprise systems.',
+                    linkedin: 'https://www.linkedin.com/in/vit-d/',
+                    episode: 7,
+                    episodeLabel: 'Episode 7 — Chat to Computer Use',
+                    spotify: 'https://open.spotify.com/episode/2wkn9bcDINCqHuaIfvmBKb'
+                },
+                {
+                    name: 'Jyotsna K Narayanan',
+                    role: 'Technical Product Management, IBM watsonx Orchestrate',
+                    bio: 'Jyotsna leads product management for Domain and Agent Catalog at IBM watsonx Orchestrate. She brings deep expertise in AI interoperability and governed reuse — helping enterprises move beyond isolated AI pilots toward consistent, scalable agent operations.',
+                    linkedin: 'https://www.linkedin.com/in/jyotsnanarayanan/',
+                    episode: 9,
+                    episodeLabel: 'Episode 9 — Governed Catalog of AI Assets',
+                    spotify: null,
+                    comingSoon: true
+                }
+            ],
+            episodes: [
+                {
+                    num: 1,
+                    title: 'Brains and Guardrails: What Makes an AI Agent Enterprise-Ready?',
+                    theme: 'Enterprise readiness',
+                    keywords: ['enterprise ready', 'guardrails', 'production', 'prototype', 'trust', 'ready', 'brains', 'foundations', 'experimentation'],
+                    description: 'Enterprises often stop at building a clever prototype. But when that agent touches real systems, the question changes from "Can it run?" to "Can we trust it?" That is the gap between experimentation and production.',
+                    spotify: 'https://open.spotify.com/episode/5fd2mUAPRTbMNYrdi39J13',
+                    apple: 'https://podcasts.apple.com/us/podcast/brains-and-guardrails-what-makes-an-ai-agent/id1861925214?i=1000741582011',
+                    guest: null
+                },
+                {
+                    num: 2,
+                    title: 'Rules, Agents, Humans — A Practical Model for Agentic Workflows',
+                    theme: 'Design boundaries',
+                    keywords: ['rules', 'humans', 'workflow', 'agentic', 'banking', 'onboarding', 'deterministic', 'human in the loop', 'boundaries', 'design', 'business logic', 'investment banking', 'commercial banking'],
+                    description: 'This episode explores the line between deterministic business logic and autonomous agents in real business operations, using a Commercial and Investment Banking onboarding scenario to show where rules work, where agents help, and where humans must stay in control.',
+                    spotify: 'https://open.spotify.com/episode/2P2A3xcGCot5i3QhNmsfRU',
+                    apple: 'https://podcasts.apple.com/us/podcast/rules-agents-humans-a-practical-model-for-agentic/id1861925214?i=1000744619195',
+                    guest: null
+                },
+                {
+                    num: 3,
+                    title: 'Why IT Service Agents Fail in Production — A Data Readiness Problem',
+                    theme: 'Data readiness',
+                    keywords: ['data', 'data readiness', 'it service', 'fail', 'production', 'tickets', 'itsm', 'bad data', 'data quality', 'it operations', 'rogue', 'information source', 'weak data', 'data failure'],
+                    description: 'Theme: Foundations & Data Readiness. Why do agents go rogue when the information source is weak? Most enterprise agentic failures are not related to the model — they are data failures. This episode uses a real IT service ticketing example to show why data readiness matters for agents.',
+                    spotify: 'https://open.spotify.com/episode/0REAPEEEhYsgbOaNXSVWZk',
+                    apple: 'https://podcasts.apple.com/us/podcast/why-it-service-agents-fail-in-production-a-data/id1861925214?i=1000748927528',
+                    guest: null
+                },
+                {
+                    num: 4,
+                    title: 'Autonomous Databases — Where Autonomy Helps and Where It Hurts',
+                    theme: 'Data layer autonomy',
+                    keywords: ['autonomous database', 'database', 'autonomy', 'oracle', 'data layer', 'operational reliability', 'self-managing', 'autonomous operations', 'ownership data', 'escalation data', 'outage', 'operational noise'],
+                    description: 'Do autonomous databases fix bad data, or do they mainly improve operational reliability? Why are organizations moving toward autonomous operations? In Episode 3, an IT service agent created operational noise during an outage — the AI agent acted fast, but the ownership and escalation data were wrong, so the actions were wrong. This episode explores where autonomous database operations help and where they create risk.',
+                    spotify: 'https://open.spotify.com/episode/6iEO0dgdaVWuZRX2kXNjAo',
+                    apple: 'https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214?i=1000750956057',
+                    guest: null
+                },
+                {
+                    num: 5,
+                    title: 'Integration Will Decide Enterprise AI — with MCP and Agent-to-Agent',
+                    theme: 'Integration',
+                    keywords: ['integration', 'mcp', 'model context protocol', 'agent to agent', 'a2a', 'standards', 'enterprise systems', 'connect', 'coordination', 'bottleneck', 'networks of agents', 'pass work'],
+                    description: 'As AI systems evolve from single models into networks of autonomous agents, integration is the primary bottleneck. Integration needs standards. MCP standardizes how agents connect to systems. Agent-to-Agent (A2A) communication standardizes how they pass work. MCP connects agents to enterprise systems; A2A connects agents to each other so work can move across the enterprise.',
+                    spotify: 'https://open.spotify.com/episode/1sd1YlCBRqtplwn0XnhOiH',
+                    apple: 'https://podcasts.apple.com/us/podcast/integration-will-decide-enterprise-ai-with-mcp-and/id1861925214?i=1000757183619',
+                    guest: null
+                },
+                {
+                    num: 6,
+                    title: 'MCP Gateway: The Control Layer for Enterprise Agents',
+                    theme: 'Controlled access',
+                    keywords: ['mcp gateway', 'gateway', 'control layer', 'identity', 'policy', 'approvals', 'audit', 'traceability', 'access', 'servicenow', 'workday', 'sap', 'mcp', 'hr', 'finance', 'customer operations', 'unmanaged paths'],
+                    description: 'MCP helps agents connect to tools and systems. But connection alone is not enough. As agents start working across ServiceNow, Workday, SAP, HR, IT, finance, and customer operations, enterprises need a control layer. That is where the MCP Gateway comes in. An MCP Gateway helps manage identity, policy, approvals, audit, and traceability. It gives agents access to approved tools without opening direct, unmanaged paths into core enterprise systems.',
+                    spotify: 'https://open.spotify.com/episode/4YrVp3IDZBo1kUCl5pzFEa',
+                    apple: 'https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214?i=1000765952841',
+                    guest: null
+                },
+                {
+                    num: 7,
+                    title: 'The Evolution of Agents — From Chat to Computer Use',
+                    theme: 'Agent execution',
+                    keywords: ['computer use', 'chat', 'execution', 'dynamiq', 'vitalii', 'vitalii duk', 'prototype to production', 'observable', 'observability', 'runtime', 'tools', 'response to execution', 'safely', 'repeatably'],
+                    description: 'Guest Vitalii Duk, Founder and CEO of Dynamiq, founded the company to make agentic AI practical and secure for organizations, simplifying the journey from prototype to production. This episode discusses how agents are moving from answering questions to doing work across tools, systems, and runtime environments. The enterprise architecture shift is that agents are moving from response to execution. The value is not only in what the agent can do — it is in how safely, observably, and repeatably it can operate in real business work.',
+                    spotify: 'https://open.spotify.com/episode/2wkn9bcDINCqHuaIfvmBKb',
+                    apple: 'https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214?i=1000773634235',
+                    guest: 'Vitalii Duk, Founder & CEO, Dynamiq'
+                },
+                {
+                    num: 8,
+                    title: 'Ambient Agents: Monitor, Decide, Escalate',
+                    theme: 'Ambient agents',
+                    keywords: ['ambient', 'monitor', 'decide', 'escalate', 'background', 'continuous', 'oversight', 'autonomous decisions', 'human oversight', 'automation balance', 'defined boundaries'],
+                    description: 'Exploring ambient agents that continuously monitor business processes, make autonomous decisions within defined boundaries, and escalate to humans when needed. Understanding the balance between automation and human oversight in enterprise environments.',
+                    spotify: null,
+                    apple: null,
+                    guest: null,
+                    comingSoon: true
+                },
+                {
+                    num: 9,
+                    title: 'Interoperability and the Governed Catalog of AI Assets',
+                    theme: 'Governed reuse',
+                    keywords: ['catalog', 'interoperability', 'governed', 'reuse', 'watsonx', 'orchestrate', 'jyotsna', 'assets', 'consistency', 'scalable', 'pilots', 'ibm', 'domain catalog', 'agent catalog', 'inconsistent', 'time to value', 'isolated'],
+                    description: 'Guest: Jyotsna K Narayanan, IBM Technical Product Management, Domain and Agent Catalog, IBM watsonx Orchestrate. As companies move beyond AI pilots, many leaders face a familiar problem: each team builds AI agents on their own, leading to inconsistent customer experiences, more risk, and slower time to value. Departments choose tools that solve immediate needs but don\'t connect, creating a mix of agents that are hard to scale or manage. This episode explains why interoperability matters and what it means to have a governed catalog of AI assets that can improve consistency and reduce risk.',
+                    spotify: null,
+                    apple: null,
+                    guest: 'Jyotsna K Narayanan, IBM Technical Product Management, Domain and Agent Catalog, IBM watsonx Orchestrate',
+                    comingSoon: true
+                }
+            ]
+        };
+
+        // ── Chat engine ──
+        var chatPanel = document.getElementById('as-chat-panel');
+        var chatBtn   = document.getElementById('as-chat-btn');
+        var closeBtn  = document.getElementById('as-close-btn');
+        var msgBox    = document.getElementById('as-messages');
+        var inputEl   = document.getElementById('as-input');
+        var sendBtn   = document.getElementById('as-send-btn');
+        var chips     = document.querySelectorAll('.as-chip');
+
+        function toggleChat() {
+            chatPanel.classList.toggle('hidden');
+            if (!chatPanel.classList.contains('hidden')) {
+                if (msgBox.children.length === 0) addBotMsg(greet());
+                inputEl.focus();
+            }
+        }
+        chatBtn.addEventListener('click', toggleChat);
+        closeBtn.addEventListener('click', function() { chatPanel.classList.add('hidden'); });
+
+        chips.forEach(function(chip) {
+            chip.addEventListener('click', function() {
+                var q = chip.textContent.trim();
+                addUserMsg(q);
+                setTimeout(function() { addBotMsg(answer(q)); }, 280);
+            });
+        });
+
+        sendBtn.addEventListener('click', send);
+        inputEl.addEventListener('keydown', function(e) { if (e.key === 'Enter') send(); });
+
+        function send() {
+            var q = inputEl.value.trim();
+            if (!q) return;
+            inputEl.value = '';
+            addUserMsg(q);
+            setTimeout(function() { addBotMsg(answer(q)); }, 280);
+        }
+
+        function addUserMsg(text) {
+            var d = document.createElement('div');
+            d.className = 'as-msg user';
+            d.textContent = text;
+            msgBox.appendChild(d);
+            msgBox.scrollTop = msgBox.scrollHeight;
+        }
+
+        function addBotMsg(html) {
+            var d = document.createElement('div');
+            d.className = 'as-msg bot';
+            d.innerHTML = html;
+            msgBox.appendChild(d);
+            msgBox.scrollTop = msgBox.scrollHeight;
+        }
+
+        function greet() {
+            return 'Hi! I\'m AgentSenseGuide. Ask me about enterprise AI agents, data readiness, governance, integration, MCP, observability, or any topic covered across Agent Sense episodes.';
+        }
+
+        function epCard(ep) {
+            var links = '';
+            if (!ep.comingSoon) {
+                links = '<br>' +
+                    (ep.spotify ? '<a class="as-ep-tag" href="' + ep.spotify + '" target="_blank">🎵 Spotify</a> ' : '') +
+                    (ep.apple   ? '<a class="as-ep-tag" href="' + ep.apple   + '" target="_blank">🍎 Apple</a>' : '');
+            } else {
+                links = '<br><span style="font-size:0.78rem;color:#888;">Coming Soon</span>';
+            }
+            var guest = ep.guest ? '<br><em style="font-size:0.82rem;color:#666;">Guest: ' + ep.guest + '</em>' : '';
+            return '<strong>Ep ' + ep.num + ': ' + ep.title + '</strong>' + guest + '<br><span style="font-size:0.83rem;">' + ep.description + '</span>' + links;
+        }
+
+        function listAllEpisodes() {
+            var out = 'Here are all ' + AS_KB.episodes.length + ' episodes:<br><br>';
+            AS_KB.episodes.forEach(function(ep) {
+                var tag = ep.comingSoon ? ' <span style="font-size:0.74rem;background:#e94560;color:#fff;border-radius:8px;padding:1px 7px;">Soon</span>' : '';
+                out += '• <strong>Ep ' + ep.num + ':</strong> ' + ep.title + tag + '<br>';
+            });
+            out += '<br>Ask me about any episode for details!';
+            return out;
+        }
+
+        function answer(q) {
+            var lq = q.toLowerCase();
+
+            // Greetings
+            if (/^(hi|hello|hey|howdy|hiya|sup)\b/.test(lq)) return greet();
+
+            // What is Agent Sense / about the podcast
+            if (/\b(what is|about|overview|describe|tell me about) (agent sense|this podcast|the podcast|the show)\b/.test(lq) ||
+                /\b(what('s| is) agent sense)\b/.test(lq)) {
+                var p = AS_KB.podcast;
+                return '<strong>Agent Sense</strong> — ' + p.tagline + '<br><br>' +
+                    p.description + '<br><br>' +
+                    p.feedspot + ' <a class="as-ep-tag" href="' + p.feedspotUrl + '" target="_blank">Feedspot</a>';
+            }
+
+            // All episodes list
+            if (/\b(all episodes?|list episodes?|what episodes?|episodes? (are|available|do you have)|show all)\b/.test(lq)) {
+                return listAllEpisodes();
+            }
+
+            // Enterprise arc / philosophy / themes / goal
+            if (/\b(arc|enterprise arc|philosophy|themes?|progression|goal|purpose|why (does|did|do)|what (does|do) agent sense cover|what (is|are) the themes?|mission)\b/.test(lq)) {
+                var a = AS_KB.arc;
+                var out = '<strong>The Enterprise Arc of Agent Sense</strong><br><br>' + a.summary + '<br><br>';
+                out += '<strong>Episode themes:</strong><br>';
+                a.themes.forEach(function(t) { out += '• <strong>' + t.name + ':</strong> ' + t.description + '<br>'; });
+                out += '<br><em>' + a.goal + '</em>';
+                return out;
+            }
+
+            // Observability specifically
+            if (/\bobservab(le|ility)\b/.test(lq)) {
+                return 'Observability is a core enterprise AI concern on Agent Sense. ' +
+                    'The arc section states that enterprises need "observability, governance, and an operating model that keeps humans in the right parts of the loop." ' +
+                    'Episode 7 addresses this directly: the value of agents is not only in what they can do — it is in how safely, observably, and repeatably they can operate in real business work.<br><br>' +
+                    epCard(AS_KB.episodes[6]);
+            }
+
+            // Governance
+            if (/\bgovern(ance|ed|ing)?\b/.test(lq) && !/catalog|reuse|watsonx/.test(lq)) {
+                return 'Governance is a thread throughout Agent Sense. From the Enterprise Arc: enterprises need "governance, and an operating model that keeps humans in the right parts of the loop." ' +
+                    'Relevant episodes include:<br><br>' +
+                    epCard(AS_KB.episodes[0]) + '<br><br>' +
+                    epCard(AS_KB.episodes[5]);
+            }
+
+            // Hosts — specific or general
+            if (/\b(monika)\b/.test(lq)) {
+                var h = AS_KB.hosts[0];
+                return '<strong>' + h.name + '</strong> — ' + h.role + '<br><br>' +
+                    h.bio.join('<br><br>') + '<br><br>' +
+                    '<a class="as-ep-tag" href="' + h.linkedin + '" target="_blank">LinkedIn</a>';
+            }
+            if (/\b(frank|chavez)\b/.test(lq)) {
+                var h = AS_KB.hosts[1];
+                return '<strong>' + h.name + '</strong> — ' + h.role + '<br><br>' +
+                    h.bio.join('<br><br>') + '<br><br>' +
+                    '<a class="as-ep-tag" href="' + h.linkedin + '" target="_blank">LinkedIn</a>';
+            }
+            if (/\b(host|hosts?|who (are|is) (the hosts?|behind)|about the show|about the podcast|creators?|co.?host)\b/.test(lq)) {
+                var h0 = AS_KB.hosts[0], h1 = AS_KB.hosts[1];
+                return 'Agent Sense is hosted by:<br><br>' +
+                    '<strong>' + h0.name + '</strong> — ' + h0.role + '<br>' + h0.bio[0] + '<br>' +
+                    '<a class="as-ep-tag" href="' + h0.linkedin + '" target="_blank">LinkedIn</a><br><br>' +
+                    '<strong>' + h1.name + '</strong> — ' + h1.role + '<br>' + h1.bio[0] + '<br>' +
+                    '<a class="as-ep-tag" href="' + h1.linkedin + '" target="_blank">LinkedIn</a><br><br>' +
+                    'Ask me about Monika or Frank for their full bios.';
+            }
+
+            // Guests — specific or all
+            if (/\b(vitalii|dynamiq)\b/.test(lq)) {
+                var g = AS_KB.guests[0];
+                return '<strong>' + g.name + '</strong> — ' + g.role + '<br><br>' +
+                    g.bio + '<br><br>' +
+                    '<a class="as-ep-tag" href="' + g.linkedin + '" target="_blank">LinkedIn</a> ' +
+                    '<a class="as-ep-tag" href="' + g.spotify + '" target="_blank">' + g.episodeLabel + '</a>';
+            }
+            if (/\b(jyotsna|narayanan|watsonx|orchestrate)\b/.test(lq)) {
+                var g = AS_KB.guests[1];
+                return '<strong>' + g.name + '</strong> — ' + g.role + '<br><br>' +
+                    g.bio + '<br><br>' +
+                    '<a class="as-ep-tag" href="' + g.linkedin + '" target="_blank">LinkedIn</a> ' +
+                    '<span style="font-size:0.78rem;color:#888;">' + g.episodeLabel + ' · Coming Soon</span>';
+            }
+            if (/\b(guest|guests?|who (has been|have been|appeared|was on)|speakers?)\b/.test(lq)) {
+                var out = 'Guests who have joined Agent Sense:<br><br>';
+                AS_KB.guests.forEach(function(g) {
+                    out += '<strong>' + g.name + '</strong> — ' + g.role + '<br>' + g.bio + '<br>';
+                    if (!g.comingSoon && g.spotify) {
+                        out += '<a class="as-ep-tag" href="' + g.spotify + '" target="_blank">' + g.episodeLabel + '</a>';
+                    } else {
+                        out += '<span style="font-size:0.78rem;color:#888;">' + g.episodeLabel + ' · Coming Soon</span>';
+                    }
+                    out += '<br><br>';
+                });
+                return out.trim();
+            }
+
+            // Where to listen / platforms
+            if (/\b(where|listen|platform|spotify|apple|amazon|iheart|subscribe|find (it|the podcast|agent sense))\b/.test(lq)) {
+                var p = AS_KB.podcast.platforms;
+                return 'Agent Sense is available on:<br>' +
+                    '<a class="as-ep-tag" href="' + p.spotify + '" target="_blank">🎵 Spotify</a> ' +
+                    '<a class="as-ep-tag" href="' + p.apple   + '" target="_blank">🍎 Apple Podcasts</a> ' +
+                    '<a class="as-ep-tag" href="' + p.amazon  + '" target="_blank">🎶 Amazon Music</a> ' +
+                    '<a class="as-ep-tag" href="' + p.iheart  + '" target="_blank">❤️ iHeart Radio</a>';
+            }
+
+            // Feedspot / ranking / award
+            if (/\b(feedspot|rank(ed|ing)?|award|#15|best podcast|recognition)\b/.test(lq)) {
+                return AS_KB.podcast.feedspot + '<br><a class="as-ep-tag" href="' + AS_KB.podcast.feedspotUrl + '" target="_blank">View on Feedspot</a>';
+            }
+
+            // Disclaimer / sponsorship / IBM / endorsement
+            if (/\b(disclaimer|sponsor|ibm|endorse|views?|opinions?|employer|personal)\b/.test(lq)) {
+                return AS_KB.podcast.disclaimer;
+            }
+
+            // LinkedIn / social / contact
+            if (/\b(linkedin|social|contact|follow|connect|reach)\b/.test(lq)) {
+                var s = AS_KB.podcast.social;
+                return 'Find Agent Sense on social:<br>' +
+                    '<a class="as-ep-tag" href="' + s.linkedin + '" target="_blank">Agent Sense LinkedIn Page</a> ' +
+                    '<a class="as-ep-tag" href="' + s.contact  + '" target="_blank">Contact Monika</a>';
+            }
+
+            // Latest / newest episode
+            if (/\b(latest|newest|recent|last|most recent)\b/.test(lq)) {
+                var published = AS_KB.episodes.filter(function(e) { return !e.comingSoon; });
+                var latest = published[published.length - 1];
+                return 'The latest published episode is:<br><br>' + epCard(latest);
+            }
+
+            // Coming soon / upcoming
+            if (/\b(coming soon|upcoming|next episode)\b/.test(lq)) {
+                var soon = AS_KB.episodes.filter(function(e) { return e.comingSoon; });
+                var out = 'Episodes coming soon:<br><br>';
+                soon.forEach(function(ep) { out += epCard(ep) + '<br><br>'; });
+                return out.trim();
+            }
+
+            // Specific episode number
+            var numMatch = lq.match(/\bepisode\s*(\d+)\b/);
+            if (numMatch) {
+                var n = parseInt(numMatch[1]);
+                var ep = AS_KB.episodes.find(function(e) { return e.num === n; });
+                if (ep) return epCard(ep);
+                return 'I don\'t have information about Episode ' + n + ' yet. Episodes 1–9 are in the series.';
+            }
+
+            // Keyword scoring across episodes + arc themes
+            var scored = AS_KB.episodes.map(function(ep) {
+                var score = 0;
+                ep.keywords.forEach(function(kw) {
+                    if (lq.includes(kw)) score += 2;
+                });
+                var words = lq.split(/\W+/).filter(function(w) { return w.length > 3; });
+                words.forEach(function(w) {
+                    if (ep.title.toLowerCase().includes(w))       score += 1;
+                    if (ep.theme.toLowerCase().includes(w))       score += 1;
+                    if (ep.description.toLowerCase().includes(w)) score += 1;
+                    if (ep.guest && ep.guest.toLowerCase().includes(w)) score += 2;
+                });
+                return { ep: ep, score: score };
+            }).filter(function(x) { return x.score > 0; })
+              .sort(function(a, b) { return b.score - a.score; });
+
+            if (scored.length === 1) return epCard(scored[0].ep);
+            if (scored.length > 1) {
+                var top = scored.slice(0, 2);
+                var out = 'Here are the most relevant episodes:<br><br>';
+                top.forEach(function(s) { out += epCard(s.ep) + '<br><br>'; });
+                return out.trim();
+            }
+
+            // Fallback
+            return 'I only know what\'s on the Agent Sense page. Try asking about an episode topic (MCP, data readiness, guardrails, observability, governance), a host, a guest, or say "list all episodes".';
+        }
     </script>
 </body>
 </html>
