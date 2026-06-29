@@ -53,6 +53,78 @@
     border-radius: 0 4px 4px 0;
   }
 
+  /* Description section */
+  .desc-section {
+    max-width: 820px;
+    margin: 28px auto 0;
+  }
+  .desc-section h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 6px;
+  }
+  .desc-section p {
+    font-size: 0.82rem;
+    color: #374151;
+    margin-bottom: 10px;
+    line-height: 1.65;
+  }
+  .desc-section p:last-child { margin-bottom: 0; }
+  .verdict {
+    background: #1a1a2e;
+    color: #f1f1f1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.82rem;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .verdict strong { color: #e94560; }
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+    margin-bottom: 16px;
+  }
+  .compare-table th {
+    text-align: left;
+    background: #f7f8fa;
+    padding: 6px 10px;
+    border: 1px solid #e5e7eb;
+    color: #57606a;
+    font-weight: 700;
+  }
+  .compare-table td {
+    padding: 6px 10px;
+    border: 1px solid #e5e7eb;
+    vertical-align: top;
+  }
+  .compare-table tr:nth-child(even) td { background: #fafafa; }
+  .y { color: #065f46; font-weight: 700; }
+  .n { color: #9f1239; font-weight: 700; }
+  .w { color: #92400e; font-weight: 700; }
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #57606a;
+    margin: 18px 0 6px;
+  }
+  .upgrade-box {
+    background: #f0f4ff;
+    border: 1px solid #c7d2fe;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.8rem;
+    color: #374151;
+    line-height: 1.65;
+  }
+  .upgrade-box strong { color: #0f3460; }
+  .upgrade-box ul { margin: 6px 0 0 16px; }
+  .upgrade-box li { margin-bottom: 3px; }
+
   footer {
     margin-top: 36px;
     padding-top: 12px;
@@ -156,8 +228,71 @@
       <div class="leg"><div class="leg-dot" style="background:#7c5cd8;"></div>Browser runtime</div>
     </div>
 
-    <p class="note">All intelligence is client-side. The AgentSenseGuide chat agent reads from an in-memory JS object (AS_KB) that mirrors every content section on the Agent Sense page — no fetch, no API key, no server round-trip.</p>
+    <p class="note">All intelligence is client-side. AgentSenseGuide reads from an in-memory JS object (AS_KB) that mirrors every content section on the Agent Sense page — no fetch, no API key, no server round-trip.</p>
   </div>
+</div>
+
+<!-- Description -->
+<div class="desc-section">
+
+  <h2>What is AgentSenseGuide?</h2>
+
+  <div class="verdict">
+    AgentSenseGuide is <strong>neither an LLM-based agent nor a search engine</strong>. It is a
+    <strong>rule-based conversational interface</strong> — a deterministic chatbot that matches your
+    question against a priority-ordered list of regex patterns and returns pre-written answers drawn
+    from a hardcoded knowledge base. The "intelligence" is entirely in how the patterns and keyword
+    arrays were designed — by a human, ahead of time.
+  </div>
+
+  <p class="section-label">How it works</p>
+  <p>When you type a question: (1) the input is lowercased, (2) 19 <code>if</code> conditions run
+  top-to-bottom — each a regex like <code>/\bmcp\b/</code> or <code>/\bdata readiness\b/</code>,
+  (3) the first condition that matches wins and returns a pre-written HTML string, (4) if nothing
+  matches, a fallback message is returned. There is no reasoning, no generation, no model.</p>
+
+  <p class="section-label">Capability comparison</p>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Capability</th>
+        <th>AgentSenseGuide</th>
+        <th>LLM Agent</th>
+        <th>Search Engine</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Understands natural language variations</td><td><span class="w">Partially — regex only</span></td><td><span class="y">Yes — semantically</span></td><td><span class="n">No — keyword index</span></td></tr>
+      <tr><td>Reasons or synthesises new answers</td><td><span class="n">No</span></td><td><span class="y">Yes</span></td><td><span class="n">No</span></td></tr>
+      <tr><td>Can answer outside its knowledge base</td><td><span class="n">No</span></td><td><span class="y">Yes</span></td><td><span class="w">Partially</span></td></tr>
+      <tr><td>Requires a model or API</td><td><span class="y">No</span></td><td><span class="n">Yes</span></td><td><span class="n">Yes</span></td></tr>
+      <tr><td>Answers are predictable &amp; auditable</td><td><span class="y">Always</span></td><td><span class="w">Variable</span></td><td><span class="y">Yes</span></td></tr>
+      <tr><td>Works with zero network calls</td><td><span class="y">Yes</span></td><td><span class="n">No</span></td><td><span class="n">No</span></td></tr>
+      <tr><td>Risk of hallucination</td><td><span class="y">None</span></td><td><span class="n">Present</span></td><td><span class="y">None</span></td></tr>
+      <tr><td>Knowledge can go stale</td><td><span class="n">Yes — hardcoded</span></td><td><span class="w">Depends on data</span></td><td><span class="w">Depends</span></td></tr>
+    </tbody>
+  </table>
+
+  <p class="section-label">Why rule-based is the right fit here</p>
+  <p>The Agent Sense page has a bounded, stable knowledge set — 9 episodes, 2 hosts, 2 guests,
+  4 platforms, one enterprise arc, one disclaimer. A rule-based bot covers that completely, loads
+  instantly, costs nothing to run, and has zero hallucination risk. An LLM would be overkill and
+  would introduce hosting cost, API keys, latency, and the possibility of making things up about
+  the podcast.</p>
+
+  <p class="section-label">What it would take to make it a real LLM agent</p>
+  <div class="upgrade-box">
+    <strong>Retrieval-Augmented Generation (RAG) pattern:</strong>
+    <ul>
+      <li>Embed the podcast content as vectors in a vector store</li>
+      <li>On each user query, retrieve the most relevant chunks by semantic similarity</li>
+      <li>Call an LLM API (OpenAI, IBM watsonx, etc.) with the question + retrieved context</li>
+      <li>The LLM reasons over the content and generates a natural language answer</li>
+    </ul>
+    <br>That would handle paraphrases, multi-hop questions ("which episode covers both MCP and
+    governance?"), and nuanced follow-ups — but requires a backend, API costs, and a latency budget.
+  </div>
+
 </div>
 
 <footer>Made with IBM Bob</footer>
