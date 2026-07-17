@@ -491,6 +491,124 @@
             }
         }
 
+        /* Featured Episode */
+        .featured-episode {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            margin: 0 0 2rem;
+            display: flex;
+            gap: 0;
+            overflow: hidden;
+            border: 2px solid rgba(233, 69, 96, 0.25);
+        }
+
+        .featured-episode-badge {
+            display: inline-block;
+            background: var(--highlight-color);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.2rem 0.65rem;
+            border-radius: 20px;
+            margin-bottom: 0.6rem;
+        }
+
+        .featured-episode-img {
+            width: 220px;
+            min-height: 220px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .featured-episode-body {
+            padding: 1.6rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .featured-episode-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .featured-episode-num {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--highlight-color);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .featured-episode-date {
+            font-size: 0.78rem;
+            color: #57606a;
+        }
+
+        .featured-episode-duration {
+            font-size: 0.78rem;
+            color: #57606a;
+        }
+
+        .featured-episode-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.35;
+            margin-bottom: 0.4rem;
+        }
+
+        .featured-episode-guest {
+            font-size: 0.85rem;
+            color: #57606a;
+            margin-bottom: 0.75rem;
+            font-style: italic;
+        }
+
+        .featured-episode-desc {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.65;
+            margin-bottom: 0.85rem;
+        }
+
+        .featured-episode-takeaway {
+            background: #f7f8fa;
+            border-left: 3px solid var(--highlight-color);
+            padding: 0.55rem 0.9rem;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.88rem;
+            color: #333;
+            margin-bottom: 1.1rem;
+        }
+
+        .featured-episode-takeaway strong {
+            color: var(--highlight-color);
+            font-weight: 700;
+        }
+
+        .featured-episode-links {
+            display: flex;
+            gap: 0.7rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .featured-episode {
+                flex-direction: column;
+            }
+            .featured-episode-img {
+                width: 100%;
+                min-height: 180px;
+            }
+        }
+
         /* Guest Section */
         .guests-section {
             background: var(--card-bg);
@@ -789,6 +907,31 @@
                 <a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214" target="_blank">🍎 Apple Podcasts</a>
                 <a href="https://music.amazon.com/podcasts/589c7238-f3fd-4672-8c8b-d969db6d9db2/agent-sense-agentic-workflows-operational-ai" target="_blank">🎶 Amazon Music</a>
                 <a href="https://www.iheart.com/podcast/269-agent-sense-agentic-workfl-313101468" target="_blank">❤️ iHeart Radio</a>
+            </div>
+        </section>
+
+        <!-- Featured Episode -->
+        <section class="featured-episode">
+            <img src="Episode 8 - Governance Catalog/Podcast_cover_ep8.png" alt="Episode 8 Cover" class="featured-episode-img">
+            <div class="featured-episode-body">
+                <span class="featured-episode-badge">Latest Episode</span>
+                <div class="featured-episode-meta">
+                    <span class="featured-episode-num">Episode 8</span>
+                    <span class="featured-episode-date">Jul 17, 2026</span>
+                    <span class="featured-episode-duration">⏱ 35 min</span>
+                </div>
+                <h2 class="featured-episode-title">Governed Catalog of Agentic AI Assets</h2>
+                <p class="featured-episode-guest">Guest: Jyotsna K Narayanan — Technical Product Management, IBM watsonx Orchestrate</p>
+                <p class="featured-episode-desc">After the pilot phase, enterprises hit a familiar wall: every team builds agents, tools, and MCP servers in isolation, resulting in agent sprawl, duplicate builds, and unclear ownership. This episode covers why a governed catalog of AI assets acts as a living trust layer — giving builders visibility into what exists, who owns it, and how it can be safely reused at scale.</p>
+                <div class="featured-episode-takeaway">
+                    <strong>Key takeaway:</strong> Reuse without governance creates risk. A catalog is not a directory — it is the control point that lets enterprises move fast with confidence rather than rebuilding from scratch every time.
+                </div>
+                <div class="featured-episode-links">
+                    <a href="https://open.spotify.com/episode/6yRUHYXgDNdKzaJzCR31EK?si=TX1bDnSKSLOAbiTjfqc5NA" target="_blank" class="listen-btn spotify">🎵 Spotify</a>
+                    <a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214?i=1000777160503" target="_blank" class="listen-btn apple">🍎 Apple</a>
+                    <a href="https://music.amazon.com/podcasts/589c7238-f3fd-4672-8c8b-d969db6d9db2/agent-sense-agentic-workflows-operational-ai" target="_blank" class="listen-btn amazon">🎶 Amazon</a>
+                    <a href="https://www.iheart.com/podcast/269-agent-sense-agentic-workfl-313101468" target="_blank" class="listen-btn iheart">❤️ iHeart</a>
+                </div>
             </div>
         </section>
 
