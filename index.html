@@ -41,6 +41,169 @@
             padding: 0 20px;
         }
 
+        /* Top Navigation */
+        #site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--primary-color);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        #site-nav .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 48px;
+        }
+
+        #site-nav .nav-brand {
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            letter-spacing: 0.01em;
+            opacity: 0.9;
+        }
+
+        #site-nav .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            list-style: none;
+        }
+
+        #site-nav .nav-links a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        #site-nav .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        #site-nav .nav-links a.nav-subscribe {
+            background: var(--highlight-color);
+            color: #fff;
+            font-weight: 700;
+            padding: 0.3rem 0.9rem;
+        }
+
+        #site-nav .nav-links a.nav-subscribe:hover {
+            background: #c93550;
+        }
+
+        #nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0.2rem 0.4rem;
+            line-height: 1;
+        }
+
+        @media (max-width: 768px) {
+            #nav-toggle { display: block; }
+
+            #site-nav .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                position: absolute;
+                top: 48px;
+                left: 0; right: 0;
+                background: var(--primary-color);
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                padding: 0.5rem 1rem;
+            }
+
+            #site-nav .nav-links.open { display: flex; }
+
+            #site-nav .nav-links a {
+                padding: 0.6rem 0.5rem;
+                border-radius: 4px;
+            }
+        }
+
+        /* Arc Path */
+        .arc-path {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0;
+            margin: 1rem 0 1.1rem;
+        }
+
+        .arc-step {
+            display: flex;
+            align-items: center;
+        }
+
+        .arc-step span {
+            background: rgba(102, 126, 234, 0.12);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            color: var(--primary-color);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.28rem 0.75rem;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .arc-arrow {
+            color: #aab;
+            font-size: 0.85rem;
+            padding: 0 0.3rem;
+        }
+
+        .arc-details-toggle {
+            font-size: 0.82rem;
+            color: #667eea;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        details.arc-detail { margin-top: 0.75rem; }
+        details.arc-detail summary { display: none; }
+
+        details.arc-detail[open] {
+            background: #f0eef8;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            line-height: 1.9;
+        }
+
+        details.arc-detail ul {
+            list-style: none;
+            margin: 0.5rem 0 0;
+            padding: 0;
+        }
+
+        details.arc-detail ul li {
+            padding: 0.35rem 0;
+            border-bottom: 1px solid #e8e4f4;
+        }
+
+        details.arc-detail ul li:last-child { border-bottom: none; }
+
         /* Header */
         header {
             background: var(--primary-color);
@@ -878,6 +1041,21 @@
     </style>
 </head>
 <body>
+    <!-- Top Navigation -->
+    <nav id="site-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="#" class="nav-brand">Agent Sense</a>
+            <button id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#episodes">Episodes</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#hosts">Hosts</a></li>
+                <li><a href="#guests">Guests</a></li>
+                <li><a href="https://www.linkedin.com/in/monika-aggarwal-3b82816/" target="_blank" class="nav-subscribe">Subscribe</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <header>
         <div class="container">
             <div class="header-content">
@@ -898,7 +1076,7 @@
         </div>
     </header>
 
-    <main class="container">
+    <main class="container" id="about">
         <!-- Platform Banner -->
         <section class="platform-banner">
             <p class="also-on">Also available on</p>
@@ -918,7 +1096,6 @@
                 <div class="featured-episode-meta">
                     <span class="featured-episode-num">Episode 8</span>
                     <span class="featured-episode-date">Jul 17, 2026</span>
-                    <span class="featured-episode-duration">⏱ 35 min</span>
                 </div>
                 <h2 class="featured-episode-title">Governed Catalog of Agentic AI Assets</h2>
                 <p class="featured-episode-guest">Guest: Jyotsna K Narayanan — Technical Product Management, IBM watsonx Orchestrate</p>
@@ -938,36 +1115,35 @@
         <!-- The Enterprise Arc -->
         <section class="why-section">
             <h2>The Enterprise Arc of Agent Sense</h2>
-            <p>
-                Agent Sense started as a way to learn in public and share what we are seeing as enterprise AI moves beyond chat.
-            </p>
-            <p>
-                The major shift is from AI that answers questions to AI that can use tools, execute workflows, access enterprise systems, and support real business decisions.
-            </p>
-            <p>
-                The model is one part of the solution. Enterprises also need clear process design, trusted data, controlled access, integration patterns, observability, governance, and an operating model that keeps humans in the right parts of the loop.
-            </p>
-            <p>Each episode follows that progression:</p>
-            <div class="arc-list">
-                <ul class="arc-items">
-                    <li><strong>Enterprise readiness:</strong> What breaks when agents leave demos</li>
-                    <li><strong>Design boundaries:</strong> Where rules, agents, and human judgment belong</li>
-                    <li><strong>Data readiness:</strong> Why bad data makes agents unsafe</li>
+            <p>Each episode follows the enterprise journey from prototype to production operation — covering the layers that make agents reliable, governed, and safe to scale.</p>
+            <div class="arc-path">
+                <div class="arc-step"><span>Readiness</span></div><span class="arc-arrow">›</span>
+                <div class="arc-step"><span>Boundaries</span></div><span class="arc-arrow">›</span>
+                <div class="arc-step"><span>Data</span></div><span class="arc-arrow">›</span>
+                <div class="arc-step"><span>Integration</span></div><span class="arc-arrow">›</span>
+                <div class="arc-step"><span>Control</span></div><span class="arc-arrow">›</span>
+                <div class="arc-step"><span>Execution</span></div><span class="arc-arrow">›</span>
+                <div class="arc-step"><span>Governed Scale</span></div>
+            </div>
+            <button class="arc-details-toggle" id="arc-toggle" aria-expanded="false">+ Show episode-by-episode breakdown</button>
+            <details class="arc-detail" id="arc-detail">
+                <summary></summary>
+                <ul>
+                    <li><strong>Readiness:</strong> What breaks when agents leave demos</li>
+                    <li><strong>Boundaries:</strong> Where rules, agents, and human judgment belong</li>
+                    <li><strong>Data:</strong> Why bad data makes agents unsafe</li>
                     <li><strong>Data layer autonomy:</strong> Where autonomous action helps and where it creates risk</li>
                     <li><strong>Integration:</strong> How agents coordinate across enterprise systems</li>
-                    <li><strong>Controlled access:</strong> Why agents need gateways before reaching core systems</li>
-                    <li><strong>Agent execution:</strong> What changes when agents move from chat to computer use</li>
-                    <li><strong>Governed reuse:</strong> Why enterprises need catalogs for agents, tools, and MCP servers</li>
+                    <li><strong>Control:</strong> Why agents need gateways before reaching core systems</li>
+                    <li><strong>Execution:</strong> What changes when agents move from chat to computer use</li>
+                    <li><strong>Governed Scale:</strong> Why enterprises need catalogs for agents, tools, and MCP servers</li>
                     <li><strong>Ambient agents:</strong> How background agents monitor, decide, and escalate</li>
                 </ul>
-            </div>
-            <p class="why-goal">
-                The goal is not to celebrate agents. The goal is to understand what it takes to make enterprise AI useful, controlled, and ready for real work.
-            </p>
+            </details>
         </section>
 
         <!-- Hosts Section -->
-        <section class="about-section">
+        <section class="about-section" id="hosts">
             <h2>Agent Sense Hosts</h2>
             <div class="hosts">
                 <div class="host">
@@ -1010,7 +1186,7 @@
         </section>
 
         <!-- Podcast Episodes Section -->
-        <section class="episodes-section">
+        <section class="episodes-section" id="episodes">
             <h2 class="section-title">Podcast Episodes</h2>
             <div class="episodes-grid">
                 
@@ -1215,7 +1391,7 @@
         </section>
 
         <!-- Guests Section -->
-        <section class="guests-section">
+        <section class="guests-section" id="guests">
             <h2>Guests</h2>
             <p class="section-intro">Practitioners and builders who have joined Agent Sense to share their field experience on enterprise AI.</p>
             <div class="guests-grid">
@@ -1301,6 +1477,45 @@
     </div>
 
     <script>
+        // ── Mobile nav toggle ──
+        (function () {
+            var toggle = document.getElementById('nav-toggle');
+            var links  = document.getElementById('nav-links');
+            if (toggle && links) {
+                toggle.addEventListener('click', function () {
+                    var open = links.classList.toggle('open');
+                    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                });
+                // Close on nav link click
+                links.querySelectorAll('a').forEach(function (a) {
+                    a.addEventListener('click', function () {
+                        links.classList.remove('open');
+                        toggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+        })();
+
+        // ── Arc expand/collapse ──
+        (function () {
+            var btn    = document.getElementById('arc-toggle');
+            var detail = document.getElementById('arc-detail');
+            if (btn && detail) {
+                btn.addEventListener('click', function () {
+                    var isOpen = detail.hasAttribute('open');
+                    if (isOpen) {
+                        detail.removeAttribute('open');
+                        btn.textContent = '+ Show episode-by-episode breakdown';
+                        btn.setAttribute('aria-expanded', 'false');
+                    } else {
+                        detail.setAttribute('open', '');
+                        btn.textContent = '− Hide breakdown';
+                        btn.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            }
+        })();
+
         document.getElementById('last-updated').textContent =
             'Page last refreshed: ' + new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
 
