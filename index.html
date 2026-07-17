@@ -82,9 +82,37 @@
         }
 
         .tagline {
-            font-size: 1.2rem;
-            color: #b0b0b0;
-            margin-bottom: 1rem;
+            font-size: 1.35rem;
+            color: #e0e0e0;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            line-height: 1.4;
+        }
+
+        .tagline-sub {
+            font-size: 0.97rem;
+            color: #a0a0a0;
+            line-height: 1.7;
+            margin-bottom: 1.1rem;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            margin: 0.25rem 0 1.25rem;
+            padding: 0.7rem 1.6rem;
+            background: var(--highlight-color);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 30px;
+            text-decoration: none;
+            letter-spacing: 0.01em;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .cta-primary:hover {
+            background: #c93550;
+            transform: translateY(-2px);
         }
 
         .feedspot-badge {
@@ -134,43 +162,44 @@
 
         /* Platform Banner */
         .platform-banner {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.07);
             text-align: center;
-            padding: 1.5rem 2rem;
-            margin: 2rem 0;
+            padding: 1rem 2rem;
+            margin: 1.5rem 0;
             border-radius: 15px;
             box-shadow: var(--shadow);
         }
 
-        .platform-banner h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+        .platform-banner .also-on {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #6a6a7a;
+            margin-bottom: 0.6rem;
         }
 
         .platform-links {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
-            margin-top: 1rem;
         }
 
         .platform-links a {
-            color: white;
+            color: #a0a0b0;
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            transition: background 0.3s ease, transform 0.2s ease;
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding: 0.3rem 0.75rem;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 20px;
+            transition: color 0.2s, border-color 0.2s;
         }
 
         .platform-links a:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+            color: #e0e0e0;
+            border-color: rgba(255,255,255,0.3);
         }
 
         /* About Section */
@@ -739,17 +768,13 @@
                 </div>
                 <div class="header-text">
                     <h1>Agent Sense</h1>
-                    <p class="tagline">Smart AI Meets Human Sense</p>
+                    <p class="tagline">Practical lessons for moving AI agents from demos into enterprise work.</p>
+                    <p class="tagline-sub">Short conversations with practitioners on architecture, data, integration, governance, and production operations.</p>
+                    <a href="https://open.spotify.com/episode/6yRUHYXgDNdKzaJzCR31EK?si=TX1bDnSKSLOAbiTjfqc5NA" target="_blank" class="cta-primary">🎧 Listen to the latest episode</a>
                     <a href="https://podcast.feedspot.com/agentic_ai_podcasts/" target="_blank" class="feedspot-badge">
                         <span class="badge-rank">#15</span>
                         <span class="badge-text"><strong>Feedspot</strong> · Best Agentic AI Podcasts</span>
                     </a>
-                    <p class="description">
-                        A non-monetized podcast hosted by Monika Aggarwal and Frank Chavez.
-                    </p>
-                    <p class="description">
-                        Practical conversations on enterprise AI agents, governed workflows, integration, data readiness, and operating models for real business adoption.
-                    </p>
                 </div>
             </div>
         </div>
@@ -758,7 +783,7 @@
     <main class="container">
         <!-- Platform Banner -->
         <section class="platform-banner">
-            <h3>🎧 Now Live On</h3>
+            <p class="also-on">Also available on</p>
             <div class="platform-links">
                 <a href="https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3?si=0919a12785664c8a" target="_blank">🎵 Spotify</a>
                 <a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214" target="_blank">🍎 Apple Podcasts</a>
