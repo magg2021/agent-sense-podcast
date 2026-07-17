@@ -680,14 +680,16 @@
         }
 
         .featured-episode-img {
-            width: 220px;
-            min-height: 220px;
-            object-fit: cover;
+            width: 180px;
+            align-self: stretch;
+            object-fit: contain;
+            object-position: center;
+            background: var(--primary-color);
             flex-shrink: 0;
         }
 
         .featured-episode-body {
-            padding: 1.6rem 1.8rem;
+            padding: 1.2rem 1.5rem;
             display: flex;
             flex-direction: column;
             gap: 0;
@@ -720,35 +722,35 @@
         }
 
         .featured-episode-title {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--primary-color);
             line-height: 1.35;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.35rem;
         }
 
         .featured-episode-guest {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: #57606a;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.6rem;
             font-style: italic;
         }
 
         .featured-episode-desc {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #444;
-            line-height: 1.65;
-            margin-bottom: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 0.7rem;
         }
 
         .featured-episode-takeaway {
             background: #f7f8fa;
             border-left: 3px solid var(--highlight-color);
-            padding: 0.55rem 0.9rem;
+            padding: 0.45rem 0.8rem;
             border-radius: 0 6px 6px 0;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             color: #333;
-            margin-bottom: 1.1rem;
+            margin-bottom: 0.9rem;
         }
 
         .featured-episode-takeaway strong {
@@ -768,7 +770,9 @@
             }
             .featured-episode-img {
                 width: 100%;
-                min-height: 180px;
+                max-height: 260px;
+                object-fit: cover;
+                object-position: top;
             }
         }
 
@@ -1099,7 +1103,7 @@
                 </div>
                 <h2 class="featured-episode-title">Governed Catalog of Agentic AI Assets</h2>
                 <p class="featured-episode-guest">Guest: Jyotsna K Narayanan — Technical Product Management, IBM watsonx Orchestrate</p>
-                <p class="featured-episode-desc">After the pilot phase, enterprises hit a familiar wall: every team builds agents, tools, and MCP servers in isolation, resulting in agent sprawl, duplicate builds, and unclear ownership. This episode covers why a governed catalog of AI assets acts as a living trust layer — giving builders visibility into what exists, who owns it, and how it can be safely reused at scale.</p>
+                <p class="featured-episode-desc">After the pilot phase, enterprises hit a familiar wall: every team builds agents, tools, and MCP servers in isolation. The result is sprawl, duplicate builds, and unclear ownership. A governed catalog acts as the trust layer — giving builders visibility into what exists, who owns it, and how it can be safely reused at scale.</p>
                 <div class="featured-episode-takeaway">
                     <strong>Key takeaway:</strong> Reuse without governance creates risk. A catalog is not a directory — it is the control point that lets enterprises move fast with confidence rather than rebuilding from scratch every time.
                 </div>
@@ -1153,13 +1157,7 @@
                     </div>
                     <p><strong>Co-Host &amp; Creator</strong></p>
                     <p style="margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.6;">
-                        Monika is an enterprise AI technical practitioner with experience building and scaling large enterprise applications across healthcare, energy, and IBM software.
-                    </p>
-                    <p style="margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.6;">
-                        Her work sits at the intersection of architecture, data, workflow automation, governance, and adoption. She focuses on how enterprises move AI agents from demos into governed operating models where systems, people, data, and controls work together.
-                    </p>
-                    <p style="margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.6;">
-                        Agent Sense reflects that field perspective: practical lessons from enterprise AI conversations, client work, and hands-on agentic workflow design.
+                        Enterprise AI technical practitioner focused on moving agents from demos into governed operating models. Her work spans architecture, data, workflow automation, and adoption across healthcare, energy, and IBM software. Agent Sense reflects her field perspective on what it takes to make enterprise AI reliable in production.
                     </p>
                     <div class="mini-monika-section">
                         <strong>Daily 60 Seconds of Enterprise AI</strong>
@@ -1173,13 +1171,7 @@
                     </div>
                     <p><strong>Co-Host &amp; Practitioner</strong></p>
                     <p style="margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.6;">
-                        Frank is an AI technical architect with deep experience in automation, software testing, and enterprise AI implementation.
-                    </p>
-                    <p style="margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.6;">
-                        He has led generative AI and automation initiatives, designed testing frameworks, and built hands-on solutions across SaaS, RPA, and AI-driven applications.
-                    </p>
-                    <p style="margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.6;">
-                        He brings a builder and delivery lens to Agent Sense, with a focus on practical systems that can be tested, scaled, and adopted by the business.
+                        AI technical architect with deep experience in automation, software testing, and enterprise AI implementation. He has led generative AI initiatives and built solutions across SaaS, RPA, and AI-driven applications — bringing a builder and delivery lens to what makes agents testable, scalable, and ready for real business work.
                     </p>
                 </div>
             </div>
@@ -1198,8 +1190,7 @@
                         <div class="episode-date">Dec 16, 2025</div>
                         <h3 class="episode-title">Brains and Guardrails: What Makes an AI Agent Enterprise-Ready?</h3>
                         <p class="episode-description">
-                            Enterprises often stop at building a clever prototype. But when that agent touches real systems, the question changes from Can it run? to Can we trust it?
-                            That is the gap between experimentation and production.
+                            Most enterprise AI pilots look impressive until they touch real systems, data, and accountability. What separates a prototype from a production-ready agent? Trust, guardrails, and the design decisions enterprises skip too early.
                         </p>
                         <div class="listen-links">
                             <a href="https://open.spotify.com/episode/5fd2mUAPRTbMNYrdi39J13?si=CSrX2S_9Ti6XvG2LI5TMyQ" target="_blank" class="listen-btn spotify">
@@ -1220,7 +1211,7 @@
                         <div class="episode-date">Jan 10, 2026</div>
                         <h3 class="episode-title">Rules, Agents, Humans - A Practical Model for Agentic Workflows</h3>
                         <p class="episode-description">
-                            This episode explores the line between deterministic business logic and autonomous agents in real business operations, using a Commercial and Investment Banking onboarding scenario to show where rules work, where agents help, and where humans must stay in control.
+                            Not every decision should go to an agent. Using a banking onboarding scenario, this episode maps out when deterministic rules are the right answer, when agents add value, and where human judgment must stay in the loop.
                         </p>
                         <div class="listen-links">
                             <a href="https://open.spotify.com/episode/2P2A3xcGCot5i3QhNmsfRU?si=iK_lvz3ITGeWbX2TS8KY1Q" target="_blank" class="listen-btn spotify">
@@ -1241,8 +1232,7 @@
                         <div class="episode-date">Feb 9, 2026</div>
                         <h3 class="episode-title">Why IT Service Agents Fail in Production, A Data Readiness Problem</h3>
                         <p class="episode-description">
-                            Theme: Foundations & Data Readiness. Why do agents go rogue when the information source is weak?
-                            This is episode three: Why IT Service Agents Fail in Production, A Data Readiness Problem. Most enterprise agentic failures are not related to the model. They are data failures. We are using a real IT service ticketing example to show why data readiness matters for agents.
+                            Agent failures in production are usually data failures, not model failures. Using an IT service ticketing example, this episode shows how incomplete ownership records and stale configuration data cause agents to act confidently on wrong information.
                         </p>
                         <div class="listen-links">
                             <a href="https://open.spotify.com/episode/0REAPEEEhYsgbOaNXSVWZk?si=bmSzCIp5Sy-Sh7WrBPEXtQ" target="_blank" class="listen-btn spotify">
@@ -1263,8 +1253,7 @@
                         <div class="episode-date">Feb 23, 2026</div>
                         <h3 class="episode-title">Autonomous Databases, Where Autonomy Helps and Where It Hurts</h3>
                         <p class="episode-description">
-                            Do autonomous databases fix bad data, or do they mainly improve operational reliability? Why are organizations moving toward autonomous operations?
-                            In episode 3, we talked about an IT service agent that created operational noise during an outage. The AI agent acted fast, but the ownership and escalation data were wrong, so the actions were wrong.
+                            Autonomous databases can self-tune, self-heal, and self-secure — but autonomy at the data layer has limits. Where does it genuinely reduce operational risk, and where does it create new problems?
                         </p>
                         <div class="listen-links">
                             <a href="https://open.spotify.com/episode/6iEO0dgdaVWuZRX2kXNjAo?si=WFzeSkjTQkq1KPKIYa9izg" target="_blank" class="listen-btn spotify">
@@ -1283,11 +1272,9 @@
                     <div class="episode-content">
                         <div class="episode-number">Episode 5</div>
                         <div class="episode-date">Mar 25, 2026</div>
-                        <h3 class="episode-title">Integration Will Decide Enterprise AI with MCP and Agent-to-Agent</h3>
+                        <h3 class="episode-title">Integration Will Decide Enterprise AI — MCP and Agent-to-Agent</h3>
                         <p class="episode-description">
-                            As AI systems evolve from single models into networks of autonomous agents, integration is the primary bottleneck. Integration needs standards.
-                            MCP standardizes how agents connect to systems. Agent to agent communication standardizes how they pass work.
-                            🔷 MCP connects agents to enterprise systems. 🔷 A2A connects agents to each other so work can move across the enterprise.
+                            When agents need to reach enterprise systems and coordinate with each other, integration becomes the bottleneck. MCP standardizes agent-to-system connections. Agent-to-Agent (A2A) protocols let work move across the enterprise without custom wiring for every handoff.
                         </p>
                         <div class="listen-links">
                             <a href="https://open.spotify.com/episode/1sd1YlCBRqtplwn0XnhOiH?si=4IRfx9NHTwyq5T5lz36rLg" target="_blank" class="listen-btn spotify">
@@ -1308,8 +1295,7 @@
                         <div class="episode-date">May 4, 2026</div>
                         <h3 class="episode-title">MCP Gateway: The Control Layer for Enterprise Agents</h3>
                         <p class="episode-description">
-                            MCP helps agents connect to tools and systems. But connection alone is not enough. As agents start working across ServiceNow, Workday, SAP, HR, IT, finance, and customer operations, enterprises need a control layer.
-                            That is where the MCP Gateway comes in. We discuss how an MCP Gateway helps manage identity, policy, approvals, audit, and traceability. It gives agents access to approved tools without opening direct, unmanaged paths into core enterprise systems.
+                            Connecting agents to enterprise systems creates a new exposure: unmanaged access across HR, finance, IT, and operations. This episode covers how an MCP Gateway sits between agents and core systems, enforcing identity, policy, approvals, and audit trails before any action reaches production data.
                         </p>
                         <div class="listen-links">
                             <a href="https://open.spotify.com/episode/4YrVp3IDZBo1kUCl5pzFEa?si=XROQhr-vQXWuYcetkqrxUQ" target="_blank" class="listen-btn spotify">
@@ -1330,10 +1316,7 @@
                         <div class="episode-date">Jun 21, 2026</div>
                         <h3 class="episode-title">The Evolution of Agents From Chat to Computer Use</h3>
                         <p class="episode-description">
-                            Guest: Vitalii Duk is the Founder and CEO of Dynamiq. He founded Dynamiq to make agentic AI practical and secure for organizations, simplifying the journey from prototype to production. 
-                         </p>
-                        <p class="episode-description">
-                            We discuss how agents are moving from answering questions to doing work across tools, systems, and runtime environments. 𝙏𝙝𝙞𝙨 𝙞𝙨 𝙩𝙝𝙚 𝙚𝙣𝙩𝙚𝙧𝙥𝙧𝙞𝙨𝙚 𝙖𝙧𝙘𝙝𝙞𝙩𝙚𝙘𝙩𝙪𝙧𝙚 𝙨𝙝𝙞𝙛𝙩: 𝙖𝙜𝙚𝙣𝙩𝙨 𝙖𝙧𝙚 𝙢𝙤𝙫𝙞𝙣𝙜 𝙛𝙧𝙤𝙢 𝙧𝙚𝙨𝙥𝙤𝙣𝙨𝙚 𝙩𝙤 𝙚𝙭𝙚𝙘𝙪𝙩𝙞𝙤𝙣. 𝙏𝙝𝙚 𝙫𝙖𝙡𝙪𝙚 𝙞𝙨 𝙣𝙤𝙩 𝙤𝙣𝙡𝙮 𝙞𝙣 𝙬𝙝𝙖𝙩 𝙩𝙝𝙚 𝙖𝙜𝙚𝙣𝙩 𝙘𝙖𝙣 𝙙𝙤. 𝙄𝙩 𝙞𝙨 𝙞𝙣 𝙝𝙤𝙬 𝙨𝙖𝙛𝙚𝙡𝙮, 𝙤𝙗𝙨𝙚𝙧𝙫𝙖𝙗𝙡𝙮, 𝙖𝙣𝙙 𝙧𝙚𝙥𝙚𝙖𝙩𝙖𝙗𝙡𝙮 𝙞𝙩 𝙘𝙖𝙣 𝙤𝙥𝙚𝙧𝙖𝙩𝙚 𝙞𝙣 𝙧𝙚𝙖𝙡 𝙗𝙪𝙨𝙞𝙣𝙚𝙨𝙨 𝙬𝙤𝙧𝙠.
+                            Agents are no longer just answering questions — they are navigating interfaces, executing tasks, and operating across runtime environments. What changes architecturally when agents move from chat to computer use, and what safety and observability requirements follow.
                         </p>
                         <div class="listen-links">
                             <a href="https://open.spotify.com/episode/2wkn9bcDINCqHuaIfvmBKb?si=wlGGSBvhTKW4Crd9ir0fjw" target="_blank" class="listen-btn spotify">
@@ -1354,13 +1337,7 @@
                         <div class="episode-date">Jul 17, 2026</div>
                         <h3 class="episode-title">Governed Catalog of Agentic AI Assets</h3>
                         <p class="episode-description">
-                            Guest: Jyotsna K Narayanan, IBM Technical Product Management, Domain and Agent Catalog, IBM watsonx Orchestrate.
-                        </p>
-                        <p class="episode-description">
-                            After the pilot phase, enterprises hit a familiar wall: every team builds agents, tools, and MCP servers in isolation. The result is agent sprawl, duplicate builds, unclear ownership, and unknown data access — risks that compound as AI scales across the organization.
-                        </p>
-                        <p class="episode-description">
-                            This episode covers why enterprises need a governed catalog of AI assets: a living trust layer that gives builders visibility into what exists, who owns it, how it can be reused, and what signals support trusted adoption — so teams can move fast with confidence rather than rebuilding from scratch.
+                            As AI scales past the pilot phase, teams build agents and tools in isolation — creating sprawl, duplicate builds, and unclear ownership. A governed catalog gives enterprises visibility, reuse, and trust signals before agents reach production.
                         </p>
                         <div class="listen-links">
                             <a href="https://open.spotify.com/episode/6yRUHYXgDNdKzaJzCR31EK?si=TX1bDnSKSLOAbiTjfqc5NA" target="_blank" class="listen-btn spotify">
@@ -1378,11 +1355,10 @@
                     <img src="agent_sense_cover.png" alt="Episode 9 Cover" class="episode-cover">
                     <div class="episode-content">
                         <div class="episode-number">Episode 9</div>
-                        <h3 class="episode-title">Ambient Agents: Monitor, Decide, Escalate <span class="coming-soon">Coming Soon</span></h3>
+                        <div class="episode-date"><span class="coming-soon">Coming Soon</span></div>
+                        <h3 class="episode-title">Ambient Agents: Monitor, Decide, Escalate</h3>
                         <p class="episode-description">
-                            Exploring ambient agents that continuously monitor business processes, make autonomous decisions
-                            within defined boundaries, and escalate to humans when needed. Understanding the balance between
-                            automation and human oversight in enterprise environments.
+                            Background agents that monitor continuously, act within defined boundaries, and escalate when conditions change present a different design challenge. When are ambient agents appropriate, how should their autonomy be bounded, and what escalation paths keep humans in control?
                         </p>
                     </div>
                 </div>
@@ -1633,14 +1609,14 @@
                     title: 'Autonomous Databases — Where Autonomy Helps and Where It Hurts',
                     theme: 'Data layer autonomy',
                     keywords: ['autonomous database', 'database', 'autonomy', 'oracle', 'data layer', 'operational reliability', 'self-managing', 'autonomous operations', 'ownership data', 'escalation data', 'outage', 'operational noise'],
-                    description: 'Do autonomous databases fix bad data, or do they mainly improve operational reliability? Why are organizations moving toward autonomous operations? In Episode 3, an IT service agent created operational noise during an outage — the AI agent acted fast, but the ownership and escalation data were wrong, so the actions were wrong. This episode explores where autonomous database operations help and where they create risk.',
+                    description: 'Autonomous databases can self-tune, self-heal, and self-secure — but autonomy at the data layer has limits. Where does it genuinely reduce operational risk, and where does it create new problems?',
                     spotify: 'https://open.spotify.com/episode/6iEO0dgdaVWuZRX2kXNjAo',
                     apple: 'https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214?i=1000750956057',
                     guest: null
                 },
                 {
                     num: 5,
-                    title: 'Integration Will Decide Enterprise AI — with MCP and Agent-to-Agent',
+                    title: 'Integration Will Decide Enterprise AI — MCP and Agent-to-Agent',
                     theme: 'Integration',
                     keywords: ['integration', 'mcp', 'model context protocol', 'agent to agent', 'a2a', 'standards', 'enterprise systems', 'connect', 'coordination', 'bottleneck', 'networks of agents', 'pass work'],
                     description: 'As AI systems evolve from single models into networks of autonomous agents, integration is the primary bottleneck. Integration needs standards. MCP standardizes how agents connect to systems. Agent-to-Agent (A2A) communication standardizes how they pass work. MCP connects agents to enterprise systems; A2A connects agents to each other so work can move across the enterprise.',
