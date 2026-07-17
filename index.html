@@ -3,8 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Agent Sense - A podcast exploring enterprise AI, agentic systems, and the future of intelligent automation">
+    <meta name="description" content="Agent Sense — Practical conversations with enterprise AI practitioners on agents, MCP, data readiness, governance, and production operations.">
     <title>Agent Sense Podcast - Practical conversations on enterprise AI agents</title>
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://agentsense.xyz/">
+    <meta property="og:title"       content="Agent Sense — Enterprise AI Agents in Practice">
+    <meta property="og:description" content="Short conversations with practitioners on architecture, data, MCP, governance, and production AI operations. Ranked #15 on Feedspot's Best Agentic AI Podcasts.">
+    <meta property="og:image"       content="https://agentsense.xyz/agent_sense_cover.png">
+    <meta property="og:image:alt"   content="Agent Sense podcast cover art — blue and purple gradient with microphone icon">
+    <meta name="twitter:card"       content="summary_large_image">
+    <meta name="twitter:title"      content="Agent Sense — Enterprise AI Agents in Practice">
+    <meta name="twitter:description" content="Short conversations with practitioners on architecture, data, MCP, governance, and production AI operations.">
+    <meta name="twitter:image"      content="https://agentsense.xyz/agent_sense_cover.png">
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Agent Sense Podcast RSS Feed" href="https://anchor.fm/s/f9e8e304/podcast/rss">
     <!-- Cloudflare Web Analytics -->
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b087f865adf94a0e88c604a206b9be3f"}'></script>
     <!-- End Cloudflare Web Analytics -->
@@ -1042,6 +1055,160 @@
             white-space: nowrap;
         }
         .as-chip:hover { background: #e2e5ea; }
+
+        /* Topic Tags */
+        .ep-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin: 0.4rem 0 0.75rem;
+        }
+
+        .ep-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 2px 9px;
+            border-radius: 12px;
+            background: rgba(102,126,234,0.1);
+            border: 1px solid rgba(102,126,234,0.25);
+            color: #4a5ea8;
+            letter-spacing: 0.01em;
+        }
+
+        /* Episode Key Takeaway */
+        .ep-takeaway {
+            background: #f7f8fa;
+            border-left: 3px solid var(--highlight-color);
+            padding: 0.4rem 0.75rem;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.83rem;
+            color: #333;
+            margin-bottom: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .ep-takeaway strong {
+            color: var(--highlight-color);
+        }
+
+        /* Duration chip inline with episode number */
+        .ep-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.1rem;
+        }
+
+        .ep-duration {
+            font-size: 0.75rem;
+            color: #57606a;
+        }
+
+        /* Ratings row */
+        .ratings-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 0.5rem 0 0.9rem;
+        }
+
+        .rating-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            color: #c0c0c0;
+        }
+
+        .rating-badge .rb-value {
+            font-weight: 700;
+            color: #f5c518;
+            font-size: 0.88rem;
+        }
+
+        .rating-badge .rb-label {
+            color: #a0a0b0;
+            font-size: 0.75rem;
+        }
+
+        .rating-divider {
+            width: 1px;
+            height: 16px;
+            background: rgba(255,255,255,0.12);
+        }
+
+        /* Start Here Banner */
+        .start-here-banner {
+            background: var(--card-bg);
+            border: 2px solid rgba(102,126,234,0.3);
+            border-radius: 12px;
+            padding: 1rem 1.4rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .start-here-icon {
+            font-size: 1.6rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .start-here-content h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.2rem;
+        }
+
+        .start-here-content p {
+            font-size: 0.88rem;
+            color: #555;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .start-here-content a {
+            color: #667eea;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .start-here-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Guest headshot */
+        .guest-avatar-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        /* RSS link chip */
+        .rss-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.78rem;
+            color: #f26522;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 0.2rem 0.6rem;
+            border: 1px solid rgba(242,101,34,0.35);
+            border-radius: 12px;
+            transition: background 0.15s;
+        }
+
+        .rss-link:hover {
+            background: rgba(242,101,34,0.08);
+        }
     </style>
 </head>
 <body>
@@ -1064,17 +1231,24 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
-                    <img src="agent_sense_cover.png" alt="Agent Sense Logo" class="logo">
+                    <img src="agent_sense_cover.png" alt="Agent Sense podcast cover art — blue and purple gradient background with microphone and waveform" class="logo">
                 </div>
                 <div class="header-text">
                     <h1>Agent Sense</h1>
                     <p class="tagline">Practical lessons for moving AI agents from demos into enterprise work.</p>
                     <p class="tagline-sub">Short conversations with practitioners on architecture, data, integration, governance, and production operations.</p>
                     <a href="https://open.spotify.com/episode/6yRUHYXgDNdKzaJzCR31EK?si=TX1bDnSKSLOAbiTjfqc5NA" target="_blank" class="cta-primary">🎧 Listen to the latest episode</a>
-                    <a href="https://podcast.feedspot.com/agentic_ai_podcasts/" target="_blank" class="feedspot-badge">
-                        <span class="badge-rank">#15</span>
-                        <span class="badge-text"><strong>Feedspot</strong> · Best Agentic AI Podcasts</span>
-                    </a>
+                    <div class="ratings-row">
+                        <a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214" target="_blank" class="rating-badge" title="Apple Podcasts rating">
+                            <span class="rb-value">★ 5.0</span>
+                            <span class="rb-label">Apple Podcasts</span>
+                        </a>
+                        <div class="rating-divider"></div>
+                        <a href="https://podcast.feedspot.com/agentic_ai_podcasts/" target="_blank" class="feedspot-badge" style="margin:0;">
+                            <span class="badge-rank">#15</span>
+                            <span class="badge-text"><strong>Feedspot</strong> · Best Agentic AI Podcasts · Jul 2025</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1089,12 +1263,13 @@
                 <a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214" target="_blank">🍎 Apple Podcasts</a>
                 <a href="https://music.amazon.com/podcasts/589c7238-f3fd-4672-8c8b-d969db6d9db2/agent-sense-agentic-workflows-operational-ai" target="_blank">🎶 Amazon Music</a>
                 <a href="https://www.iheart.com/podcast/269-agent-sense-agentic-workfl-313101468" target="_blank">❤️ iHeart Radio</a>
+                <a href="https://anchor.fm/s/f9e8e304/podcast/rss" target="_blank" class="rss-link">&#128225; RSS Feed</a>
             </div>
         </section>
 
         <!-- Featured Episode -->
         <section class="featured-episode">
-            <img src="Episode 8 - Governance Catalog/Podcast_cover_ep8.png" alt="Episode 8 Cover" class="featured-episode-img">
+            <img src="Episode 8 - Governance Catalog/Podcast_cover_ep8.png" alt="Episode 8 — Governed Catalog of Agentic AI Assets: dark background with title text and Agent Sense branding" class="featured-episode-img">
             <div class="featured-episode-body">
                 <span class="featured-episode-badge">Latest Episode</span>
                 <div class="featured-episode-meta">
@@ -1180,18 +1355,36 @@
         <!-- Podcast Episodes Section -->
         <section class="episodes-section" id="episodes">
             <h2 class="section-title">Podcast Episodes</h2>
+
+            <!-- Start Here Banner -->
+            <div class="start-here-banner">
+                <div class="start-here-icon">&#127919;</div>
+                <div class="start-here-content">
+                    <h3>New to Agent Sense? Start Here</h3>
+                    <p>First-time listener? Begin with <a href="https://podcasts.apple.com/us/podcast/brains-and-guardrails-what-makes-an-ai-agent/id1861925214?i=1000741582011" target="_blank">Episode 1 — Brains and Guardrails</a> for the foundational framing of what makes an AI agent enterprise-ready. Then follow the arc in order, or jump to the topic most relevant to you — governance (Ep 8), MCP and integration (Ep 5 &amp; 6), or data readiness (Ep 3).</p>
+                </div>
+            </div>
+
             <div class="episodes-grid">
                 
                 <!-- Episode 1 -->
                 <div class="episode-card">
-                    <img src="agent_sense_cover.png" alt="Episode 1 Cover" class="episode-cover">
+                    <img src="agent_sense_cover.png" alt="Episode 1 — Brains and Guardrails: Agent Sense cover showing podcast title on a dark gradient background" class="episode-cover">
                     <div class="episode-content">
-                        <div class="episode-number">Episode 1</div>
+                        <div class="ep-meta-row">
+                            <div class="episode-number">Episode 1</div>
+                        </div>
                         <div class="episode-date">Dec 16, 2025</div>
                         <h3 class="episode-title">Brains and Guardrails: What Makes an AI Agent Enterprise-Ready?</h3>
+                        <div class="ep-tags">
+                            <span class="ep-tag">Architecture</span>
+                            <span class="ep-tag">Guardrails</span>
+                            <span class="ep-tag">Enterprise Readiness</span>
+                        </div>
                         <p class="episode-description">
                             Most enterprise AI pilots look impressive until they touch real systems, data, and accountability. What separates a prototype from a production-ready agent? Trust, guardrails, and the design decisions enterprises skip too early.
                         </p>
+                        <div class="ep-takeaway"><strong>Key takeaway:</strong> The gap between prototype and production is not model quality — it is trust, accountability, and the design decisions most teams skip at the start.</div>
                         <div class="listen-links">
                             <a href="https://open.spotify.com/episode/5fd2mUAPRTbMNYrdi39J13?si=CSrX2S_9Ti6XvG2LI5TMyQ" target="_blank" class="listen-btn spotify">
                                 🎵 Listen on Spotify
@@ -1205,14 +1398,22 @@
 
                 <!-- Episode 2 -->
                 <div class="episode-card">
-                    <img src="agent_sense_ep02_cover.png" alt="Episode 2 Cover" class="episode-cover">
+                    <img src="agent_sense_ep02_cover.png" alt="Episode 2 — Rules, Agents, Humans: Agent Sense cover art on dark gradient background" class="episode-cover">
                     <div class="episode-content">
-                        <div class="episode-number">Episode 2</div>
+                        <div class="ep-meta-row">
+                            <div class="episode-number">Episode 2</div>
+                        </div>
                         <div class="episode-date">Jan 10, 2026</div>
-                        <h3 class="episode-title">Rules, Agents, Humans - A Practical Model for Agentic Workflows</h3>
+                        <h3 class="episode-title">Rules, Agents, Humans — A Practical Model for Agentic Workflows</h3>
+                        <div class="ep-tags">
+                            <span class="ep-tag">Architecture</span>
+                            <span class="ep-tag">Governance</span>
+                            <span class="ep-tag">Workflow Design</span>
+                        </div>
                         <p class="episode-description">
                             Not every decision should go to an agent. Using a banking onboarding scenario, this episode maps out when deterministic rules are the right answer, when agents add value, and where human judgment must stay in the loop.
                         </p>
+                        <div class="ep-takeaway"><strong>Key takeaway:</strong> Agentic workflow design is a three-way split — some decisions belong to rules, some to agents, and some must stay with humans. Knowing which is which is the work.</div>
                         <div class="listen-links">
                             <a href="https://open.spotify.com/episode/2P2A3xcGCot5i3QhNmsfRU?si=iK_lvz3ITGeWbX2TS8KY1Q" target="_blank" class="listen-btn spotify">
                                 🎵 Listen on Spotify
@@ -1226,14 +1427,22 @@
 
                 <!-- Episode 3 -->
                 <div class="episode-card">
-                    <img src="Episode 3/Podcast_cover _ep3_2.png" alt="Episode 3 Cover" class="episode-cover">
+                    <img src="Episode 3/Podcast_cover _ep3_2.png" alt="Episode 3 — Why IT Service Agents Fail in Production: dark-themed episode cover with Agent Sense branding" class="episode-cover">
                     <div class="episode-content">
-                        <div class="episode-number">Episode 3</div>
+                        <div class="ep-meta-row">
+                            <div class="episode-number">Episode 3</div>
+                        </div>
                         <div class="episode-date">Feb 9, 2026</div>
-                        <h3 class="episode-title">Why IT Service Agents Fail in Production, A Data Readiness Problem</h3>
+                        <h3 class="episode-title">Why IT Service Agents Fail in Production — A Data Readiness Problem</h3>
+                        <div class="ep-tags">
+                            <span class="ep-tag">Data</span>
+                            <span class="ep-tag">Data Readiness</span>
+                            <span class="ep-tag">IT Operations</span>
+                        </div>
                         <p class="episode-description">
                             Agent failures in production are usually data failures, not model failures. Using an IT service ticketing example, this episode shows how incomplete ownership records and stale configuration data cause agents to act confidently on wrong information.
                         </p>
+                        <div class="ep-takeaway"><strong>Key takeaway:</strong> Most production agent failures are data failures. Stale records and missing ownership data make agents confidently wrong — and data readiness must be treated as a prerequisite, not an afterthought.</div>
                         <div class="listen-links">
                             <a href="https://open.spotify.com/episode/0REAPEEEhYsgbOaNXSVWZk?si=bmSzCIp5Sy-Sh7WrBPEXtQ" target="_blank" class="listen-btn spotify">
                                 🎵 Listen on Spotify
@@ -1247,14 +1456,22 @@
 
                 <!-- Episode 4 -->
                 <div class="episode-card">
-                    <img src="Episode 4/Podcast_cover_ep4_2.png" alt="Episode 4 Cover" class="episode-cover">
+                    <img src="Episode 4/Podcast_cover_ep4_2.png" alt="Episode 4 — Autonomous Databases: dark-themed episode cover with Agent Sense branding" class="episode-cover">
                     <div class="episode-content">
-                        <div class="episode-number">Episode 4</div>
+                        <div class="ep-meta-row">
+                            <div class="episode-number">Episode 4</div>
+                        </div>
                         <div class="episode-date">Feb 23, 2026</div>
-                        <h3 class="episode-title">Autonomous Databases, Where Autonomy Helps and Where It Hurts</h3>
+                        <h3 class="episode-title">Autonomous Databases — Where Autonomy Helps and Where It Hurts</h3>
+                        <div class="ep-tags">
+                            <span class="ep-tag">Data</span>
+                            <span class="ep-tag">Architecture</span>
+                            <span class="ep-tag">Autonomy</span>
+                        </div>
                         <p class="episode-description">
                             Autonomous databases can self-tune, self-heal, and self-secure — but autonomy at the data layer has limits. Where does it genuinely reduce operational risk, and where does it create new problems?
                         </p>
+                        <div class="ep-takeaway"><strong>Key takeaway:</strong> Autonomy at the data layer reduces noise but cannot replace ownership clarity. Know which decisions are safe to automate and which still need human judgment.</div>
                         <div class="listen-links">
                             <a href="https://open.spotify.com/episode/6iEO0dgdaVWuZRX2kXNjAo?si=WFzeSkjTQkq1KPKIYa9izg" target="_blank" class="listen-btn spotify">
                                 🎵 Listen on Spotify
@@ -1268,14 +1485,23 @@
 
                 <!-- Episode 5 -->
                 <div class="episode-card">
-                    <img src="Episode 5/image.png" alt="Episode 5 Cover" class="episode-cover">
+                    <img src="Episode 5/image.png" alt="Episode 5 — Integration Will Decide Enterprise AI: dark-themed episode cover with MCP and A2A branding" class="episode-cover">
                     <div class="episode-content">
-                        <div class="episode-number">Episode 5</div>
+                        <div class="ep-meta-row">
+                            <div class="episode-number">Episode 5</div>
+                        </div>
                         <div class="episode-date">Mar 25, 2026</div>
                         <h3 class="episode-title">Integration Will Decide Enterprise AI — MCP and Agent-to-Agent</h3>
+                        <div class="ep-tags">
+                            <span class="ep-tag">MCP</span>
+                            <span class="ep-tag">Integration</span>
+                            <span class="ep-tag">Architecture</span>
+                            <span class="ep-tag">A2A</span>
+                        </div>
                         <p class="episode-description">
                             When agents need to reach enterprise systems and coordinate with each other, integration becomes the bottleneck. MCP standardizes agent-to-system connections. Agent-to-Agent (A2A) protocols let work move across the enterprise without custom wiring for every handoff.
                         </p>
+                        <div class="ep-takeaway"><strong>Key takeaway:</strong> Integration is the actual bottleneck in enterprise AI. MCP connects agents to systems; A2A connects agents to each other. Without both, every new workflow requires custom wiring.</div>
                         <div class="listen-links">
                             <a href="https://open.spotify.com/episode/1sd1YlCBRqtplwn0XnhOiH?si=4IRfx9NHTwyq5T5lz36rLg" target="_blank" class="listen-btn spotify">
                                 🎵 Listen on Spotify
@@ -1289,14 +1515,23 @@
 
                 <!-- Episode 6 -->
                 <div class="episode-card">
-                    <img src="Episode 6/Podcast_cover (1).jpg" alt="Episode 6 Cover" class="episode-cover">
+                    <img src="Episode 6/Podcast_cover (1).jpg" alt="Episode 6 — MCP Gateway: Control Layer for Enterprise Agents: dark-themed episode cover with Agent Sense branding" class="episode-cover">
                     <div class="episode-content">
-                        <div class="episode-number">Episode 6</div>
+                        <div class="ep-meta-row">
+                            <div class="episode-number">Episode 6</div>
+                        </div>
                         <div class="episode-date">May 4, 2026</div>
                         <h3 class="episode-title">MCP Gateway: The Control Layer for Enterprise Agents</h3>
+                        <div class="ep-tags">
+                            <span class="ep-tag">MCP</span>
+                            <span class="ep-tag">Governance</span>
+                            <span class="ep-tag">Security</span>
+                            <span class="ep-tag">Architecture</span>
+                        </div>
                         <p class="episode-description">
                             Connecting agents to enterprise systems creates a new exposure: unmanaged access across HR, finance, IT, and operations. This episode covers how an MCP Gateway sits between agents and core systems, enforcing identity, policy, approvals, and audit trails before any action reaches production data.
                         </p>
+                        <div class="ep-takeaway"><strong>Key takeaway:</strong> An MCP Gateway is the control point between agents and enterprise systems — managing identity, approvals, and audit trails so that access is governed rather than open.</div>
                         <div class="listen-links">
                             <a href="https://open.spotify.com/episode/4YrVp3IDZBo1kUCl5pzFEa?si=XROQhr-vQXWuYcetkqrxUQ" target="_blank" class="listen-btn spotify">
                                 🎵 Listen on Spotify
@@ -1310,14 +1545,22 @@
 
                 <!-- Episode 7 -->
                 <div class="episode-card">
-                    <img src="Episode 7/11.png" alt="Episode 7 Cover" class="episode-cover">
+                    <img src="Episode 7/11.png" alt="Episode 7 — From Chat to Computer Use: dark-themed episode cover featuring Vitalii Duk guest appearance and Agent Sense branding" class="episode-cover">
                     <div class="episode-content">
-                        <div class="episode-number">Episode 7</div>
+                        <div class="ep-meta-row">
+                            <div class="episode-number">Episode 7</div>
+                        </div>
                         <div class="episode-date">Jun 21, 2026</div>
-                        <h3 class="episode-title">The Evolution of Agents From Chat to Computer Use</h3>
+                        <h3 class="episode-title">The Evolution of Agents — From Chat to Computer Use</h3>
+                        <div class="ep-tags">
+                            <span class="ep-tag">Architecture</span>
+                            <span class="ep-tag">Computer Use</span>
+                            <span class="ep-tag">Observability</span>
+                        </div>
                         <p class="episode-description">
                             Agents are no longer just answering questions — they are navigating interfaces, executing tasks, and operating across runtime environments. What changes architecturally when agents move from chat to computer use, and what safety and observability requirements follow.
                         </p>
+                        <div class="ep-takeaway"><strong>Key takeaway:</strong> Moving from chat to computer use shifts agents from response to execution. The architecture challenge is not capability — it is making that execution safe, observable, and repeatable at enterprise scale.</div>
                         <div class="listen-links">
                             <a href="https://open.spotify.com/episode/2wkn9bcDINCqHuaIfvmBKb?si=wlGGSBvhTKW4Crd9ir0fjw" target="_blank" class="listen-btn spotify">
                                 🎵 Listen on Spotify
@@ -1331,14 +1574,23 @@
 
                 <!-- Episode 8 -->
                 <div class="episode-card">
-                    <img src="Episode 8 - Governance Catalog/Podcast_cover_ep8.png" alt="Episode 8 Cover" class="episode-cover">
+                    <img src="Episode 8 - Governance Catalog/Podcast_cover_ep8.png" alt="Episode 8 — Governed Catalog of Agentic AI Assets: dark-themed episode cover featuring Jyotsna K Narayanan and Agent Sense branding" class="episode-cover">
                     <div class="episode-content">
-                        <div class="episode-number">Episode 8</div>
+                        <div class="ep-meta-row">
+                            <div class="episode-number">Episode 8</div>
+                        </div>
                         <div class="episode-date">Jul 17, 2026</div>
                         <h3 class="episode-title">Governed Catalog of Agentic AI Assets</h3>
+                        <div class="ep-tags">
+                            <span class="ep-tag">Governance</span>
+                            <span class="ep-tag">MCP</span>
+                            <span class="ep-tag">Architecture</span>
+                            <span class="ep-tag">Reuse</span>
+                        </div>
                         <p class="episode-description">
                             As AI scales past the pilot phase, teams build agents and tools in isolation — creating sprawl, duplicate builds, and unclear ownership. A governed catalog gives enterprises visibility, reuse, and trust signals before agents reach production.
                         </p>
+                        <div class="ep-takeaway"><strong>Key takeaway:</strong> Reuse without governance creates risk. A catalog is not a directory — it is the control point that lets enterprises move fast with confidence rather than rebuilding from scratch every time.</div>
                         <div class="listen-links">
                             <a href="https://open.spotify.com/episode/6yRUHYXgDNdKzaJzCR31EK?si=TX1bDnSKSLOAbiTjfqc5NA" target="_blank" class="listen-btn spotify">
                                 🎵 Listen on Spotify
@@ -1352,11 +1604,18 @@
 
                 <!-- Episode 9 -->
                 <div class="episode-card">
-                    <img src="agent_sense_cover.png" alt="Episode 9 Cover" class="episode-cover">
+                    <img src="agent_sense_cover.png" alt="Episode 9 — Ambient Agents: Monitor, Decide, Escalate: Agent Sense cover art placeholder for upcoming episode" class="episode-cover">
                     <div class="episode-content">
-                        <div class="episode-number">Episode 9</div>
+                        <div class="ep-meta-row">
+                            <div class="episode-number">Episode 9</div>
+                        </div>
                         <div class="episode-date"><span class="coming-soon">Coming Soon</span></div>
                         <h3 class="episode-title">Ambient Agents: Monitor, Decide, Escalate</h3>
+                        <div class="ep-tags">
+                            <span class="ep-tag">Architecture</span>
+                            <span class="ep-tag">Governance</span>
+                            <span class="ep-tag">Autonomy</span>
+                        </div>
                         <p class="episode-description">
                             Background agents that monitor continuously, act within defined boundaries, and escalate when conditions change present a different design challenge. When are ambient agents appropriate, how should their autonomy be bounded, and what escalation paths keep humans in control?
                         </p>
@@ -1375,7 +1634,7 @@
                 <!-- Guest: Vitalii Duk -->
                 <div class="guest-card">
                     <div class="guest-card-header">
-                        <div class="guest-avatar-placeholder">VD</div>
+                        <div class="guest-avatar-placeholder" aria-label="Vitalii Duk initials avatar">VD</div>
                         <div>
                             <h3><a href="https://www.linkedin.com/in/vit-d/" target="_blank">Vitalii Duk 🔗</a></h3>
                             <p class="guest-role">Founder &amp; CEO, Dynamiq</p>
@@ -1390,7 +1649,7 @@
                 <!-- Guest: Jyotsna K Narayanan -->
                 <div class="guest-card">
                     <div class="guest-card-header">
-                        <div class="guest-avatar-placeholder">JN</div>
+                        <img src="Episode 8 - Governance Catalog/Jyotsna.jpeg" alt="Jyotsna K Narayanan — Technical Product Manager at IBM watsonx Orchestrate" class="guest-avatar-img">
                         <div>
                             <h3><a href="https://www.linkedin.com/in/jyotsnanarayanan/" target="_blank">Jyotsna K Narayanan 🔗</a></h3>
                             <p class="guest-role">Technical Product Management, IBM watsonx Orchestrate</p>
@@ -1418,6 +1677,7 @@
                 <a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214" target="_blank">Subscribe on Apple</a>
                 <a href="https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3" target="_blank">Subscribe on Spotify</a>
                 <a href="https://www.linkedin.com/in/monika-aggarwal-3b82816/" target="_blank">Message on LinkedIn</a>
+                <a href="https://anchor.fm/s/f9e8e304/podcast/rss" target="_blank" style="color: #f26522;">RSS Feed</a>
             </div>
             <p style="font-size: 0.75rem; color: #57606a; margin-top: 0.75rem;" id="last-updated">Last updated: —</p>
             <p style="font-size: 0.72rem; color: #3a3a4a; margin-top: 0.6rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.6rem;">
