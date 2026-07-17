@@ -1055,7 +1055,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#hosts">Hosts</a></li>
                 <li><a href="#guests">Guests</a></li>
-                <li><a href="https://www.linkedin.com/in/monika-aggarwal-3b82816/" target="_blank" class="nav-subscribe">Subscribe</a></li>
+                <li><a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214" target="_blank" class="nav-subscribe">Subscribe</a></li>
             </ul>
         </div>
     </nav>
@@ -1414,40 +1414,43 @@
                 The views and opinions expressed on this podcast are based solely on our personal experience and do not represent, and are not sponsored or endorsed by, IBM or any other employer.
             </p>
             <div class="social-links">
-                <a href="https://www.linkedin.com/company/agent-sense/" target="_blank">LinkedIn</a>
-                <a href="https://www.linkedin.com/in/monika-aggarwal-3b82816/" target="_blank">Subscribe</a>
-                <a href="https://www.linkedin.com/in/monika-aggarwal-3b82816/" target="_blank">Contact</a>
-                <a href="architecture.html" target="_blank">Architecture</a>
+                <a href="https://www.linkedin.com/company/agent-sense/" target="_blank">Follow on LinkedIn</a>
+                <a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214" target="_blank">Subscribe on Apple</a>
+                <a href="https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3" target="_blank">Subscribe on Spotify</a>
+                <a href="https://www.linkedin.com/in/monika-aggarwal-3b82816/" target="_blank">Message on LinkedIn</a>
             </div>
             <p style="font-size: 0.75rem; color: #57606a; margin-top: 0.75rem;" id="last-updated">Last updated: —</p>
+            <p style="font-size: 0.72rem; color: #3a3a4a; margin-top: 0.6rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.6rem;">
+                Built with <a href="architecture.html" target="_blank" style="color: #a0a0c0; text-decoration: none; border-bottom: 1px solid rgba(160,160,192,0.4);">IBM Bob</a> · <a href="architecture.html" target="_blank" style="color: #a0a0c0; text-decoration: none; border-bottom: 1px solid rgba(160,160,192,0.4);">How this site was built →</a>
+            </p>
         </div>
     </footer>
 
     <!-- ── Agent Chat Widget HTML ── -->
-    <button id="as-chat-btn" title="Ask AgentSenseGuide" aria-label="Open AgentSenseGuide">
+    <button id="as-chat-btn" title="Explore Agent Sense" aria-label="Explore Agent Sense episodes">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2C6.477 2 2 6.104 2 11.167c0 2.914 1.39 5.52 3.573 7.27L4.5 22l4.167-2.083A10.7 10.7 0 0 0 12 20.333C17.523 20.333 22 16.229 22 11.167S17.523 2 12 2z"/>
         </svg>
     </button>
 
-    <div id="as-chat-panel" class="hidden" role="dialog" aria-label="AgentSenseGuide Chat">
+    <div id="as-chat-panel" class="hidden" role="dialog" aria-label="Explore Agent Sense">
         <div id="as-chat-header">
             <div>
-                <div class="as-hname">AgentSenseGuide</div>
-                <div class="as-hsub">Ask about enterprise AI agents, data readiness, governance, integration, MCP, observability, and more</div>
+                <div class="as-hname">Explore Agent Sense</div>
+                <div class="as-hsub">Find episodes by topic, guest, or enterprise challenge</div>
             </div>
-            <button id="as-close-btn" title="Close chat" aria-label="Close chat">&#x2715;</button>
+            <button id="as-close-btn" title="Close" aria-label="Close">&#x2715;</button>
         </div>
         <div id="as-messages"></div>
         <div id="as-chips">
-            <span class="as-chip">What episodes are available?</span>
+            <span class="as-chip">Where should I start?</span>
+            <span class="as-chip">Which episode covers governance?</span>
             <span class="as-chip">Tell me about MCP</span>
-            <span class="as-chip">Data readiness</span>
-            <span class="as-chip">Who are the hosts?</span>
+            <span class="as-chip">Who are the guests?</span>
             <span class="as-chip">Latest episode</span>
         </div>
         <div id="as-input-row">
-            <input id="as-input" type="text" placeholder="Ask about Agent Sense episodes…" autocomplete="off" />
+            <input id="as-input" type="text" placeholder="Find an episode by topic or challenge…" autocomplete="off" />
             <button id="as-send-btn" title="Send" aria-label="Send">&#x27A4;</button>
         </div>
     </div>
@@ -1506,7 +1509,9 @@
                 disclaimer: 'The views and opinions expressed on this podcast are based solely on our personal experience and do not represent, and are not sponsored or endorsed by, IBM or any other employer.',
                 social: {
                     linkedin: 'https://www.linkedin.com/company/agent-sense/',
-                    contact: 'https://www.linkedin.com/in/monika-aggarwal-3b82816/'
+                    contact: 'https://www.linkedin.com/in/monika-aggarwal-3b82816/',
+                    apple: 'https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214',
+                    spotify: 'https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3'
                 },
                 platforms: {
                     spotify: 'https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3',
@@ -1724,7 +1729,7 @@
         }
 
         function greet() {
-            return 'Hi! I\'m AgentSenseGuide. Ask me about enterprise AI agents, data readiness, governance, integration, MCP, observability, or any topic covered across Agent Sense episodes.';
+            return 'Use this to find Agent Sense episodes by topic, guest, or enterprise challenge — governance, data readiness, MCP, integration, computer use, and more. Try "Where should I start?" or ask about a specific topic.';
         }
 
         function epCard(ep) {
@@ -1869,11 +1874,11 @@
             }
 
             // LinkedIn / social / contact
-            if (/\b(linkedin|social|contact|follow|connect|reach)\b/.test(lq)) {
+            if (/\b(linkedin|social|contact|follow|connect|reach|message)\b/.test(lq)) {
                 var s = AS_KB.podcast.social;
-                return 'Find Agent Sense on social:<br>' +
-                    '<a class="as-ep-tag" href="' + s.linkedin + '" target="_blank">Agent Sense LinkedIn Page</a> ' +
-                    '<a class="as-ep-tag" href="' + s.contact  + '" target="_blank">Contact Monika</a>';
+                return 'Connect with Agent Sense:<br>' +
+                    '<a class="as-ep-tag" href="' + s.linkedin + '" target="_blank">Follow on LinkedIn</a> ' +
+                    '<a class="as-ep-tag" href="' + s.contact  + '" target="_blank">Message on LinkedIn</a>';
             }
 
             // Latest / newest episode
