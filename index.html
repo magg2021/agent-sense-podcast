@@ -1193,6 +1193,104 @@
             flex-shrink: 0;
         }
 
+        /* Season 2 Video Badge */
+        .season2-video-badge {
+            position: absolute;
+            top: 1.1rem;
+            right: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: rgba(10, 10, 25, 0.72);
+            border: 1.5px solid rgba(255, 255, 255, 0.45);
+            border-radius: 30px;
+            padding: 0.55rem 1.2rem 0.55rem 0.85rem;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            text-decoration: none;
+            box-shadow: 0 2px 16px rgba(255,255,255,0.08);
+            animation: badge-pulse 2.8s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        @keyframes badge-pulse {
+            0%, 100% { box-shadow: 0 2px 16px rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.45); }
+            50%       { box-shadow: 0 4px 28px rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.85); }
+        }
+
+        .s2-rec-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #ffffff;
+            flex-shrink: 0;
+            animation: rec-blink 1.4s ease-in-out infinite;
+        }
+
+        @keyframes rec-blink {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0.2; }
+        }
+
+        .s2-badge-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.3;
+        }
+
+        .s2-badge-label {
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #ffffff;
+        }
+
+        .s2-badge-sub {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #ffffff;
+            letter-spacing: 0.01em;
+        }
+
+        .s2-badge-platforms {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.8);
+            margin-top: 0.1rem;
+        }
+
+        .s2-badge-platforms span,
+        .s2-badge-platforms a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+        }
+
+        .s2-badge-platforms a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .s2-badge-sep {
+            color: rgba(255,255,255,0.35);
+        }
+
+        @media (max-width: 768px) {
+            .season2-video-badge {
+                top: 0.6rem;
+                right: 0.75rem;
+                padding: 0.4rem 0.9rem 0.4rem 0.65rem;
+            }
+            .s2-badge-label { font-size: 0.72rem; }
+            .s2-badge-platforms { font-size: 0.7rem; }
+        }
+
     </style>
 </head>
 <body>
@@ -1211,7 +1309,19 @@
         </div>
     </nav>
 
-    <header>
+    <header style="position: relative;">
+        <!-- Season 2 video announcement badge -->
+        <div class="season2-video-badge" title="Season 2 is now on video — watch on Spotify and YouTube">
+            <span class="s2-rec-dot"></span>
+            <span class="s2-badge-text">
+                <span class="s2-badge-label">Season 2 · Now on Video</span>
+                <span class="s2-badge-platforms">
+                    <a href="https://open.spotify.com/show/6LS4OZj7EsSrdVC806e2V3" target="_blank">🎵 Spotify</a>
+                    <span class="s2-badge-sep">·</span>
+                    <a href="https://www.youtube.com/@AgentSense-2026" target="_blank">▶ YouTube</a>
+                </span>
+            </span>
+        </div>
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
@@ -1247,6 +1357,7 @@
                 <a href="https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214" target="_blank">🍎 Apple Podcasts</a>
                 <a href="https://music.amazon.com/podcasts/589c7238-f3fd-4672-8c8b-d969db6d9db2/agent-sense-agentic-workflows-operational-ai" target="_blank">🎶 Amazon Music</a>
                 <a href="https://www.iheart.com/podcast/269-agent-sense-agentic-workfl-313101468" target="_blank">❤️ iHeart Radio</a>
+                <a href="https://www.youtube.com/@AgentSense-2026" target="_blank">▶ YouTube</a>
             </div>
         </section>
 
@@ -1256,7 +1367,7 @@
             <div class="featured-episode-body">
                 <span class="featured-episode-badge">Latest Episode · Season 2</span>
                 <div class="featured-episode-meta">
-                    <span class="featured-episode-num">Episode 11</span>
+                    <span class="featured-episode-num">Season 2, Episode 1</span>
                     <span class="featured-episode-date">Aug 23, 2026</span>
                 </div>
                 <h2 class="featured-episode-title">Agent Memory is More Than RAG</h2>
@@ -1654,8 +1765,7 @@
                     <img src="Season 2_Episode1 - Ran Aroussi (Agent Memory)/Season2_Episode1.jpg" alt="Episode 11 — Agent Memory is More Than RAG: episode cover featuring Agent Sense branding" class="episode-cover">
                     <div class="episode-content">
                         <div class="ep-meta-row">
-                            <div class="episode-number">Episode 11</div>
-                            <span class="ep-tag" style="background:#e8f0fe;color:#1a56db;font-weight:600;">Season 2 · Ep 1</span>
+                            <div class="episode-number">Season 2, Episode 1</div>
                         </div>
                         <div class="episode-date">Aug 23, 2026</div>
                         <h3 class="episode-title">Agent Memory is More Than RAG</h3>
@@ -1740,7 +1850,7 @@
                 <!-- Guest: Ran Aroussi -->
                 <div class="guest-card">
                     <div class="guest-card-header">
-                        <img src="Episode 11 - Ran Aroussi (Agent Memory)/RanAroussiPhoto.png" alt="Ran Aroussi — Founder, MUXI" class="guest-avatar-img">
+                        <img src="Season 2_Episode1 - Ran Aroussi (Agent Memory)/RanAroussiPhoto.png" alt="Ran Aroussi — Founder, MUXI" class="guest-avatar-img">
                         <div>
                             <h3><a href="https://www.linkedin.com/in/aroussi/" target="_blank">Ran Aroussi 🔗</a></h3>
                             <p class="guest-role">Founder, MUXI</p>
@@ -1749,7 +1859,7 @@
                     <p class="guest-bio">
                         Ran has spent more than 30 years building production systems and now focuses on helping enterprises deploy, manage, and operate agents at scale. He is the creator of yfinance, the most widely used open source financial data library, and founded MUXI — the open infrastructure that fills the gap between raw LLMs and production systems.
                     </p>
-                    <a href="https://open.spotify.com/episode/3AR1q6NDED44emhpdesl8j?si=wODYee8jRPySns1JwbgmBg" target="_blank" class="guest-episode-tag">Episode 11 — Agent Memory is More Than RAG</a>
+                    <a href="https://open.spotify.com/episode/3AR1q6NDED44emhpdesl8j?si=wODYee8jRPySns1JwbgmBg" target="_blank" class="guest-episode-tag">Season 2, Episode 1 — Agent Memory is More Than RAG</a>
                 </div>
 
             </div>
@@ -1942,7 +2052,7 @@
                     bio: 'Ran has spent more than 30 years building production systems and now focuses on helping enterprises deploy, manage, and operate agents at scale. He is the creator of yfinance, the most widely used open source financial data library, and founded MUXI — the open infrastructure that fills the gap between raw LLMs and production systems.',
                     linkedin: 'https://www.linkedin.com/in/aroussi/',
                     episode: 11,
-                    episodeLabel: 'Episode 11 — Agent Memory is More Than RAG',
+                    episodeLabel: 'Season 2, Episode 1 — Agent Memory is More Than RAG',
                     spotify: 'https://open.spotify.com/episode/3AR1q6NDED44emhpdesl8j'
                 }
             ],
