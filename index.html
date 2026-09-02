@@ -9,7 +9,7 @@
     <meta property="og:type"        content="website">
     <meta property="og:url"         content="https://agentsense.xyz/">
     <meta property="og:title"       content="Agent Sense — Enterprise AI Agents in Practice">
-    <meta property="og:description" content="Short conversations with practitioners on architecture, data, MCP, governance, and production AI operations. Ranked #15 on Feedspot's Best Agentic AI Podcasts.">
+    <meta property="og:description" content="Short conversations with practitioners on architecture, data, MCP, governance, and production AI operations. Ranked in Top 28 on Feedspot's Best Agentic AI Podcasts.">
     <meta property="og:image"       content="https://agentsense.xyz/agent_sense_cover.png">
     <meta property="og:image:alt"   content="Agent Sense podcast cover art — blue and purple gradient with microphone icon">
     <meta name="twitter:card"       content="summary_large_image">
@@ -1341,7 +1341,7 @@
                         </a>
                         <div class="rating-divider"></div>
                         <a href="https://podcast.feedspot.com/agentic_ai_podcasts/" target="_blank" class="feedspot-badge" style="margin:0;">
-                            <span class="badge-rank">#15</span>
+                            <span class="badge-rank">Top 28</span>
                             <span class="badge-text"><strong>Feedspot</strong> · Best Agentic AI Podcasts · Jul 2025</span>
                         </a>
                     </div>
@@ -1971,7 +1971,7 @@
                 name: 'Agent Sense',
                 tagline: 'Smart AI Meets Human Sense',
                 description: 'A non-monetized podcast hosted by Monika Aggarwal and Frank Chavez. Practical conversations on enterprise AI agents, governed workflows, integration, data readiness, and operating models for real business adoption.',
-                feedspot: 'Ranked #15 on Feedspot\'s Best Agentic AI Podcasts list.',
+                feedspot: 'Ranked in the Top 28 on Feedspot\'s Best Agentic AI Podcasts list.',
                 feedspotUrl: 'https://podcast.feedspot.com/agentic_ai_podcasts/',
                 disclaimer: 'The views and opinions expressed on this podcast are based solely on our personal experience and do not represent, and are not sponsored or endorsed by, IBM or any other employer.',
                 social: {
@@ -2369,7 +2369,7 @@
             }
 
             // Feedspot / ranking / award
-            if (/\b(feedspot|rank(ed|ing)?|award|#15|best podcast|recognition)\b/.test(lq)) {
+            if (/\b(feedspot|rank(ed|ing)?|award|#15|top.?28|best podcast|recognition)\b/.test(lq)) {
                 return AS_KB.podcast.feedspot + '<br><a class="as-ep-tag" href="' + AS_KB.podcast.feedspotUrl + '" target="_blank">View on Feedspot</a>';
             }
 
