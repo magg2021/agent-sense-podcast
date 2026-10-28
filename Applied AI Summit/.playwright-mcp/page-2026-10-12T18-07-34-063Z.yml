@@ -1,0 +1,138 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: IBM BOB
+      - generic [ref=e5]:
+        - 'heading "When Physicians Cannot Connect the Dots: Governed Healthcare Agent" [level=1] [ref=e6]'
+        - paragraph [ref=e7]: Applied AI Summit 2026 • Live Orchestration & Specialist Routing Demo
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - button "⚠️ LOOSE AUTONOMY" [ref=e10] [cursor=pointer]:
+          - generic [ref=e11]: ⚠️
+          - text: LOOSE AUTONOMY
+        - button "🛡️ GOVERNED (IBM BOB)" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 🛡️
+          - text: GOVERNED (IBM BOB)
+      - button "🔄 Reset Demo" [ref=e14] [cursor=pointer]:
+        - generic [ref=e15]: 🔄
+        - text: Reset Demo
+      - generic [ref=e16]: "Speaker: Monika Aggarwal"
+  - main [ref=e17]:
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - heading "💬 Care Navigation Assistant" [level=2] [ref=e20]:
+          - generic [ref=e21]: 💬
+          - text: Care Navigation Assistant
+        - generic [ref=e22]: Patient Portal • Maya Lin
+      - generic [ref=e23]:
+        - generic [ref=e24]: "Conference Demo Prompts (Click to Run):"
+        - generic [ref=e25]:
+          - button "🎯 1. Headache & Nausea (Day 3/4 Test)" [active] [ref=e26] [cursor=pointer]
+          - button "📋 2. Complete Intake Response" [ref=e27] [cursor=pointer]
+          - button "🚨 3. Emergency Red Flag Trigger" [ref=e28] [cursor=pointer]
+          - button "🔄 Clear & Restart" [ref=e29] [cursor=pointer]
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - generic [ref=e32]: 🤖 PCP COORDINATOR AGENT
+          - text: Hello Maya. I am your Care Navigation Assistant. How are you feeling today, or what symptoms would you like to discuss?
+          - generic [ref=e33]: "Boundary: Care-navigation assistant. Not an autonomous diagnostic tool or physician replacement."
+        - generic [ref=e84]:
+          - generic [ref=e85]: 👤 MAYA LIN (PATIENT)
+          - text: I have a headache and feel nauseous.
+        - generic [ref=e104]:
+          - generic [ref=e105]: 🤖 PCP COORDINATOR AGENT
+          - paragraph [ref=e106]: "I understand you are experiencing a headache along with nausea. To connect you with the appropriate care team, I need to understand a few more details:"
+          - generic [ref=e107]:
+            - heading "📋 Required Clinical Intake Context" [level=4] [ref=e108]
+            - list [ref=e109]:
+              - listitem [ref=e110]:
+                - text: •
+                - strong [ref=e111]: "Onset:"
+                - text: When did this headache start?
+              - listitem [ref=e112]:
+                - text: •
+                - strong [ref=e113]: "Severity:"
+                - text: How severe is the pain on a scale of 1 to 10?
+              - listitem [ref=e114]:
+                - text: •
+                - strong [ref=e115]: "Progression:"
+                - text: Is it constant, throbbing, or getting steadily worse?
+              - listitem [ref=e116]:
+                - text: •
+                - strong [ref=e117]: "Warning Signs:"
+                - text: Any fever, stiff neck, vision changes, or weakness?
+          - paragraph [ref=e118]:
+            - text: 💡
+            - emphasis [ref=e119]: "Tip: Click preset #2 above to submit complete intake."
+          - generic [ref=e120]: "Boundary: Care-navigation assistant. Not an autonomous diagnostic tool."
+      - generic [ref=e34]:
+        - textbox "Describe your symptoms (e.g. 'I have a headache and feel nauseous')..." [ref=e35]
+        - button "Send" [ref=e36] [cursor=pointer]
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - heading "Active Multi-Agent Orchestration Nodes" [level=3] [ref=e40]
+          - generic [ref=e41]:
+            - generic [ref=e42]: Deterministic Control
+            - generic [ref=e44]: Model Reasoning
+            - generic [ref=e46]: Human Review
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - generic [ref=e50]: Deterministic
+            - generic [ref=e51]: Emergency Gate
+            - generic [ref=e52]: Passed (Non-Emergency)
+          - generic [ref=e53]:
+            - generic [ref=e54]: Model Reasoning
+            - generic [ref=e55]: PCP Orchestrator
+            - generic [ref=e56]: Drafting Intake Questions
+          - generic [ref=e57]:
+            - generic [ref=e58]: Deterministic
+            - generic [ref=e59]: Intake Contract
+            - generic [ref=e60]: ❌ Contract Rejected
+          - generic [ref=e61]:
+            - generic [ref=e62]: MCP Gateway
+            - generic [ref=e63]: Tool Policy Auth
+            - generic [ref=e64]: Idle
+          - generic [ref=e65]:
+            - generic [ref=e66]: Specialist Agent
+            - generic [ref=e67]: Neurology Support
+            - generic [ref=e68]: Idle
+          - generic [ref=e69]:
+            - generic [ref=e70]: Specialist Agent
+            - generic [ref=e71]: GI Support
+            - generic [ref=e72]: Idle
+          - generic [ref=e73]:
+            - generic [ref=e74]: Human-In-The-Loop
+            - generic [ref=e75]: Clinician Review
+            - generic [ref=e76]: Idle
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - heading "🔍 Real-Time Trajectory Trace (Audit Log)" [level=3] [ref=e79]:
+            - generic [ref=e80]: 🔍
+            - text: Real-Time Trajectory Trace (Audit Log)
+          - generic [ref=e81]: 4 steps executed
+        - generic [ref=e82]:
+          - generic [ref=e86]:
+            - generic [ref=e87]:
+              - generic [ref=e88]: "[DETERMINISTIC_CONTROL] Step 01"
+              - generic [ref=e89]: PASSED
+            - generic [ref=e90]: EmergencySafetyGate ➔ Red-Flag Screening
+            - generic [ref=e91]: "Screened query for acute life-threatening triggers (thunderclap, acute neuro deficit, chest pain). Result: Non-emergency."
+          - generic [ref=e92]:
+            - generic [ref=e93]:
+              - generic [ref=e94]: "[MODEL_REASONING] Step 02"
+              - generic [ref=e95]: COMPLETED
+            - generic [ref=e96]: PCP_Orchestrator_LLM ➔ Clinical Entity Extraction
+            - generic [ref=e97]: "Identified symptoms: [\"headache\", \"nausea\"]. Mapped clinical category: Neurological / Systemic."
+          - generic [ref=e98]:
+            - generic [ref=e99]:
+              - generic [ref=e100]: "[DETERMINISTIC_CONTROL] Step 03"
+              - generic [ref=e101]: REJECTED
+            - generic [ref=e102]: IntakeContractValidator ➔ Handoff Contract Verification
+            - generic [ref=e103]: "Specialist routing BLOCKED. Missing mandatory fields: [onset_time, severity_scale_1_to_10, progression_pattern, red_flag_screening]."
+          - generic [ref=e121]:
+            - generic [ref=e122]:
+              - generic [ref=e123]: "[MODEL_REASONING] Step 04"
+              - generic [ref=e124]: WAITING_FOR_PATIENT
+            - generic [ref=e125]: PCP_Orchestrator_LLM ➔ Draft Intake Questionnaire
+            - generic [ref=e126]: Model drafts empathetic, structured intake questions to collect the missing data parameters without speculative routing.

@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PCP Coordinator & Specialist Routing Demo | Applied AI Summit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-blue: #0284c7;
+      --accent-cyan: #38bdf8;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --accent-purple: #a855f7;
+      --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background: #0b1120;
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-titles h1 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .brand-titles p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Mode Switcher Banner */
+    .mode-toggle-card {
+      display: flex;
+      align-items: center;
+      background: #1e293b;
+      border: 1px solid #475569;
+      border-radius: 30px;
+      padding: 3px;
+      position: relative;
+    }
+
+    .mode-btn {
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-radius: 20px;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mode-btn.active.loose {
+      background: var(--accent-rose);
+      color: #fff;
+      box-shadow: 0 0 14px rgba(244, 63, 94, 0.4);
+    }
+
+    .mode-btn.active.governed {
+      background: var(--accent-emerald);
+      color: #fff;
+      box-shadow: 0 0 14px rgba(16, 185, 129, 0.4);
+    }
+
+    .reset-btn-header {
+      background: #334155;
+      color: #f1f5f9;
+      border: 1px solid #475569;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .reset-btn-header:hover {
+      background: #475569;
+      border-color: var(--accent-cyan);
+      color: #fff;
+    }
+
+    .speaker-tag {
+      font-size: 12px;
+      color: var(--accent-cyan);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    /* Main Container */
+    .app-layout {
+      display: grid;
+      grid-template-columns: 460px 1fr;
+      gap: 18px;
+      padding: 18px 24px;
+      flex: 1;
+      max-width: 1700px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    @media (max-width: 1100px) {
+      .app-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left Pane: Patient Portal */
+    .patient-pane {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    .pane-header {
+      padding: 14px 18px;
+      background: #111e33;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pane-header h2 {
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .patient-badge {
+      font-size: 11px;
+      background: #0284c7;
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    /* Scenario Quick Presets */
+    .preset-bar {
+      padding: 10px 14px;
+      background: #152238;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .preset-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .preset-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .preset-pill {
+      font-size: 11px;
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: #cbd5e1;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preset-pill:hover {
+      background: #334155;
+      color: #fff;
+      border-color: var(--accent-cyan);
+    }
+
+    /* Chat Messages Window */
+    .chat-window {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-height: calc(100vh - 330px);
+      min-height: 440px;
+      background: #0d1527;
+    }
+
+    .msg {
+      max-width: 88%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+      animation: fadeIn 0.25s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .msg.patient {
+      align-self: flex-end;
+      background: #0284c7;
+      color: #fff;
+      border-bottom-right-radius: 2px;
+    }
+
+    .msg.agent {
+      align-self: flex-start;
+      background: #1e293b;
+      color: var(--text-main);
+      border: 1px solid var(--card-border);
+      border-bottom-left-radius: 2px;
+    }
+
+    .msg.agent.loose-warning {
+      border-color: var(--accent-rose);
+      background: #2a1520;
+    }
+
+    .msg-meta {
+      font-size: 10px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    .msg.agent .msg-meta {
+      color: var(--accent-cyan);
+    }
+
+    .msg.patient .msg-meta {
+      color: #bae6fd;
+    }
+
+    .disclaimer-box {
+      margin-top: 8px;
+      padding: 6px 10px;
+      background: rgba(0,0,0,0.3);
+      border-left: 2px solid var(--accent-amber);
+      font-size: 11px;
+      color: #cbd5e1;
+    }
+
+    .intake-questionnaire-card {
+      margin-top: 10px;
+      background: #111d33;
+      border: 1px solid #2563eb;
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .intake-questionnaire-card h4 {
+      font-size: 12px;
+      color: var(--accent-cyan);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .intake-questionnaire-card ul {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+
+    .intake-questionnaire-card li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .intake-questionnaire-card li::before {
+      content: "•";
+      color: var(--accent-cyan);
+      font-weight: bold;
+    }
+
+    /* Input area */
+    .chat-input-box {
+      padding: 12px 16px;
+      background: #111e33;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      gap: 10px;
+    }
+
+    .chat-input-box input {
+      flex: 1;
+      background: #0f172a;
+      border: 1px solid #334155;
+      padding: 10px 14px;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 13px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .chat-input-box input:focus {
+      border-color: var(--accent-cyan);
+    }
+
+    .send-btn {
+      background: #0284c7;
+      color: #fff;
+      border: none;
+      padding: 0 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 13px;
+      transition: background 0.2s;
+    }
+
+    .send-btn:hover {
+      background: #0369a1;
+    }
+
+    /* Right Pane: Orchestration Inspector */
+    .inspector-pane {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Architecture Visualizer Box */
+    .arch-status-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+
+    .arch-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .arch-header h3 {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+    }
+
+    .arch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+    }
+
+    .arch-node {
+      background: #0f172a;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .arch-node .node-type {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .arch-node .node-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .arch-node .node-status {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .arch-node.active-deterministic {
+      border-color: var(--accent-amber);
+      background: rgba(245, 158, 11, 0.1);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+    }
+    .arch-node.active-deterministic .node-type { color: var(--accent-amber); }
+
+    .arch-node.active-reasoning {
+      border-color: var(--accent-cyan);
+      background: rgba(56, 189, 248, 0.1);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+    }
+    .arch-node.active-reasoning .node-type { color: var(--accent-cyan); }
+
+    .arch-node.active-blocked {
+      border-color: var(--accent-rose);
+      background: rgba(244, 63, 94, 0.1);
+      box-shadow: 0 0 10px rgba(244, 63, 94, 0.2);
+    }
+    .arch-node.active-blocked .node-type { color: var(--accent-rose); }
+
+    .arch-node.active-human {
+      border-color: var(--accent-purple);
+      background: rgba(168, 85, 247, 0.1);
+      box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+    }
+    .arch-node.active-human .node-type { color: var(--accent-purple); }
+
+    /* Trajectory Trace Timeline */
+    .trace-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .trace-header {
+      padding: 12px 18px;
+      background: #111e33;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .trace-header h3 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .trace-list {
+      padding: 14px 18px;
+      overflow-y: auto;
+      max-height: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .trace-item {
+      background: #0d1527;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      position: relative;
+      animation: fadeIn 0.25s ease forwards;
+    }
+
+    .trace-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .step-badge {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .badge-det {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-amber);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .badge-model {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .badge-status {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .status-passed { background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); }
+    .status-rejected { background: rgba(244, 63, 94, 0.2); color: var(--accent-rose); }
+    .status-warning { background: rgba(245, 158, 11, 0.2); color: var(--accent-amber); }
+    .status-human { background: rgba(168, 85, 247, 0.2); color: var(--accent-purple); }
+
+    .trace-comp {
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .trace-desc {
+      color: #94a3b8;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    /* Packet Preview Box */
+    .packet-view {
+      margin-top: 8px;
+      background: #060b14;
+      border: 1px dashed #334155;
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      color: #38bdf8;
+      white-space: pre-wrap;
+    }
+
+    /* Human in the loop action banner */
+    .clinician-gate-banner {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(2, 132, 199, 0.15));
+      border: 1px solid var(--accent-purple);
+      border-radius: 8px;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .clinician-gate-banner p {
+      font-size: 12px;
+      color: #e2e8f0;
+    }
+
+    .approve-btn {
+      background: var(--accent-purple);
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .approve-btn:hover {
+      background: #9333ea;
+    }
+
+    /* Legend */
+    .legend-row {
+      display: flex;
+      gap: 14px;
+      font-size: 11px;
+      color: var(--text-muted);
+      padding: 8px 12px;
+      background: #111e33;
+      border-radius: 6px;
+      align-items: center;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-logo">IBM BOB</div>
+      <div class="brand-titles">
+        <h1>When Physicians Cannot Connect the Dots: Governed Healthcare Agent</h1>
+        <p>Applied AI Summit 2026 • Live Orchestration & Specialist Routing Demo</p>
+      </div>
+    </div>
+
+    <div class="header-controls">
+      <div class="mode-toggle-card">
+        <button id="btnLoose" class="mode-btn" onclick="setMode('loose')">
+          <span>⚠️</span> LOOSE AUTONOMY
+        </button>
+        <button id="btnGoverned" class="mode-btn active governed" onclick="setMode('governed')">
+          <span>🛡️</span> GOVERNED (IBM BOB)
+        </button>
+      </div>
+      <button class="reset-btn-header" onclick="resetDemo()" title="Clear chat, traces, and reset nodes for a fresh presentation run">
+        <span>🔄</span> Reset Demo
+      </button>
+      <div class="speaker-tag">Speaker: Monika Aggarwal</div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="app-layout">
+    
+    <!-- Left Column: Patient Experience Interface -->
+    <section class="patient-pane">
+      <div class="pane-header">
+        <h2>
+          <span>💬</span> Care Navigation Assistant
+        </h2>
+        <span class="patient-badge">Patient Portal • Maya Lin</span>
+      </div>
+
+      <!-- Quick Test Scenarios -->
+      <div class="preset-bar">
+        <div class="preset-label">Conference Demo Prompts (Click to Run):</div>
+        <div class="preset-pills">
+          <button class="preset-pill" onclick="sendPreset('I have a headache and feel nauseous.')">
+            🎯 1. Headache & Nausea (Day 3/4 Test)
+          </button>
+          <button class="preset-pill" onclick="sendPreset('Started yesterday afternoon (~24h), severity is 6/10, constant dull throbbing. No fever, no stiff neck, no vision loss.')">
+            📋 2. Complete Intake Response
+          </button>
+          <button class="preset-pill" onclick="sendPreset('I have the worst sudden thunderclap headache of my life and slurred speech.')">
+            🚨 3. Emergency Red Flag Trigger
+          </button>
+          <button class="preset-pill" style="border-color:#64748b; color:#94a3b8;" onclick="resetDemo()">
+            🔄 Clear & Restart
+          </button>
+        </div>
+      </div>
+
+      <!-- Chat History -->
+      <div class="chat-window" id="chatWindow">
+        <div class="msg agent">
+          <div class="msg-meta">🤖 PCP COORDINATOR AGENT</div>
+          Hello Maya. I am your Care Navigation Assistant. How are you feeling today, or what symptoms would you like to discuss?
+          <div class="disclaimer-box">
+            Boundary: Care-navigation assistant. Not an autonomous diagnostic tool or physician replacement.
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Input -->
+      <div class="chat-input-box">
+        <input type="text" id="userInput" placeholder="Describe your symptoms (e.g. 'I have a headache and feel nauseous')..." onkeydown="if(event.key==='Enter') handleUserSend()">
+        <button class="send-btn" onclick="handleUserSend()">Send</button>
+      </div>
+    </section>
+
+    <!-- Right Column: Orchestration & Trajectory Inspector -->
+    <section class="inspector-pane">
+
+      <!-- Architecture Component States -->
+      <div class="arch-status-card">
+        <div class="arch-header">
+          <h3>Active Multi-Agent Orchestration Nodes</h3>
+          <div class="legend-row">
+            <div class="legend-item"><span class="dot" style="background:var(--accent-amber);"></span> Deterministic Control</div>
+            <div class="legend-item"><span class="dot" style="background:var(--accent-cyan);"></span> Model Reasoning</div>
+            <div class="legend-item"><span class="dot" style="background:var(--accent-purple);"></span> Human Review</div>
+          </div>
+        </div>
+
+        <div class="arch-grid">
+          <div class="arch-node" id="nodeEmergency">
+            <div class="node-type" style="color:var(--accent-amber)">Deterministic</div>
+            <div class="node-name">Emergency Gate</div>
+            <div class="node-status" id="statusEmergency">Idle</div>
+          </div>
+
+          <div class="arch-node" id="nodeOrchestrator">
+            <div class="node-type" style="color:var(--accent-cyan)">Model Reasoning</div>
+            <div class="node-name">PCP Orchestrator</div>
+            <div class="node-status" id="statusOrchestrator">Idle</div>
+          </div>
+
+          <div class="arch-node" id="nodeIntake">
+            <div class="node-type" style="color:var(--accent-amber)">Deterministic</div>
+            <div class="node-name">Intake Contract</div>
+            <div class="node-status" id="statusIntake">Idle</div>
+          </div>
+
+          <div class="arch-node" id="nodeMCP">
+            <div class="node-type" style="color:var(--accent-amber)">MCP Gateway</div>
+            <div class="node-name">Tool Policy Auth</div>
+            <div class="node-status" id="statusMCP">Idle</div>
+          </div>
+
+          <div class="arch-node" id="nodeNeuro">
+            <div class="node-type" style="color:var(--accent-cyan)">Specialist Agent</div>
+            <div class="node-name">Neurology Support</div>
+            <div class="node-status" id="statusNeuro">Idle</div>
+          </div>
+
+          <div class="arch-node" id="nodeGI">
+            <div class="node-type" style="color:var(--accent-cyan)">Specialist Agent</div>
+            <div class="node-name">GI Support</div>
+            <div class="node-status" id="statusGI">Idle</div>
+          </div>
+
+          <div class="arch-node" id="nodeClinician">
+            <div class="node-type" style="color:var(--accent-purple)">Human-In-The-Loop</div>
+            <div class="node-name">Clinician Review</div>
+            <div class="node-status" id="statusClinician">Idle</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Execution Trace Timeline -->
+      <div class="trace-card">
+        <div class="trace-header">
+          <h3>
+            <span>🔍</span> Real-Time Trajectory Trace (Audit Log)
+          </h3>
+          <span id="traceCount" style="font-size:11px; color:var(--text-muted);">0 events recorded</span>
+        </div>
+
+        <div class="trace-list" id="traceList">
+          <div style="color:#64748b; text-align:center; padding:30px 0; font-family:var(--font-sans); font-size:13px;">
+            Select a demo scenario or enter patient symptoms to observe the real-time execution trace.
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+    // State
+    let currentMode = 'governed'; // 'loose' or 'governed'
+    let stepCounter = 1;
+    let events = [];
+    let pendingTimeouts = [];
+
+    function registerTimeout(fn, delay) {
+      const id = setTimeout(() => {
+        pendingTimeouts = pendingTimeouts.filter(t => t !== id);
+        fn();
+      }, delay);
+      pendingTimeouts.push(id);
+      return id;
+    }
+
+    function clearAllPendingTimeouts() {
+      pendingTimeouts.forEach(id => clearTimeout(id));
+      pendingTimeouts = [];
+    }
+
+    function resetDemo(switchToMode = null) {
+      clearAllPendingTimeouts();
+
+      if (switchToMode) {
+        currentMode = switchToMode;
+      }
+
+      // Update toggle buttons
+      const btnLoose = document.getElementById('btnLoose');
+      const btnGoverned = document.getElementById('btnGoverned');
+      if (currentMode === 'loose') {
+        btnLoose.className = 'mode-btn active loose';
+        btnGoverned.className = 'mode-btn';
+      } else {
+        btnGoverned.className = 'mode-btn active governed';
+        btnLoose.className = 'mode-btn';
+      }
+
+      // Reset Step & Trace counter
+      stepCounter = 1;
+      events = [];
+      document.getElementById('traceCount').innerText = '0 events recorded';
+
+      // Reset nodes
+      resetNodeVisuals();
+
+      // Reset Input
+      document.getElementById('userInput').value = '';
+
+      // Reset Chat Window to initial clean state
+      const chat = document.getElementById('chatWindow');
+      chat.innerHTML = `
+        <div class="msg agent">
+          <div class="msg-meta">🤖 PCP COORDINATOR AGENT</div>
+          Hello Maya. I am your Care Navigation Assistant. How are you feeling today, or what symptoms would you like to discuss?
+          <div class="disclaimer-box">
+            Boundary: Care-navigation assistant. Not an autonomous diagnostic tool or physician replacement.
+          </div>
+        </div>
+      `;
+
+      // Reset Trace List to placeholder
+      const traceList = document.getElementById('traceList');
+      traceList.innerHTML = `
+        <div style="color:#64748b; text-align:center; padding:30px 0; font-family:var(--font-sans); font-size:13px;">
+          Select a demo scenario or enter patient symptoms to observe the real-time execution trace.
+        </div>
+      `;
+    }
+
+    function setMode(mode) {
+      currentMode = mode;
+      const btnLoose = document.getElementById('btnLoose');
+      const btnGoverned = document.getElementById('btnGoverned');
+
+      if (mode === 'loose') {
+        btnLoose.className = 'mode-btn active loose';
+        btnGoverned.className = 'mode-btn';
+        addSystemNotice("⚠️ Switched to LOOSE_AUTONOMY_MODE (Unconstrained Agents). Intake validation disabled; speculative multi-specialist routing permitted.");
+      } else {
+        btnGoverned.className = 'mode-btn active governed';
+        btnLoose.className = 'mode-btn';
+        addSystemNotice("🛡️ Switched to GOVERNED_WORKFLOW_MODE (IBM Bob Architecture). Deterministic intake contracts and clinician gating active.");
+      }
+      resetNodeVisuals();
+    }
+
+    function addSystemNotice(text) {
+      const traceList = document.getElementById('traceList');
+      const item = document.createElement('div');
+      item.style.cssText = "background:#1e293b; border-left:3px solid #38bdf8; padding:8px 12px; font-size:11px; color:#e2e8f0; margin-bottom:8px; border-radius:4px;";
+      item.innerText = text;
+      traceList.prepend(item);
+    }
+
+    function resetNodeVisuals() {
+      const nodes = ['nodeEmergency', 'nodeOrchestrator', 'nodeIntake', 'nodeMCP', 'nodeNeuro', 'nodeGI', 'nodeClinician'];
+      nodes.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.className = 'arch-node';
+      });
+      document.getElementById('statusEmergency').innerText = 'Idle';
+      document.getElementById('statusOrchestrator').innerText = 'Idle';
+      document.getElementById('statusIntake').innerText = 'Idle';
+      document.getElementById('statusMCP').innerText = 'Idle';
+      document.getElementById('statusNeuro').innerText = 'Idle';
+      document.getElementById('statusGI').innerText = 'Idle';
+      document.getElementById('statusClinician').innerText = 'Idle';
+    }
+
+    function sendPreset(text) {
+      document.getElementById('userInput').value = text;
+      handleUserSend();
+    }
+
+    function handleUserSend() {
+      const input = document.getElementById('userInput');
+      const query = input.value.trim();
+      if (!query) return;
+
+      input.value = '';
+      appendPatientMessage(query);
+
+      // Execute Workflow according to mode
+      registerTimeout(() => {
+        if (currentMode === 'loose') {
+          executeLooseAutonomyWorkflow(query);
+        } else {
+          executeGovernedWorkflow(query);
+        }
+      }, 300);
+    }
+
+    function appendPatientMessage(text) {
+      const chat = document.getElementById('chatWindow');
+      const msg = document.createElement('div');
+      msg.className = 'msg patient';
+      msg.innerHTML = `
+        <div class="msg-meta">👤 MAYA LIN (PATIENT)</div>
+        ${escapeHtml(text)}
+      `;
+      chat.appendChild(msg);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function appendAgentMessage(html, isWarning = false) {
+      const chat = document.getElementById('chatWindow');
+      const msg = document.createElement('div');
+      msg.className = isWarning ? 'msg agent loose-warning' : 'msg agent';
+      msg.innerHTML = `
+        <div class="msg-meta">🤖 PCP COORDINATOR AGENT</div>
+        ${html}
+        <div class="disclaimer-box">
+          Boundary: Care-navigation assistant. Not an autonomous diagnostic tool.
+        </div>
+      `;
+      chat.appendChild(msg);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function logTraceEvent(layer, component, action, status, details, extraHtml = '') {
+      const traceList = document.getElementById('traceList');
+      if (stepCounter === 1 && traceList.querySelector('div[style*="text-align:center"]')) {
+        traceList.innerHTML = '';
+      }
+
+      const item = document.createElement('div');
+      item.className = 'trace-item';
+
+      const layerClass = layer === 'DETERMINISTIC_CONTROL' ? 'badge-det' : 'badge-model';
+      let statusClass = 'status-passed';
+      if (status.includes('REJECTED') || status.includes('RISK') || status.includes('FAILURE')) statusClass = 'status-rejected';
+      if (status.includes('WAITING') || status.includes('SPECULATIVE')) statusClass = 'status-warning';
+      if (status.includes('HUMAN')) statusClass = 'status-human';
+
+      item.innerHTML = `
+        <div class="trace-top">
+          <span class="step-badge ${layerClass}">[${layer}] Step ${stepCounter < 10 ? '0' + stepCounter : stepCounter}</span>
+          <span class="badge-status ${statusClass}">${status}</span>
+        </div>
+        <div class="trace-comp">${component} ➔ ${action}</div>
+        <div class="trace-desc">${details}</div>
+        ${extraHtml}
+      `;
+
+      traceList.appendChild(item);
+      traceList.scrollTop = traceList.scrollHeight;
+
+      document.getElementById('traceCount').innerText = `${stepCounter} steps executed`;
+      stepCounter++;
+    }
+
+    // =========================================================================
+    // EXECUTION RUN 1: LOOSE AUTONOMY MODE
+    // =========================================================================
+    function executeLooseAutonomyWorkflow(query) {
+      resetNodeVisuals();
+      stepCounter = 1;
+      const traceList = document.getElementById('traceList');
+      traceList.innerHTML = '';
+
+      // Step 1: Model Semantic Ingestion
+      document.getElementById('nodeOrchestrator').className = 'arch-node active-reasoning';
+      document.getElementById('statusOrchestrator').innerText = 'Parsing Symptom Semantics';
+      logTraceEvent(
+        'MODEL_REASONING',
+        'PCP_Orchestrator_LLM',
+        'Semantic Symptom Ingestion',
+        'COMPLETED',
+        `Extracted raw entities from patient text: "${query}". Model associates terms with potential Intracranial or Gastrointestinal etiologies.`
+      );
+
+      // Step 2: Unconstrained Autonomy Dispatch
+      registerTimeout(() => {
+        document.getElementById('nodeOrchestrator').className = 'arch-node active-blocked';
+        document.getElementById('statusOrchestrator').innerText = 'Unconstrained Multi-Dispatch';
+        logTraceEvent(
+          'MODEL_REASONING',
+          'PCP_Orchestrator_LLM',
+          'Autonomous Multi-Dispatch',
+          'RISK_DETECTED',
+          'Intake contract skipped. Orchestrator autonomously fans out concurrent handoffs to BOTH Neurology and Gastroenterology agents.'
+        );
+
+        // Step 3 & 4: Specialist Invocations
+        registerTimeout(() => {
+          document.getElementById('nodeNeuro').className = 'arch-node active-reasoning';
+          document.getElementById('statusNeuro').innerText = 'Speculating Migraine';
+          logTraceEvent(
+            'MODEL_REASONING',
+            'Neurology_Specialist',
+            'Autonomous Specialist Workup',
+            'SPECULATIVE',
+            'Received raw unvalidated keyword "headache". Assumes episodic migraine etiology. Drafts brain MRI and triptan recommendation.'
+          );
+
+          document.getElementById('nodeGI').className = 'arch-node active-reasoning';
+          document.getElementById('statusGI').innerText = 'Speculating Gastritis';
+          logTraceEvent(
+            'MODEL_REASONING',
+            'Gastroenterology_Specialist',
+            'Autonomous Specialist Workup',
+            'SPECULATIVE',
+            'Received raw unvalidated keyword "nausea". Assumes acute gastroenteritis. Suggests antiemetic prescription advice.'
+          );
+
+          // Step 5: Uncontrolled EHR Tool Execution
+          registerTimeout(() => {
+            document.getElementById('nodeMCP').className = 'arch-node active-blocked';
+            document.getElementById('statusMCP').innerText = 'Direct EHR Call Bypassed';
+            logTraceEvent(
+              'MODEL_REASONING',
+              'PCP_Orchestrator_LLM',
+              'Direct EHR Order Trigger',
+              'DETERMINISTIC_BYPASS',
+              'Agent triggers EHR draft orders and sends unverified specialist recommendations directly to patient chart.'
+            );
+
+            // Chat response
+            appendAgentMessage(`
+              <p>⚠️ <strong>[Loose Autonomy Mode Result]</strong></p>
+              <p>Based on your symptoms ("headache" and "nausea"), I have consulted both our <strong>Neurology Specialist</strong> and <strong>Gastroenterology Specialist</strong>.</p>
+              <ul style="margin:8px 0 8px 18px; font-size:12px;">
+                <li><strong>Neurology:</strong> Suggests workup for migraine/intracranial etiology; ordered preliminary neurology referral.</li>
+                <li><strong>Gastroenterology:</strong> Suggests antiemetic protocol for nausea management.</li>
+              </ul>
+              <p style="color:#f87171; font-size:12px;"><strong>Flaw Exposed:</strong> The agent brought in two expensive specialists before collecting onset time, severity, progression, or checking red flags.</p>
+            `, true);
+
+          }, 400);
+
+        }, 400);
+
+      }, 400);
+    }
+
+    // =========================================================================
+    // EXECUTION RUN 2: GOVERNED WORKFLOW MODE (IBM BOB)
+    // =========================================================================
+    function executeGovernedWorkflow(query) {
+      resetNodeVisuals();
+      stepCounter = 1;
+      const traceList = document.getElementById('traceList');
+      traceList.innerHTML = '';
+
+      const queryLower = query.toLowerCase();
+
+      // Step 1: Deterministic Emergency Gate (Red Flag Keyword Scanner)
+      document.getElementById('nodeEmergency').className = 'arch-node active-deterministic';
+      const isEmergency = queryLower.includes('thunderclap') || queryLower.includes('worst headache') || queryLower.includes('slurred') || queryLower.includes('numbness');
+
+      if (isEmergency) {
+        document.getElementById('statusEmergency').innerText = '🚨 RED FLAG DETECTED';
+        document.getElementById('nodeEmergency').className = 'arch-node active-blocked';
+
+        logTraceEvent(
+          'DETERMINISTIC_CONTROL',
+          'EmergencySafetyGate',
+          'Red-Flag Screening',
+          'ACUTE_EMERGENCY_TRIGGER',
+          'Deterministic rule detected critical red-flag keywords ("thunderclap" / "slurred speech"). Agent loop halted immediately.'
+        );
+
+        appendAgentMessage(`
+          <div style="background:rgba(244,63,94,0.15); border:1px solid #f43f5e; padding:12px; border-radius:8px;">
+            <h4 style="color:#f43f5e; margin-bottom:6px;">🚨 IMMEDIATE MEDICAL ATTENTION REQUIRED</h4>
+            <p style="color:#fff; font-size:13px;">Your description includes sudden severe warning signs. <strong>Please call 911 or proceed to the nearest Emergency Department immediately.</strong></p>
+            <p style="color:#cbd5e1; font-size:11px; margin-top:6px;">Deterministic safety override engaged: All automated routing paused.</p>
+          </div>
+        `);
+        return;
+      }
+
+      document.getElementById('statusEmergency').innerText = 'Passed (Non-Emergency)';
+      logTraceEvent(
+        'DETERMINISTIC_CONTROL',
+        'EmergencySafetyGate',
+        'Red-Flag Screening',
+        'PASSED',
+        'Screened query for acute life-threatening triggers (thunderclap, acute neuro deficit, chest pain). Result: Non-emergency.'
+      );
+
+      // Step 2: Model Semantic Extraction
+      registerTimeout(() => {
+        document.getElementById('nodeOrchestrator').className = 'arch-node active-reasoning';
+        document.getElementById('statusOrchestrator').innerText = 'Extracting Clinical Entities';
+        logTraceEvent(
+          'MODEL_REASONING',
+          'PCP_Orchestrator_LLM',
+          'Clinical Entity Extraction',
+          'COMPLETED',
+          'Identified symptoms: ["headache", "nausea"]. Mapped clinical category: Neurological / Systemic.'
+        );
+
+        // Step 3: Check Intake Contract
+        registerTimeout(() => {
+          document.getElementById('nodeIntake').className = 'arch-node active-deterministic';
+
+          const hasIntakeDetails = queryLower.includes('yesterday') || queryLower.includes('24h') || queryLower.includes('6/10') || queryLower.includes('throbbing');
+
+          if (!hasIntakeDetails) {
+            // Missing context -> REJECT ROUTING
+            document.getElementById('statusIntake').innerText = '❌ Contract Rejected';
+            document.getElementById('nodeIntake').className = 'arch-node active-blocked';
+
+            logTraceEvent(
+              'DETERMINISTIC_CONTROL',
+              'IntakeContractValidator',
+              'Handoff Contract Verification',
+              'REJECTED',
+              'Specialist routing BLOCKED. Missing mandatory fields: [onset_time, severity_scale_1_to_10, progression_pattern, red_flag_screening].'
+            );
+
+            // Step 4: Model drafts structured follow-up
+            registerTimeout(() => {
+              document.getElementById('nodeOrchestrator').className = 'arch-node active-reasoning';
+              document.getElementById('statusOrchestrator').innerText = 'Drafting Intake Questions';
+
+              logTraceEvent(
+                'MODEL_REASONING',
+                'PCP_Orchestrator_LLM',
+                'Draft Intake Questionnaire',
+                'WAITING_FOR_PATIENT',
+                'Model drafts empathetic, structured intake questions to collect the missing data parameters without speculative routing.'
+              );
+
+              appendAgentMessage(`
+                <p>I understand you are experiencing a headache along with nausea. To connect you with the appropriate care team, I need to understand a few more details:</p>
+                <div class="intake-questionnaire-card">
+                  <h4>📋 Required Clinical Intake Context</h4>
+                  <ul>
+                    <li><strong>Onset:</strong> When did this headache start?</li>
+                    <li><strong>Severity:</strong> How severe is the pain on a scale of 1 to 10?</li>
+                    <li><strong>Progression:</strong> Is it constant, throbbing, or getting steadily worse?</li>
+                    <li><strong>Warning Signs:</strong> Any fever, stiff neck, vision changes, or weakness?</li>
+                  </ul>
+                </div>
+                <p style="margin-top:8px; font-size:12px; color:#38bdf8;">💡 <em>Tip: Click preset #2 above to submit complete intake.</em></p>
+              `);
+
+            }, 300);
+
+          } else {
+            // Intake Complete -> Governed Path
+            document.getElementById('statusIntake').innerText = '✅ Contract Verified';
+            logTraceEvent(
+              'DETERMINISTIC_CONTROL',
+              'IntakeContractValidator',
+              'Handoff Contract Verification',
+              'PASSED',
+              'All mandatory intake dimensions satisfied: Onset (24h), Severity (6/10), Trajectory (Constant throbbing), Red Flags (Absent).'
+            );
+
+            // Step 4: MCP Gateway Tool Auth
+            registerTimeout(() => {
+              document.getElementById('nodeMCP').className = 'arch-node active-deterministic';
+              document.getElementById('statusMCP').innerText = 'Scoped Tool Auth';
+
+              logTraceEvent(
+                'DETERMINISTIC_CONTROL',
+                'MCPGateway',
+                'Tool Policy Authorization',
+                'PASSED',
+                'Tool "get_patient_history" authorized for caller PCP_Agent under role-scope: care_navigation_readonly.'
+              );
+
+              // Step 5: Model Differential Reasoning
+              registerTimeout(() => {
+                document.getElementById('nodeOrchestrator').className = 'arch-node active-reasoning';
+                document.getElementById('statusOrchestrator').innerText = 'Correlating Intake + EHR';
+
+                logTraceEvent(
+                  'MODEL_REASONING',
+                  'PCP_Orchestrator_LLM',
+                  'Differential Context Synthesis',
+                  'COMPLETED',
+                  'Cross-referenced intake with EHR (history of episodic tension headache). Nausea is secondary vegetative symptom, not primary GI infection. Correct routing: Neurology only.'
+                );
+
+                // Step 6: Assemble Specialist Handoff Packet
+                registerTimeout(() => {
+                  document.getElementById('nodeNeuro').className = 'arch-node active-reasoning';
+                  document.getElementById('statusNeuro').innerText = 'Packet Prepared';
+
+                  const packetJson = JSON.stringify({
+                    "patient_id": "PT-94812",
+                    "target_specialist": "Neurology",
+                    "clinical_rationale": "Subacute unilateral tension/migraine with secondary nausea",
+                    "intake_evidence": {
+                      "onset": "24h ago",
+                      "severity": "6/10",
+                      "progression": "Constant throbbing",
+                      "red_flags": "Negative"
+                    },
+                    "clinician_approval_status": "PENDING_APPROVAL"
+                  }, null, 2);
+
+                  logTraceEvent(
+                    'DETERMINISTIC_CONTROL',
+                    'HandoffPacketBuilder',
+                    'Packet Schema Assembly',
+                    'PASSED',
+                    'Validated specialist handoff packet assembled with complete clinical evidence.',
+                    `<div class="packet-view">${packetJson}</div>`
+                  );
+
+                  // Step 7: Clinician Gate
+                  registerTimeout(() => {
+                    document.getElementById('nodeClinician').className = 'arch-node active-human';
+                    document.getElementById('statusClinician').innerText = 'Awaiting Sign-off';
+
+                    logTraceEvent(
+                      'DETERMINISTIC_CONTROL',
+                      'HumanInTheLoopGate',
+                      'Clinician Review Gate',
+                      'AWAITING_HUMAN_APPROVAL',
+                      'SPECIALIST ROUTING PAUSED. Packet sent to Dr. Chen\'s review queue. Autonomous dispatch blocked by policy.'
+                    );
+
+                    appendAgentMessage(`
+                      <p>Thank you for providing the details. I have prepared a comprehensive summary of your symptoms:</p>
+                      <ul style="margin:6px 0 6px 18px; font-size:12px;">
+                        <li><strong>Symptoms:</strong> Headache with secondary nausea</li>
+                        <li><strong>Duration & Severity:</strong> 24 hours, rated 6/10</li>
+                        <li><strong>Red Flags:</strong> None reported (no fever or neurological deficits)</li>
+                      </ul>
+                      <div class="clinician-gate-banner">
+                        <div>
+                          <p><strong>🛡️ Human Oversight Gate Active:</strong></p>
+                          <p style="font-size:11px; color:#cbd5e1;">A clinician-ready packet has been routed to <strong>Dr. Chen (Primary Care)</strong> for review prior to specialty referral.</p>
+                        </div>
+                        <button class="approve-btn" onclick="simulateClinicianApproval()">Review & Sign-Off</button>
+                      </div>
+                    `);
+
+                  }, 300);
+
+                }, 300);
+
+              }, 300);
+
+            }, 300);
+
+          }
+
+        }, 300);
+
+      }, 300);
+    }
+
+    function simulateClinicianApproval() {
+      document.getElementById('statusClinician').innerText = '✅ Approved by Dr. Chen';
+      document.getElementById('nodeClinician').className = 'arch-node active-deterministic';
+
+      logTraceEvent(
+        'DETERMINISTIC_CONTROL',
+        'HumanInTheLoopGate',
+        'Clinician Sign-Off Executed',
+        'APPROVED',
+        'Dr. Chen reviewed and approved Neurology handoff packet. EHR order dispatched to patient chart.'
+      );
+
+      appendAgentMessage(`
+        <div style="background:rgba(16,185,129,0.15); border:1px solid #10b981; padding:12px; border-radius:8px;">
+          <h4 style="color:#10b981; margin-bottom:4px;">✅ Clinician Review Completed</h4>
+          <p style="font-size:12px; color:#fff;">Dr. Chen has approved the care plan and submitted a referral to Neurology. Your appointment coordinator will contact you shortly.</p>
+        </div>
+      `);
+    }
+
+    function escapeHtml(text) {
+      const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+      return text.replace(/[&<>"']/g, m => map[m]);
+    }
+  </script>
+</body>
+</html>

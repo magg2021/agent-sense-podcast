@@ -1,0 +1,80 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: IBM BOB
+      - generic [ref=e5]:
+        - 'heading "When Physicians Cannot Connect the Dots: Governed Healthcare Agent" [level=1] [ref=e6]'
+        - paragraph [ref=e7]: Applied AI Summit 2026 • Live Orchestration & Specialist Routing Demo
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - button "⚠️ LOOSE AUTONOMY" [ref=e10] [cursor=pointer]:
+          - generic [ref=e11]: ⚠️
+          - text: LOOSE AUTONOMY
+        - button "🛡️ GOVERNED (IBM BOB)" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 🛡️
+          - text: GOVERNED (IBM BOB)
+      - generic [ref=e14]: "Speaker: Monika Aggarwal"
+  - main [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - heading "💬 Care Navigation Assistant" [level=2] [ref=e18]:
+          - generic [ref=e19]: 💬
+          - text: Care Navigation Assistant
+        - generic [ref=e20]: Patient Portal • Maya Lin
+      - generic [ref=e21]:
+        - generic [ref=e22]: "Conference Demo Prompts (Click to Run):"
+        - generic [ref=e23]:
+          - button "🎯 1. Headache & Nausea (Day 3/4 Test)" [ref=e24] [cursor=pointer]
+          - button "📋 2. Complete Intake Response" [ref=e25] [cursor=pointer]
+          - button "🚨 3. Emergency Red Flag Trigger" [ref=e26] [cursor=pointer]
+      - generic [ref=e28]:
+        - generic [ref=e29]: 🤖 PCP COORDINATOR AGENT
+        - text: Hello Maya. I am your Care Navigation Assistant. How are you feeling today, or what symptoms would you like to discuss?
+        - generic [ref=e30]: "Boundary: Care-navigation assistant. Not an autonomous diagnostic tool or physician replacement."
+      - generic [ref=e31]:
+        - textbox "Describe your symptoms (e.g. 'I have a headache and feel nauseous')..." [ref=e32]
+        - button "Send" [ref=e33] [cursor=pointer]
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - heading "Active Multi-Agent Orchestration Nodes" [level=3] [ref=e37]
+          - generic [ref=e38]:
+            - generic [ref=e39]: Deterministic Control
+            - generic [ref=e41]: Model Reasoning
+            - generic [ref=e43]: Human Review
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - generic [ref=e47]: Deterministic
+            - generic [ref=e48]: Emergency Gate
+            - generic [ref=e49]: Idle
+          - generic [ref=e50]:
+            - generic [ref=e51]: Model Reasoning
+            - generic [ref=e52]: PCP Orchestrator
+            - generic [ref=e53]: Idle
+          - generic [ref=e54]:
+            - generic [ref=e55]: Deterministic
+            - generic [ref=e56]: Intake Contract
+            - generic [ref=e57]: Idle
+          - generic [ref=e58]:
+            - generic [ref=e59]: MCP Gateway
+            - generic [ref=e60]: Tool Policy Auth
+            - generic [ref=e61]: Idle
+          - generic [ref=e62]:
+            - generic [ref=e63]: Specialist Agent
+            - generic [ref=e64]: Neurology Support
+            - generic [ref=e65]: Idle
+          - generic [ref=e66]:
+            - generic [ref=e67]: Specialist Agent
+            - generic [ref=e68]: GI Support
+            - generic [ref=e69]: Idle
+          - generic [ref=e70]:
+            - generic [ref=e71]: Human-In-The-Loop
+            - generic [ref=e72]: Clinician Review
+            - generic [ref=e73]: Idle
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - heading "🔍 Real-Time Trajectory Trace (Audit Log)" [level=3] [ref=e76]:
+            - generic [ref=e77]: 🔍
+            - text: Real-Time Trajectory Trace (Audit Log)
+          - generic [ref=e78]: 0 events recorded
+        - generic [ref=e79]: Select a demo scenario or enter patient symptoms to observe the real-time execution trace.

@@ -1,0 +1,191 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: IBM BOB
+      - generic [ref=e5]:
+        - 'heading "When Physicians Cannot Connect the Dots: Governed Healthcare Agent" [level=1] [ref=e6]'
+        - paragraph [ref=e7]: Applied AI Summit 2026 • Live Orchestration & Specialist Routing Demo
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - button "⚠️ LOOSE AUTONOMY" [ref=e10] [cursor=pointer]:
+          - generic [ref=e11]: ⚠️
+          - text: LOOSE AUTONOMY
+        - button "🛡️ GOVERNED (IBM BOB)" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 🛡️
+          - text: GOVERNED (IBM BOB)
+      - generic [ref=e14]: "Speaker: Monika Aggarwal"
+  - main [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - heading "💬 Care Navigation Assistant" [level=2] [ref=e18]:
+          - generic [ref=e19]: 💬
+          - text: Care Navigation Assistant
+        - generic [ref=e20]: Patient Portal • Maya Lin
+      - generic [ref=e21]:
+        - generic [ref=e22]: "Conference Demo Prompts (Click to Run):"
+        - generic [ref=e23]:
+          - button "🎯 1. Headache & Nausea (Day 3/4 Test)" [active] [ref=e24] [cursor=pointer]
+          - button "📋 2. Complete Intake Response" [ref=e25] [cursor=pointer]
+          - button "🚨 3. Emergency Red Flag Trigger" [ref=e26] [cursor=pointer]
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - generic [ref=e29]: 🤖 PCP COORDINATOR AGENT
+          - text: Hello Maya. I am your Care Navigation Assistant. How are you feeling today, or what symptoms would you like to discuss?
+          - generic [ref=e30]: "Boundary: Care-navigation assistant. Not an autonomous diagnostic tool or physician replacement."
+        - generic [ref=e81]:
+          - generic [ref=e82]: 👤 MAYA LIN (PATIENT)
+          - text: I have a headache and feel nauseous.
+        - generic [ref=e101]:
+          - generic [ref=e102]: 🤖 PCP COORDINATOR AGENT
+          - paragraph [ref=e103]: "I understand you are experiencing a headache along with nausea. To connect you with the appropriate care team, I need to understand a few more details:"
+          - generic [ref=e104]:
+            - heading "📋 Required Clinical Intake Context" [level=4] [ref=e105]
+            - list [ref=e106]:
+              - listitem [ref=e107]:
+                - text: •
+                - strong [ref=e108]: "Onset:"
+                - text: When did this headache start?
+              - listitem [ref=e109]:
+                - text: •
+                - strong [ref=e110]: "Severity:"
+                - text: How severe is the pain on a scale of 1 to 10?
+              - listitem [ref=e111]:
+                - text: •
+                - strong [ref=e112]: "Progression:"
+                - text: Is it constant, throbbing, or getting steadily worse?
+              - listitem [ref=e113]:
+                - text: •
+                - strong [ref=e114]: "Warning Signs:"
+                - text: Any fever, stiff neck, vision changes, or weakness?
+          - paragraph [ref=e115]:
+            - text: 💡
+            - emphasis [ref=e116]: "Tip: Click preset #2 above to submit complete intake."
+          - generic [ref=e117]: "Boundary: Care-navigation assistant. Not an autonomous diagnostic tool."
+        - generic [ref=e124]:
+          - generic [ref=e125]: 👤 MAYA LIN (PATIENT)
+          - text: Started yesterday afternoon (~24h), severity is 6/10, constant dull throbbing. No fever, no stiff neck, no vision loss.
+        - generic [ref=e132]:
+          - generic [ref=e133]: 🤖 PCP COORDINATOR AGENT
+          - paragraph [ref=e134]: "Thank you for providing the details. I have prepared a comprehensive summary of your symptoms:"
+          - list [ref=e135]:
+            - listitem [ref=e136]:
+              - strong [ref=e137]: "Symptoms:"
+              - text: Headache with secondary nausea
+            - listitem [ref=e138]:
+              - strong [ref=e139]: "Duration & Severity:"
+              - text: 24 hours, rated 6/10
+            - listitem [ref=e140]:
+              - strong [ref=e141]: "Red Flags:"
+              - text: None reported (no fever or neurological deficits)
+          - generic [ref=e142]:
+            - generic [ref=e143]:
+              - paragraph [ref=e144]:
+                - strong [ref=e145]: "🛡️ Human Oversight Gate Active:"
+              - paragraph [ref=e146]:
+                - text: A clinician-ready packet has been routed to
+                - strong [ref=e147]: Dr. Chen (Primary Care)
+                - text: for review prior to specialty referral.
+            - button "Review & Sign-Off" [ref=e148] [cursor=pointer]
+          - generic [ref=e149]: "Boundary: Care-navigation assistant. Not an autonomous diagnostic tool."
+        - generic [ref=e188]:
+          - generic [ref=e189]: 👤 MAYA LIN (PATIENT)
+          - text: I have a headache and feel nauseous.
+        - generic [ref=e196]:
+          - generic [ref=e197]: 🤖 PCP COORDINATOR AGENT
+          - paragraph [ref=e198]:
+            - text: ⚠️
+            - strong [ref=e199]: "[Loose Autonomy Mode Result]"
+          - paragraph [ref=e200]:
+            - text: Based on your symptoms ("headache" and "nausea"), I have consulted both our
+            - strong [ref=e201]: Neurology Specialist
+            - text: and
+            - strong [ref=e202]: Gastroenterology Specialist
+            - text: .
+          - list [ref=e203]:
+            - listitem [ref=e204]:
+              - strong [ref=e205]: "Neurology:"
+              - text: Suggests workup for migraine/intracranial etiology; ordered preliminary neurology referral.
+            - listitem [ref=e206]:
+              - strong [ref=e207]: "Gastroenterology:"
+              - text: Suggests antiemetic protocol for nausea management.
+          - paragraph [ref=e208]:
+            - strong [ref=e209]: "Flaw Exposed:"
+            - text: The agent brought in two expensive specialists before collecting onset time, severity, progression, or checking red flags.
+          - generic [ref=e210]: "Boundary: Care-navigation assistant. Not an autonomous diagnostic tool."
+      - generic [ref=e31]:
+        - textbox "Describe your symptoms (e.g. 'I have a headache and feel nauseous')..." [ref=e32]
+        - button "Send" [ref=e33] [cursor=pointer]
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - heading "Active Multi-Agent Orchestration Nodes" [level=3] [ref=e37]
+          - generic [ref=e38]:
+            - generic [ref=e39]: Deterministic Control
+            - generic [ref=e41]: Model Reasoning
+            - generic [ref=e43]: Human Review
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - generic [ref=e47]: Deterministic
+            - generic [ref=e48]: Emergency Gate
+            - generic [ref=e49]: Idle
+          - generic [ref=e50]:
+            - generic [ref=e51]: Model Reasoning
+            - generic [ref=e52]: PCP Orchestrator
+            - generic [ref=e53]: Unconstrained Multi-Dispatch
+          - generic [ref=e54]:
+            - generic [ref=e55]: Deterministic
+            - generic [ref=e56]: Intake Contract
+            - generic [ref=e57]: Idle
+          - generic [ref=e58]:
+            - generic [ref=e59]: MCP Gateway
+            - generic [ref=e60]: Tool Policy Auth
+            - generic [ref=e61]: Direct EHR Call Bypassed
+          - generic [ref=e62]:
+            - generic [ref=e63]: Specialist Agent
+            - generic [ref=e64]: Neurology Support
+            - generic [ref=e65]: Speculating Migraine
+          - generic [ref=e66]:
+            - generic [ref=e67]: Specialist Agent
+            - generic [ref=e68]: GI Support
+            - generic [ref=e69]: Speculating Gastritis
+          - generic [ref=e70]:
+            - generic [ref=e71]: Human-In-The-Loop
+            - generic [ref=e72]: Clinician Review
+            - generic [ref=e73]: Idle
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - heading "🔍 Real-Time Trajectory Trace (Audit Log)" [level=3] [ref=e76]:
+            - generic [ref=e77]: 🔍
+            - text: Real-Time Trajectory Trace (Audit Log)
+          - generic [ref=e78]: 5 steps executed
+        - generic [ref=e79]:
+          - generic [ref=e190]:
+            - generic [ref=e191]:
+              - generic [ref=e192]: "[MODEL_REASONING] Step 01"
+              - generic [ref=e193]: COMPLETED
+            - generic [ref=e194]: PCP_Orchestrator_LLM ➔ Semantic Symptom Ingestion
+            - generic [ref=e195]: "Extracted raw entities from patient text: \"I have a headache and feel nauseous.\". Model associates terms with potential Intracranial or Gastrointestinal etiologies."
+          - generic [ref=e211]:
+            - generic [ref=e212]:
+              - generic [ref=e213]: "[MODEL_REASONING] Step 02"
+              - generic [ref=e214]: RISK_DETECTED
+            - generic [ref=e215]: PCP_Orchestrator_LLM ➔ Autonomous Multi-Dispatch
+            - generic [ref=e216]: Intake contract skipped. Orchestrator autonomously fans out concurrent handoffs to BOTH Neurology and Gastroenterology agents.
+          - generic [ref=e217]:
+            - generic [ref=e218]:
+              - generic [ref=e219]: "[MODEL_REASONING] Step 03"
+              - generic [ref=e220]: SPECULATIVE
+            - generic [ref=e221]: Neurology_Specialist ➔ Autonomous Specialist Workup
+            - generic [ref=e222]: Received raw unvalidated keyword "headache". Assumes episodic migraine etiology. Drafts brain MRI and triptan recommendation.
+          - generic [ref=e223]:
+            - generic [ref=e224]:
+              - generic [ref=e225]: "[MODEL_REASONING] Step 04"
+              - generic [ref=e226]: SPECULATIVE
+            - generic [ref=e227]: Gastroenterology_Specialist ➔ Autonomous Specialist Workup
+            - generic [ref=e228]: Received raw unvalidated keyword "nausea". Assumes acute gastroenteritis. Suggests antiemetic prescription advice.
+          - generic [ref=e229]:
+            - generic [ref=e230]:
+              - generic [ref=e231]: "[MODEL_REASONING] Step 05"
+              - generic [ref=e232]: DETERMINISTIC_BYPASS
+            - generic [ref=e233]: PCP_Orchestrator_LLM ➔ Direct EHR Order Trigger
+            - generic [ref=e234]: Agent triggers EHR draft orders and sends unverified specialist recommendations directly to patient chart.

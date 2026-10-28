@@ -1,0 +1,180 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: IBM BOB
+      - generic [ref=e5]:
+        - 'heading "When Physicians Cannot Connect the Dots: Governed Healthcare Agent" [level=1] [ref=e6]'
+        - paragraph [ref=e7]: Applied AI Summit 2026 • Live Orchestration & Specialist Routing Demo
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - button "⚠️ LOOSE AUTONOMY" [active] [ref=e10] [cursor=pointer]:
+          - generic [ref=e11]: ⚠️
+          - text: LOOSE AUTONOMY
+        - button "🛡️ GOVERNED (IBM BOB)" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: 🛡️
+          - text: GOVERNED (IBM BOB)
+      - generic [ref=e14]: "Speaker: Monika Aggarwal"
+  - main [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - heading "💬 Care Navigation Assistant" [level=2] [ref=e18]:
+          - generic [ref=e19]: 💬
+          - text: Care Navigation Assistant
+        - generic [ref=e20]: Patient Portal • Maya Lin
+      - generic [ref=e21]:
+        - generic [ref=e22]: "Conference Demo Prompts (Click to Run):"
+        - generic [ref=e23]:
+          - button "🎯 1. Headache & Nausea (Day 3/4 Test)" [ref=e24] [cursor=pointer]
+          - button "📋 2. Complete Intake Response" [ref=e25] [cursor=pointer]
+          - button "🚨 3. Emergency Red Flag Trigger" [ref=e26] [cursor=pointer]
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - generic [ref=e29]: 🤖 PCP COORDINATOR AGENT
+          - text: Hello Maya. I am your Care Navigation Assistant. How are you feeling today, or what symptoms would you like to discuss?
+          - generic [ref=e30]: "Boundary: Care-navigation assistant. Not an autonomous diagnostic tool or physician replacement."
+        - generic [ref=e81]:
+          - generic [ref=e82]: 👤 MAYA LIN (PATIENT)
+          - text: I have a headache and feel nauseous.
+        - generic [ref=e101]:
+          - generic [ref=e102]: 🤖 PCP COORDINATOR AGENT
+          - paragraph [ref=e103]: "I understand you are experiencing a headache along with nausea. To connect you with the appropriate care team, I need to understand a few more details:"
+          - generic [ref=e104]:
+            - heading "📋 Required Clinical Intake Context" [level=4] [ref=e105]
+            - list [ref=e106]:
+              - listitem [ref=e107]:
+                - text: •
+                - strong [ref=e108]: "Onset:"
+                - text: When did this headache start?
+              - listitem [ref=e109]:
+                - text: •
+                - strong [ref=e110]: "Severity:"
+                - text: How severe is the pain on a scale of 1 to 10?
+              - listitem [ref=e111]:
+                - text: •
+                - strong [ref=e112]: "Progression:"
+                - text: Is it constant, throbbing, or getting steadily worse?
+              - listitem [ref=e113]:
+                - text: •
+                - strong [ref=e114]: "Warning Signs:"
+                - text: Any fever, stiff neck, vision changes, or weakness?
+          - paragraph [ref=e115]:
+            - text: 💡
+            - emphasis [ref=e116]: "Tip: Click preset #2 above to submit complete intake."
+          - generic [ref=e117]: "Boundary: Care-navigation assistant. Not an autonomous diagnostic tool."
+        - generic [ref=e124]:
+          - generic [ref=e125]: 👤 MAYA LIN (PATIENT)
+          - text: Started yesterday afternoon (~24h), severity is 6/10, constant dull throbbing. No fever, no stiff neck, no vision loss.
+        - generic [ref=e132]:
+          - generic [ref=e133]: 🤖 PCP COORDINATOR AGENT
+          - paragraph [ref=e134]: "Thank you for providing the details. I have prepared a comprehensive summary of your symptoms:"
+          - list [ref=e135]:
+            - listitem [ref=e136]:
+              - strong [ref=e137]: "Symptoms:"
+              - text: Headache with secondary nausea
+            - listitem [ref=e138]:
+              - strong [ref=e139]: "Duration & Severity:"
+              - text: 24 hours, rated 6/10
+            - listitem [ref=e140]:
+              - strong [ref=e141]: "Red Flags:"
+              - text: None reported (no fever or neurological deficits)
+          - generic [ref=e142]:
+            - generic [ref=e143]:
+              - paragraph [ref=e144]:
+                - strong [ref=e145]: "🛡️ Human Oversight Gate Active:"
+              - paragraph [ref=e146]:
+                - text: A clinician-ready packet has been routed to
+                - strong [ref=e147]: Dr. Chen (Primary Care)
+                - text: for review prior to specialty referral.
+            - button "Review & Sign-Off" [ref=e148] [cursor=pointer]
+          - generic [ref=e149]: "Boundary: Care-navigation assistant. Not an autonomous diagnostic tool."
+      - generic [ref=e31]:
+        - textbox "Describe your symptoms (e.g. 'I have a headache and feel nauseous')..." [ref=e32]
+        - button "Send" [ref=e33] [cursor=pointer]
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - heading "Active Multi-Agent Orchestration Nodes" [level=3] [ref=e37]
+          - generic [ref=e38]:
+            - generic [ref=e39]: Deterministic Control
+            - generic [ref=e41]: Model Reasoning
+            - generic [ref=e43]: Human Review
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - generic [ref=e47]: Deterministic
+            - generic [ref=e48]: Emergency Gate
+            - generic [ref=e49]: Idle
+          - generic [ref=e50]:
+            - generic [ref=e51]: Model Reasoning
+            - generic [ref=e52]: PCP Orchestrator
+            - generic [ref=e53]: Idle
+          - generic [ref=e54]:
+            - generic [ref=e55]: Deterministic
+            - generic [ref=e56]: Intake Contract
+            - generic [ref=e57]: Idle
+          - generic [ref=e58]:
+            - generic [ref=e59]: MCP Gateway
+            - generic [ref=e60]: Tool Policy Auth
+            - generic [ref=e61]: Idle
+          - generic [ref=e62]:
+            - generic [ref=e63]: Specialist Agent
+            - generic [ref=e64]: Neurology Support
+            - generic [ref=e65]: Idle
+          - generic [ref=e66]:
+            - generic [ref=e67]: Specialist Agent
+            - generic [ref=e68]: GI Support
+            - generic [ref=e69]: Idle
+          - generic [ref=e70]:
+            - generic [ref=e71]: Human-In-The-Loop
+            - generic [ref=e72]: Clinician Review
+            - generic [ref=e73]: Idle
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - heading "🔍 Real-Time Trajectory Trace (Audit Log)" [level=3] [ref=e76]:
+            - generic [ref=e77]: 🔍
+            - text: Real-Time Trajectory Trace (Audit Log)
+          - generic [ref=e78]: 7 steps executed
+        - generic [ref=e79]:
+          - generic [ref=e187]: ⚠️ Switched to LOOSE_AUTONOMY_MODE (Unconstrained Agents). Intake validation disabled; speculative multi-specialist routing permitted.
+          - generic [ref=e126]:
+            - generic [ref=e127]:
+              - generic [ref=e128]: "[DETERMINISTIC_CONTROL] Step 01"
+              - generic [ref=e129]: PASSED
+            - generic [ref=e130]: EmergencySafetyGate ➔ Red-Flag Screening
+            - generic [ref=e131]: "Screened query for acute life-threatening triggers (thunderclap, acute neuro deficit, chest pain). Result: Non-emergency."
+          - generic [ref=e150]:
+            - generic [ref=e151]:
+              - generic [ref=e152]: "[MODEL_REASONING] Step 02"
+              - generic [ref=e153]: COMPLETED
+            - generic [ref=e154]: PCP_Orchestrator_LLM ➔ Clinical Entity Extraction
+            - generic [ref=e155]: "Identified symptoms: [\"headache\", \"nausea\"]. Mapped clinical category: Neurological / Systemic."
+          - generic [ref=e156]:
+            - generic [ref=e157]:
+              - generic [ref=e158]: "[DETERMINISTIC_CONTROL] Step 03"
+              - generic [ref=e159]: PASSED
+            - generic [ref=e160]: IntakeContractValidator ➔ Handoff Contract Verification
+            - generic [ref=e161]: "All mandatory intake dimensions satisfied: Onset (24h), Severity (6/10), Trajectory (Constant throbbing), Red Flags (Absent)."
+          - generic [ref=e162]:
+            - generic [ref=e163]:
+              - generic [ref=e164]: "[DETERMINISTIC_CONTROL] Step 04"
+              - generic [ref=e165]: PASSED
+            - generic [ref=e166]: MCPGateway ➔ Tool Policy Authorization
+            - generic [ref=e167]: "Tool \"get_patient_history\" authorized for caller PCP_Agent under role-scope: care_navigation_readonly."
+          - generic [ref=e168]:
+            - generic [ref=e169]:
+              - generic [ref=e170]: "[MODEL_REASONING] Step 05"
+              - generic [ref=e171]: COMPLETED
+            - generic [ref=e172]: PCP_Orchestrator_LLM ➔ Differential Context Synthesis
+            - generic [ref=e173]: "Cross-referenced intake with EHR (history of episodic tension headache). Nausea is secondary vegetative symptom, not primary GI infection. Correct routing: Neurology only."
+          - generic [ref=e174]:
+            - generic [ref=e175]:
+              - generic [ref=e176]: "[DETERMINISTIC_CONTROL] Step 06"
+              - generic [ref=e177]: PASSED
+            - generic [ref=e178]: HandoffPacketBuilder ➔ Packet Schema Assembly
+            - generic [ref=e179]: Validated specialist handoff packet assembled with complete clinical evidence.
+            - generic [ref=e180]: "{ \"patient_id\": \"PT-94812\", \"target_specialist\": \"Neurology\", \"clinical_rationale\": \"Subacute unilateral tension/migraine with secondary nausea\", \"intake_evidence\": { \"onset\": \"24h ago\", \"severity\": \"6/10\", \"progression\": \"Constant throbbing\", \"red_flags\": \"Negative\" }, \"clinician_approval_status\": \"PENDING_APPROVAL\" }"
+          - generic [ref=e181]:
+            - generic [ref=e182]:
+              - generic [ref=e183]: "[DETERMINISTIC_CONTROL] Step 07"
+              - generic [ref=e184]: AWAITING_HUMAN_APPROVAL
+            - generic [ref=e185]: HumanInTheLoopGate ➔ Clinician Review Gate
+            - generic [ref=e186]: SPECIALIST ROUTING PAUSED. Packet sent to Dr. Chen's review queue. Autonomous dispatch blocked by policy.
