@@ -2338,6 +2338,7 @@
                     description: 'Agents sit on massive amounts of enterprise data — but still ask users to repeat themselves. RAG alone doesn\'t fix this. Ran Aroussi walks through what a real agent memory system looks like: ingestion, distillation, graph relationships, and retrieval that reasons over context — not just similarity.',
                     spotify: 'https://open.spotify.com/episode/3AR1q6NDED44emhpdesl8j',
                     apple: 'https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214?i=1000785350812',
+                    youtube: 'https://youtu.be/KqstMf5WnAs',
                     guest: 'Ran Aroussi, Founder, MUXI'
                 },
                 {
@@ -2348,6 +2349,7 @@
                     description: 'An AI agent can be 95% accurate and still fail the business. It can give the right answer and still take too long, use the wrong tool, cost too much, or fail to complete the task. We talk with Jay Migliaccio, about how enterprises should measure and improve agent performance.',
                     spotify: 'https://open.spotify.com/episode/6y7v8OXsZR9xS8hyEGkOsq',
                     apple: 'https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214?i=1000790841446',
+                    youtube: 'https://youtu.be/kbZZw06MWVY',
                     guest: 'Jay Migliaccio, Technical Product Manager, IBM watsonx Orchestrate'
                 },
                 {
@@ -2358,6 +2360,7 @@
                     description: 'Your AI agent works, but can you prove its business value? A successful demo can create confidence that doesn\'t carry through to production when requirements are unclear, dependencies are missed, and nobody has agreed on how success is measured. We talk with Robert Maxwell about what enterprises need to address before scaling AI agents.',
                     spotify: 'https://open.spotify.com/episode/0z4AyvjKZHurIbEJflRFmE',
                     apple: 'https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214?i=1000797304979',
+                    youtube: 'https://youtu.be/dMxp13lbZPI',
                     guest: 'Robert Maxwell, Founder & CEO, TGT Solutions'
                 },
                 {
@@ -2453,11 +2456,56 @@
             return out;
         }
 
+        var GUEST_KEYS = {
+            'Vitalii Duk':          { strong: ['vitalii', 'duk', 'dynamiq'] },
+            'Jyotsna K Narayanan':  { strong: ['jyotsna', 'narayanan'] },
+            'Artem Koren':          { strong: ['artem', 'koren', 'sembly'] },
+            'Ran Aroussi':          { strong: ['aroussi', 'muxi', 'yfinance'], weak: ['ran'] },
+            'Jay Migliaccio':       { strong: ['migliaccio'], weak: ['jay'] },
+            'Robert Maxwell':       { strong: ['robert', 'maxwell', 'tgt'] },
+            'Viraat Das':           { strong: ['viraat', 'exla', 'libra'] }
+        };
+        function findGuest(lq) {
+            var asking = /\b(who is|who's|whos|tell me about|about|meet|guest)\b/.test(lq);
+            for (var i = 0; i < AS_KB.guests.length; i++) {
+                var g = AS_KB.guests[i], k = GUEST_KEYS[g.name];
+                if (!k) continue;
+                var words = k.strong.concat(asking ? (k.weak || []) : []);
+                for (var j = 0; j < words.length; j++) {
+                    if (new RegExp('\\b' + words[j] + '\\b').test(lq)) return g;
+                }
+            }
+            return null;
+        }
+        function guestAnswer(g) {
+            var ep = AS_KB.episodes.filter(function(e) { return e.num === g.episode; })[0];
+            var out = '<strong>' + g.name + '</strong> — ' + g.role + '<br><br>' + g.bio + '<br>' +
+                '<a class="as-ep-tag" href="' + g.linkedin + '" target="_blank">LinkedIn</a><br><br>' +
+                '<strong>' + g.episodeLabel.replace(' (Coming Soon)', '') + '</strong><br>';
+            if (ep) {
+                out += '<span style="font-size:0.85rem;">' + ep.description + '</span><br>';
+                if (ep.comingSoon) {
+                    out += '<span style="font-size:0.78rem;color:#888;">Coming soon to Spotify, Apple Podcasts, and YouTube</span>';
+                } else {
+                    var links = [];
+                    if (ep.spotify) links.push('<a class="as-ep-tag" href="' + ep.spotify + '" target="_blank">Spotify</a>');
+                    if (ep.apple) links.push('<a class="as-ep-tag" href="' + ep.apple + '" target="_blank">Apple</a>');
+                    if (ep.youtube) links.push('<a class="as-ep-tag" href="' + ep.youtube + '" target="_blank">YouTube</a>');
+                    out += links.join(' ');
+                }
+            }
+            return out;
+        }
+
         function answer(q) {
             var lq = q.toLowerCase();
 
             // Greetings
             if (/^(hi|hello|hey|howdy|hiya|sup)\b/.test(lq)) return greet();
+
+            // Guest lookup by name or company: bio plus episode details
+            var guestMatch = findGuest(lq);
+            if (guestMatch) return guestAnswer(guestMatch);
 
             // What is Agent Sense / about the podcast
             if (/\b(what is|about|overview|describe|tell me about) (agent sense|this podcast|the podcast|the show)\b/.test(lq) ||
@@ -2543,23 +2591,6 @@
                     g.bio + '<br><br>' +
                     '<a class="as-ep-tag" href="' + g.linkedin + '" target="_blank">LinkedIn</a> ' +
                     '<a class="as-ep-tag" href="' + g.spotify + '" target="_blank">' + g.episodeLabel + '</a>';
-            }
-            var guestLookups = [
-                { re: /\b(aroussi|muxi|yfinance)\b/, name: 'Ran Aroussi' },
-                { re: /\b(jay|migliaccio)\b/, name: 'Jay Migliaccio' },
-                { re: /\b(robert|maxwell|tgt)\b/, name: 'Robert Maxwell' },
-                { re: /\b(viraat|exla|libra)\b/, name: 'Viraat Das' }
-            ];
-            for (var gi = 0; gi < guestLookups.length; gi++) {
-                if (guestLookups[gi].re.test(lq)) {
-                    var g = AS_KB.guests.filter(function(x) { return x.name === guestLookups[gi].name; })[0];
-                    if (g) {
-                        return '<strong>' + g.name + '</strong> — ' + g.role + '<br><br>' +
-                            g.bio + '<br><br>' +
-                            '<a class="as-ep-tag" href="' + g.linkedin + '" target="_blank">LinkedIn</a> ' +
-                            '<a class="as-ep-tag" href="' + g.spotify + '"' + (g.spotify.charAt(0) === '#' ? '' : ' target="_blank"') + '>' + g.episodeLabel + '</a>';
-                    }
-                }
             }
             if (/\b(guest|guests?|who (has been|have been|appeared|was on)|speakers?)\b/.test(lq)) {
                 var out = 'Guests who have joined Agent Sense:<br><br>';
