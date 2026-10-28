@@ -813,14 +813,13 @@
         }
 
         .guests-grid {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 1.5rem;
-            flex-wrap: wrap;
         }
 
         .guest-card {
-            flex: 1;
-            min-width: 260px;
+            min-width: 0;
             background: #f8f9fa;
             border-radius: 10px;
             border-left: 4px solid var(--highlight-color);
@@ -1989,6 +1988,21 @@
                         Robert founded TGT Solutions in 1996 and brings over 30 years of experience in technology and research. As Founder and CEO, he works closely with businesses to improve efficiency and get measurable value from their technology investments, bringing a practical perspective from years of enterprise implementations.
                     </p>
                     <a href="https://open.spotify.com/episode/0z4AyvjKZHurIbEJflRFmE" target="_blank" class="guest-episode-tag">Season 2, Episode 3 — The Missing Path From AI Agents to ROI</a>
+                </div>
+
+                <!-- Guest: Viraat Das -->
+                <div class="guest-card">
+                    <div class="guest-card-header">
+                        <img src="Season 2/Season 2- episode 4 (Viraat Das)/Viraat_Das_Headshot.png" alt="Viraat Das — Cofounder &amp; CEO, Exla" class="guest-avatar-img">
+                        <div>
+                            <h3><a href="https://www.linkedin.com/in/viraatdas/" target="_blank">Viraat Das 🔗</a></h3>
+                            <p class="guest-role">Cofounder &amp; CEO, Exla</p>
+                        </div>
+                    </div>
+                    <p class="guest-bio">
+                        Viraat cofounded Exla, a Y Combinator backed company building Libra: an ambient AI agent that detects production regressions and proposes code fixes. He previously worked as a machine learning engineer at Amazon and brings a builder's view of how agents can investigate incidents on their own while execution stays inside clear controls.
+                    </p>
+                    <a href="#episodes" class="guest-episode-tag">Season 2, Episode 4 — Ambient AI Agents for SRE (Coming Soon)</a>
                 </div>
 
             </div>
