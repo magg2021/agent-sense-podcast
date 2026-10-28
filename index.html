@@ -828,6 +828,8 @@
 
         .guest-card {
             min-width: 0;
+            display: flex;
+            flex-direction: column;
             background: #f8f9fa;
             border-radius: 10px;
             border-left: 4px solid var(--highlight-color);
@@ -865,6 +867,20 @@
             text-decoration: none;
         }
 
+        .guest-card h3 .nowrap { white-space: nowrap; }
+
+        .guest-card .li-icon {
+            width: 0.85em;
+            height: 0.85em;
+            margin-left: 0.35em;
+            vertical-align: -0.05em;
+            fill: #0a66c2;
+        }
+
+        .guest-title, .guest-org { display: block; }
+
+        .guest-org { color: #888; }
+
         .guest-card h3 a:hover {
             text-decoration: underline;
         }
@@ -883,12 +899,14 @@
         }
 
         .guest-episode-tag {
-            display: inline-block;
+            display: block;
+            margin-top: auto;
+            line-height: 1.35;
             background: var(--primary-color);
             color: #fff;
             font-size: 0.78rem;
             font-weight: 600;
-            padding: 3px 10px;
+            padding: 6px 12px;
             border-radius: 12px;
             text-decoration: none;
         }
@@ -1198,6 +1216,9 @@
             border-radius: 50%;
             object-fit: cover;
             flex-shrink: 0;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 1px #d4d7e0;
+            background: #e9ecf2;
         }
 
         /* Season 2 Video Badge */
@@ -1776,13 +1797,13 @@
 
                 <!-- Episode 11 -->
                 <div class="episode-card">
-                    <img src="Season 2/Season 2_Episode1 - Ran Aroussi (Agent Memory)/Season2_Episode1.jpg" alt="Episode 11 — Agent Memory is More Than RAG: episode cover featuring Agent Sense branding" class="episode-cover">
+                    <img src="Season 2/Season 2_Episode1 - Ran Aroussi (Agent Memory)/Season2_Episode1.jpg" alt="Episode 11 — Agent Memory Is More Than RAG: episode cover featuring Agent Sense branding" class="episode-cover">
                     <div class="episode-content">
                         <div class="ep-meta-row">
                             <div class="episode-number">Season 2, Episode 1</div>
                         </div>
                         <div class="episode-date">Aug 23, 2026</div>
-                        <h3 class="episode-title">Agent Memory is More Than RAG</h3>
+                        <h3 class="episode-title">Agent Memory Is More Than RAG</h3>
                         <div class="ep-tags">
                             <span class="ep-tag">Agent Memory</span>
                             <span class="ep-tag">RAG</span>
@@ -1890,7 +1911,7 @@
                             <span class="ep-tag">Root Cause Analysis</span>
                         </div>
                         <p class="episode-description">
-                            Your monitoring caught the incident. So why did it take engineers hours to find the cause? We talk with Viraat Das, cofounder and CEO of Exla, about Libra: an ambient AI agent that keeps investigating production systems, spots regressions traditional monitoring can miss, and proposes fixes.
+                            Your monitoring caught the incident. So why did it take engineers hours to find the cause? We talk with Viraat Das, co-founder and CEO of Exla, about Libra: an ambient AI agent that keeps investigating production systems, spots regressions traditional monitoring can miss, and proposes fixes.
                         </p>
                         <div class="ep-takeaway"><strong>Key takeaway:</strong> Let agents investigate on their own. Keep execution behind defined policies, permissions, and risk controls.</div>
                         <div class="listen-links">
@@ -1913,14 +1934,14 @@
                     <div class="guest-card-header">
                         <img src="Episode 7/VitaliiDuk_image.jpeg" alt="Vitalii Duk — Founder &amp; CEO, Dynamiq" class="guest-avatar-img">
                         <div>
-                            <h3><a href="https://www.linkedin.com/in/vit-d/" target="_blank">Vitalii Duk 🔗</a></h3>
-                            <p class="guest-role">Founder &amp; CEO, Dynamiq</p>
+                            <h3><a href="https://www.linkedin.com/in/vit-d/" target="_blank" aria-label="Vitalii Duk on LinkedIn">Vitalii <span class="nowrap">Duk<svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></span></a></h3>
+                            <p class="guest-role"><span class="guest-title">Founder &amp; CEO</span><span class="guest-org">Dynamiq</span></p>
                         </div>
                     </div>
                     <p class="guest-bio">
                         Vitalii founded Dynamiq to make agentic AI practical and secure. He knows what it takes to move agents from impressive demos to reliable, observable production systems.
                     </p>
-                    <a href="https://open.spotify.com/episode/2wkn9bcDINCqHuaIfvmBKb?si=wlGGSBvhTKW4Crd9ir0fjw" target="_blank" class="guest-episode-tag">Ep 7 · Chat to Computer Use</a>
+                    <a href="https://open.spotify.com/episode/2wkn9bcDINCqHuaIfvmBKb?si=wlGGSBvhTKW4Crd9ir0fjw" target="_blank" class="guest-episode-tag">S1 E7 · Chat to Computer Use</a>
                 </div>
 
                 <!-- Guest: Jyotsna K Narayanan -->
@@ -1928,29 +1949,29 @@
                     <div class="guest-card-header">
                         <img src="Episode 8 - Governance Catalog/Jyotsna.jpeg" alt="Jyotsna K Narayanan — Technical Product Manager at IBM watsonx Orchestrate" class="guest-avatar-img">
                         <div>
-                            <h3><a href="https://www.linkedin.com/in/jyotsnanarayanan/" target="_blank">Jyotsna K Narayanan 🔗</a></h3>
-                            <p class="guest-role">Technical Product Manager, IBM watsonx Orchestrate</p>
+                            <h3><a href="https://www.linkedin.com/in/jyotsnanarayanan/" target="_blank" aria-label="Jyotsna K Narayanan on LinkedIn">Jyotsna K <span class="nowrap">Narayanan<svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></span></a></h3>
+                            <p class="guest-role"><span class="guest-title">Technical Product Manager</span><span class="guest-org">IBM watsonx Orchestrate</span></p>
                         </div>
                     </div>
                     <p class="guest-bio">
                         Jyotsna leads product management for the Domain and Agent Catalog in IBM watsonx Orchestrate. Her focus is governed reuse, so enterprises scale agents instead of rebuilding them pilot by pilot.
                     </p>
-                    <a href="https://open.spotify.com/episode/6yRUHYXgDNdKzaJzCR31EK?si=nFwwltPhSP6LE70ZKAsLQA" target="_blank" class="guest-episode-tag">Ep 8 · Governed Catalog of Agentic AI Assets</a>
+                    <a href="https://open.spotify.com/episode/6yRUHYXgDNdKzaJzCR31EK?si=nFwwltPhSP6LE70ZKAsLQA" target="_blank" class="guest-episode-tag">S1 E8 · Governed Catalog of Agentic AI Assets</a>
                 </div>
 
                 <!-- Guest: Artem Koren -->
                 <div class="guest-card">
                     <div class="guest-card-header">
-                        <img src="Episode 9 - Artem Korem/Artem_Photo.png" alt="Artem Koren — Co-Founder &amp; Chief Product Officer, Sembly AI" class="guest-avatar-img">
+                        <img src="Episode 9 - Artem Korem/Artem_Photo.png" alt="Artem Koren — Co-founder &amp; Chief Product Officer, Sembly AI" class="guest-avatar-img">
                         <div>
-                            <h3><a href="https://www.linkedin.com/in/akoren/" target="_blank">Artem Koren 🔗</a></h3>
-                            <p class="guest-role">Co-Founder &amp; Chief Product Officer, Sembly AI</p>
+                            <h3><a href="https://www.linkedin.com/in/akoren/" target="_blank" aria-label="Artem Koren on LinkedIn">Artem <span class="nowrap">Koren<svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></span></a></h3>
+                            <p class="guest-role"><span class="guest-title">Co-founder &amp; Chief Product Officer</span><span class="guest-org">Sembly AI</span></p>
                         </div>
                     </div>
                     <p class="guest-bio">
                         Artem co-founded Sembly AI to turn meeting conversations into action: follow-ups, CRM updates and system tasks, with people still steering the outcome.
                     </p>
-                    <a href="https://open.spotify.com/episode/7oy52C5ITDM3vVNDVOZPyq?si=ToxON3h8Tl-kxpkkOOEbIA" target="_blank" class="guest-episode-tag">Ep 9 · From Conversation to Action</a>
+                    <a href="https://open.spotify.com/episode/7oy52C5ITDM3vVNDVOZPyq?si=ToxON3h8Tl-kxpkkOOEbIA" target="_blank" class="guest-episode-tag">S1 E9 · From Conversation to Action</a>
                 </div>
 
                 <!-- Guest: Ran Aroussi -->
@@ -1958,14 +1979,14 @@
                     <div class="guest-card-header">
                         <img src="Season 2/Season 2_Episode1 - Ran Aroussi (Agent Memory)/RanAroussiPhoto.png" alt="Ran Aroussi — Founder, MUXI" class="guest-avatar-img">
                         <div>
-                            <h3><a href="https://www.linkedin.com/in/aroussi/" target="_blank">Ran Aroussi 🔗</a></h3>
-                            <p class="guest-role">Founder, MUXI</p>
+                            <h3><a href="https://www.linkedin.com/in/aroussi/" target="_blank" aria-label="Ran Aroussi on LinkedIn">Ran <span class="nowrap">Aroussi<svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></span></a></h3>
+                            <p class="guest-role"><span class="guest-title">Founder</span><span class="guest-org">MUXI</span></p>
                         </div>
                     </div>
                     <p class="guest-bio">
                         Ran has built production systems for more than 30 years. He created yfinance, the most widely used open source financial data library, and founded MUXI, open infrastructure for running agents in production.
                     </p>
-                    <a href="https://open.spotify.com/episode/3AR1q6NDED44emhpdesl8j" target="_blank" class="guest-episode-tag">S2 E1 · Agent Memory is More Than RAG</a>
+                    <a href="https://open.spotify.com/episode/3AR1q6NDED44emhpdesl8j" target="_blank" class="guest-episode-tag">S2 E1 · Agent Memory Is More Than RAG</a>
                 </div>
 
                 <!-- Guest: Jay Migliaccio -->
@@ -1973,12 +1994,12 @@
                     <div class="guest-card-header">
                         <img src="Season 2/Season 2_Episode2 - Agent Performance/Jay Migliaccio.jpeg" alt="Jay Migliaccio — Technical Product Manager, IBM watsonx Orchestrate" class="guest-avatar-img">
                         <div>
-                            <h3><a href="https://www.linkedin.com/in/jaymigliaccio/" target="_blank">Jay Migliaccio 🔗</a></h3>
-                            <p class="guest-role">Technical Product Manager, IBM watsonx Orchestrate</p>
+                            <h3><a href="https://www.linkedin.com/in/jaymigliaccio/" target="_blank" aria-label="Jay Migliaccio on LinkedIn">Jay <span class="nowrap">Migliaccio<svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></span></a></h3>
+                            <p class="guest-role"><span class="guest-title">Technical Product Manager</span><span class="guest-org">IBM watsonx Orchestrate</span></p>
                         </div>
                     </div>
                     <p class="guest-bio">
-                        Jay builds agentic solutions for enterprise customers on IBM watsonx Orchestrate. His focus is how to measure, observe and improve agent performance in production.
+                        Jay builds agentic solutions for enterprise customers on IBM watsonx Orchestrate. He judges agents by their full trajectory: the decisions, the tool calls, and whether the task got done.
                     </p>
                     <a href="https://open.spotify.com/episode/6y7v8OXsZR9xS8hyEGkOsq" target="_blank" class="guest-episode-tag">S2 E2 · Agent Performance, Beyond Accuracy</a>
                 </div>
@@ -1988,12 +2009,12 @@
                     <div class="guest-card-header">
                         <img src="Season 2/Season 2 - episode 3 (Robert Maxwell)/RoberMaxwell_ProfilePicture.jpeg" alt="Robert Maxwell — Founder &amp; CEO, TGT Solutions" class="guest-avatar-img">
                         <div>
-                            <h3><a href="https://www.linkedin.com/in/robert-maxwell-tgt/" target="_blank">Robert Maxwell 🔗</a></h3>
-                            <p class="guest-role">Founder &amp; CEO, TGT Solutions</p>
+                            <h3><a href="https://www.linkedin.com/in/robert-maxwell-tgt/" target="_blank" aria-label="Robert Maxwell on LinkedIn">Robert <span class="nowrap">Maxwell<svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></span></a></h3>
+                            <p class="guest-role"><span class="guest-title">Founder &amp; CEO</span><span class="guest-org">TGT Solutions</span></p>
                         </div>
                     </div>
                     <p class="guest-bio">
-                        Robert founded TGT Solutions in 1996 and has spent 30 years in technology and research. He helps businesses improve efficiency and get measurable value from what they implement.
+                        Robert founded TGT Solutions in 1996. He studied computer science and mathematics, holds an MBA and is a Chartered Accountant, and focuses on tying business goals to technology decisions.
                     </p>
                     <a href="https://open.spotify.com/episode/0z4AyvjKZHurIbEJflRFmE" target="_blank" class="guest-episode-tag">S2 E3 · The Missing Path From AI Agents to ROI</a>
                 </div>
@@ -2001,14 +2022,14 @@
                 <!-- Guest: Viraat Das -->
                 <div class="guest-card">
                     <div class="guest-card-header">
-                        <img src="Season 2/Season 2- episode 4 (Viraat Das)/Viraat_Das_Headshot.png" alt="Viraat Das — Cofounder &amp; CEO, Exla" class="guest-avatar-img">
+                        <img src="Season 2/Season 2- episode 4 (Viraat Das)/Viraat_Das_Headshot.png" alt="Viraat Das — Co-founder &amp; CEO, Exla" class="guest-avatar-img">
                         <div>
-                            <h3><a href="https://www.linkedin.com/in/viraatdas/" target="_blank">Viraat Das 🔗</a></h3>
-                            <p class="guest-role">Cofounder &amp; CEO, Exla</p>
+                            <h3><a href="https://www.linkedin.com/in/viraatdas/" target="_blank" aria-label="Viraat Das on LinkedIn">Viraat <span class="nowrap">Das<svg class="li-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></span></a></h3>
+                            <p class="guest-role"><span class="guest-title">Co-founder &amp; CEO</span><span class="guest-org">Exla</span></p>
                         </div>
                     </div>
                     <p class="guest-bio">
-                        Viraat cofounded Exla, a Y Combinator backed company building Libra: an ambient AI agent that catches production regressions and proposes code fixes. He was previously a machine learning engineer at Amazon.
+                        Viraat co-founded Exla, a Y Combinator backed company building Libra: an ambient AI agent that catches production regressions and proposes code fixes. He was previously a machine learning engineer at Amazon.
                     </p>
                     <a href="#episodes" class="guest-episode-tag">S2 E4 · Ambient AI Agents for SRE · Coming Soon</a>
                 </div>
@@ -2193,7 +2214,7 @@
                 },
                 {
                     name: 'Artem Koren',
-                    role: 'Co-Founder & Chief Product Officer, Sembly AI',
+                    role: 'Co-founder & Chief Product Officer, Sembly AI',
                     bio: 'Artem co-founded Sembly AI to turn meeting conversations into action: follow-ups, CRM updates and system tasks, with people still steering the outcome.',
                     linkedin: 'https://www.linkedin.com/in/akoren/',
                     episode: 9,
@@ -2206,13 +2227,13 @@
                     bio: 'Ran has built production systems for more than 30 years. He created yfinance, the most widely used open source financial data library, and founded MUXI, open infrastructure for running agents in production.',
                     linkedin: 'https://www.linkedin.com/in/aroussi/',
                     episode: 11,
-                    episodeLabel: 'Season 2, Episode 1 — Agent Memory is More Than RAG',
+                    episodeLabel: 'Season 2, Episode 1 — Agent Memory Is More Than RAG',
                     spotify: 'https://open.spotify.com/episode/3AR1q6NDED44emhpdesl8j'
                 },
                 {
                     name: 'Jay Migliaccio',
                     role: 'Technical Product Manager, IBM watsonx Orchestrate',
-                    bio: 'Jay builds agentic solutions for enterprise customers on IBM watsonx Orchestrate. His focus is how to measure, observe and improve agent performance in production.',
+                    bio: 'Jay builds agentic solutions for enterprise customers on IBM watsonx Orchestrate. He judges agents by their full trajectory: the decisions, the tool calls, and whether the task got done.',
                     linkedin: 'https://www.linkedin.com/in/jaymigliaccio/',
                     episode: 12,
                     episodeLabel: 'Season 2, Episode 2 — Agent Performance, Beyond Accuracy',
@@ -2221,7 +2242,7 @@
                 {
                     name: 'Robert Maxwell',
                     role: 'Founder & CEO, TGT Solutions',
-                    bio: 'Robert founded TGT Solutions in 1996 and has spent 30 years in technology and research. He helps businesses improve efficiency and get measurable value from what they implement.',
+                    bio: 'Robert founded TGT Solutions in 1996. He studied computer science and mathematics, holds an MBA and is a Chartered Accountant, and focuses on tying business goals to technology decisions.',
                     linkedin: 'https://www.linkedin.com/in/robert-maxwell-tgt/',
                     episode: 13,
                     episodeLabel: 'Season 2, Episode 3 — The Missing Path From AI Agents to ROI',
@@ -2229,8 +2250,8 @@
                 },
                 {
                     name: 'Viraat Das',
-                    role: 'Cofounder & CEO, Exla',
-                    bio: 'Viraat cofounded Exla, a Y Combinator backed company building Libra: an ambient AI agent that catches production regressions and proposes code fixes. He was previously a machine learning engineer at Amazon.',
+                    role: 'Co-founder & CEO, Exla',
+                    bio: 'Viraat co-founded Exla, a Y Combinator backed company building Libra: an ambient AI agent that catches production regressions and proposes code fixes. He was previously a machine learning engineer at Amazon.',
                     linkedin: 'https://www.linkedin.com/in/viraatdas/',
                     episode: 14,
                     episodeLabel: 'Season 2, Episode 4 — Ambient AI Agents for SRE (Coming Soon)',
@@ -2323,10 +2344,10 @@
                     title: 'Beyond Meeting Summaries: From Conversation to Action',
                     theme: 'Conversation to action',
                     keywords: ['sembly', 'artem', 'koren', 'meeting', 'summary', 'summaries', 'conversation', 'action', 'crm', 'follow-up', 'follow up', 'workflow', 'execution', 'conversation intelligence', 'task', 'ticketing', 'cross-team', 'executive update', 'language', 'multilingual'],
-                    description: 'Guest: Artem Koren, Co-Founder and Chief Product Officer, Sembly AI. AI can summarize a meeting. Enterprise work starts after the summary. This episode explores how conversation intelligence moves beyond transcription into real workflow execution — CRM updates, follow-ups, task assignments, and system actions with human judgment in control.',
+                    description: 'Guest: Artem Koren, Co-founder and Chief Product Officer, Sembly AI. AI can summarize a meeting. Enterprise work starts after the summary. This episode explores how conversation intelligence moves beyond transcription into real workflow execution — CRM updates, follow-ups, task assignments, and system actions with human judgment in control.',
                     spotify: 'https://open.spotify.com/episode/7oy52C5ITDM3vVNDVOZPyq',
                     apple: 'https://podcasts.apple.com/us/podcast/agent-sense-agentic-workflows-operational-ai/id1861925214?i=1000779498614',
-                    guest: 'Artem Koren, Co-Founder & CPO, Sembly AI'
+                    guest: 'Artem Koren, Co-founder & CPO, Sembly AI'
                 },
                 {
                     num: 10,
@@ -2340,7 +2361,7 @@
                 },
                 {
                     num: 11,
-                    title: 'Agent Memory is More Than RAG',
+                    title: 'Agent Memory Is More Than RAG',
                     theme: 'Agent memory',
                     keywords: ['memory', 'rag', 'retrieval', 'graph', 'knowledge graph', 'distillation', 'ingestion', 'ran aroussi', 'muxi', 'yfinance', 'context', 'similarity', 'captain\'s log', 'organizational memory', 'working memory', 'enterprise memory'],
                     description: 'Agents sit on massive amounts of enterprise data — but still ask users to repeat themselves. RAG alone doesn\'t fix this. Ran Aroussi walks through what a real agent memory system looks like: ingestion, distillation, graph relationships, and retrieval that reasons over context — not just similarity.',
@@ -2376,8 +2397,8 @@
                     title: 'Ambient AI Agents for Smarter SRE and Incident Response',
                     theme: 'Ambient Agents',
                     keywords: ['ambient', 'ambient agents', 'sre', 'incident', 'incident response', 'root cause', 'regressions', 'production', 'monitoring', 'logs', 'traces', 'libra', 'exla', 'viraat das', 'autonomy', 'human approval'],
-                    description: 'Your monitoring caught the incident. So why did it take engineers hours to find the cause? We talk with Viraat Das, cofounder and CEO of Exla, about Libra: an ambient AI agent that keeps investigating production systems, spots regressions traditional monitoring can miss, and proposes fixes.',
-                    guest: 'Viraat Das, Cofounder & CEO, Exla',
+                    description: 'Your monitoring caught the incident. So why did it take engineers hours to find the cause? We talk with Viraat Das, co-founder and CEO of Exla, about Libra: an ambient AI agent that keeps investigating production systems, spots regressions traditional monitoring can miss, and proposes fixes.',
+                    guest: 'Viraat Das, Co-founder & CEO, Exla',
                     comingSoon: true
                 }
             ]
