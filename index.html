@@ -814,8 +814,16 @@
 
         .guests-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 1024px) {
+            .guests-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        @media (max-width: 600px) {
+            .guests-grid { grid-template-columns: 1fr; }
         }
 
         .guest-card {
@@ -828,7 +836,7 @@
 
         .guest-card-header {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 1rem;
             margin-bottom: 0.75rem;
         }
