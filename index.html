@@ -2544,6 +2544,23 @@
                     '<a class="as-ep-tag" href="' + g.linkedin + '" target="_blank">LinkedIn</a> ' +
                     '<a class="as-ep-tag" href="' + g.spotify + '" target="_blank">' + g.episodeLabel + '</a>';
             }
+            var guestLookups = [
+                { re: /\b(aroussi|muxi|yfinance)\b/, name: 'Ran Aroussi' },
+                { re: /\b(jay|migliaccio)\b/, name: 'Jay Migliaccio' },
+                { re: /\b(robert|maxwell|tgt)\b/, name: 'Robert Maxwell' },
+                { re: /\b(viraat|exla|libra)\b/, name: 'Viraat Das' }
+            ];
+            for (var gi = 0; gi < guestLookups.length; gi++) {
+                if (guestLookups[gi].re.test(lq)) {
+                    var g = AS_KB.guests.filter(function(x) { return x.name === guestLookups[gi].name; })[0];
+                    if (g) {
+                        return '<strong>' + g.name + '</strong> — ' + g.role + '<br><br>' +
+                            g.bio + '<br><br>' +
+                            '<a class="as-ep-tag" href="' + g.linkedin + '" target="_blank">LinkedIn</a> ' +
+                            '<a class="as-ep-tag" href="' + g.spotify + '"' + (g.spotify.charAt(0) === '#' ? '' : ' target="_blank"') + '>' + g.episodeLabel + '</a>';
+                    }
+                }
+            }
             if (/\b(guest|guests?|who (has been|have been|appeared|was on)|speakers?)\b/.test(lq)) {
                 var out = 'Guests who have joined Agent Sense:<br><br>';
                 AS_KB.guests.forEach(function(g) {
